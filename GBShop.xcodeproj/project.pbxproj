@@ -16,6 +16,7 @@
 		367864572751489700E0786F /* GBShopTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367864562751489700E0786F /* GBShopTests.swift */; };
 		367864612751489700E0786F /* GBShopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367864602751489700E0786F /* GBShopUITests.swift */; };
 		367864632751489700E0786F /* GBShopUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367864622751489700E0786F /* GBShopUITestsLaunchTests.swift */; };
+		367864792755522C00E0786F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 367864782755522C00E0786F /* Alamofire */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				367864792755522C00E0786F /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,8 +105,6 @@
 				36786474275249E900E0786F /* Core */,
 				3678647627524A0400E0786F /* Environments */,
 				36786475275249F600E0786F /* Resources */,
-				367864432751488F00E0786F /* ViewController.swift */,
-				367864452751488F00E0786F /* Main.storyboard */,
 			);
 			path = GBShop;
 			sourceTree = "<group>";
@@ -135,6 +135,7 @@
 				36786473275249D900E0786F /* Flows */,
 				3678643F2751488F00E0786F /* AppDelegate.swift */,
 				367864412751488F00E0786F /* SceneDelegate.swift */,
+				367864432751488F00E0786F /* ViewController.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -178,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				3678644A2751489600E0786F /* LaunchScreen.storyboard */,
+				367864452751488F00E0786F /* Main.storyboard */,
 				367864482751489600E0786F /* Assets.xcassets */,
 			);
 			path = Resources;
@@ -207,6 +209,9 @@
 			dependencies = (
 			);
 			name = GBShop;
+			packageProductDependencies = (
+				367864782755522C00E0786F /* Alamofire */,
+			);
 			productName = GBShop;
 			productReference = 3678643C2751488F00E0786F /* GBShop.app */;
 			productType = "com.apple.product-type.application";
@@ -279,6 +284,9 @@
 				Base,
 			);
 			mainGroup = 367864332751488F00E0786F;
+			packageReferences = (
+				367864772755522C00E0786F /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = 3678643D2751488F00E0786F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -505,7 +513,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PA4RR5KXXR;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GBShop/Info.plist;
+				INFOPLIST_FILE = GBShop/Environments/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -533,7 +541,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = PA4RR5KXXR;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = GBShop/Info.plist;
+				INFOPLIST_FILE = GBShop/Environments/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -688,6 +696,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		367864772755522C00E0786F /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		367864782755522C00E0786F /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 367864772755522C00E0786F /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 367864342751488F00E0786F /* Project object */;
 }
