@@ -7,6 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3617761B2757774E00509772 /* AbstractErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3617761A2757774E00509772 /* AbstractErrorParser.swift */; };
+		3617761D275777C000509772 /* ErrorParser.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3617761C275777C000509772 /* ErrorParser.swift */; };
+		3617761F275777FE00509772 /* DataRequest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3617761E275777FE00509772 /* DataRequest.swift */; };
+		361776212757789700509772 /* AbstractRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361776202757789700509772 /* AbstractRequestFactory.swift */; };
+		36177623275778E000509772 /* RequestRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36177622275778E000509772 /* RequestRouter.swift */; };
+		361776252757796600509772 /* LoginResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361776242757796600509772 /* LoginResult.swift */; };
+		361776272757797300509772 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361776262757797300509772 /* User.swift */; };
+		3617762A275779DF00509772 /* AuthRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36177629275779DF00509772 /* AuthRequestFactory.swift */; };
+		3617762C27577A4700509772 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3617762B27577A4700509772 /* Auth.swift */; };
+		3617762E27577A9200509772 /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3617762D27577A9200509772 /* RequestFactory.swift */; };
+		361776302757817800509772 /* LogoutResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3617762F2757817800509772 /* LogoutResult.swift */; };
+		36177632275781DC00509772 /* RegisterResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36177631275781DC00509772 /* RegisterResult.swift */; };
 		367864402751488F00E0786F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3678643F2751488F00E0786F /* AppDelegate.swift */; };
 		367864422751488F00E0786F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367864412751488F00E0786F /* SceneDelegate.swift */; };
 		367864442751488F00E0786F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367864432751488F00E0786F /* ViewController.swift */; };
@@ -37,6 +49,18 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		3617761A2757774E00509772 /* AbstractErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractErrorParser.swift; sourceTree = "<group>"; };
+		3617761C275777C000509772 /* ErrorParser.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorParser.swift; sourceTree = "<group>"; };
+		3617761E275777FE00509772 /* DataRequest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataRequest.swift; sourceTree = "<group>"; };
+		361776202757789700509772 /* AbstractRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AbstractRequestFactory.swift; sourceTree = "<group>"; };
+		36177622275778E000509772 /* RequestRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestRouter.swift; sourceTree = "<group>"; };
+		361776242757796600509772 /* LoginResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResult.swift; sourceTree = "<group>"; };
+		361776262757797300509772 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		36177629275779DF00509772 /* AuthRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequestFactory.swift; sourceTree = "<group>"; };
+		3617762B27577A4700509772 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
+		3617762D27577A9200509772 /* RequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
+		3617762F2757817800509772 /* LogoutResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutResult.swift; sourceTree = "<group>"; };
+		36177631275781DC00509772 /* RegisterResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResult.swift; sourceTree = "<group>"; };
 		3678643C2751488F00E0786F /* GBShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GBShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3678643F2751488F00E0786F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		367864412751488F00E0786F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -78,6 +102,28 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		361776192757771700509772 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				3617761A2757774E00509772 /* AbstractErrorParser.swift */,
+				3617761C275777C000509772 /* ErrorParser.swift */,
+				3617761E275777FE00509772 /* DataRequest.swift */,
+				361776202757789700509772 /* AbstractRequestFactory.swift */,
+				36177622275778E000509772 /* RequestRouter.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		36177628275779C400509772 /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				36177629275779DF00509772 /* AuthRequestFactory.swift */,
+				3617762B27577A4700509772 /* Auth.swift */,
+				3617762D27577A9200509772 /* RequestFactory.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
 		367864332751488F00E0786F = {
 			isa = PBXGroup;
 			children = (
@@ -143,6 +189,7 @@
 		367864702752499800E0786F /* BusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
+				36177628275779C400509772 /* Network */,
 			);
 			path = BusinessLogic;
 			sourceTree = "<group>";
@@ -150,6 +197,10 @@
 		36786471275249B400E0786F /* Entity */ = {
 			isa = PBXGroup;
 			children = (
+				361776242757796600509772 /* LoginResult.swift */,
+				361776262757797300509772 /* User.swift */,
+				3617762F2757817800509772 /* LogoutResult.swift */,
+				36177631275781DC00509772 /* RegisterResult.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -171,6 +222,7 @@
 		36786474275249E900E0786F /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				361776192757771700509772 /* Network */,
 			);
 			path = Core;
 			sourceTree = "<group>";
@@ -330,9 +382,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3617762A275779DF00509772 /* AuthRequestFactory.swift in Sources */,
+				36177623275778E000509772 /* RequestRouter.swift in Sources */,
+				361776302757817800509772 /* LogoutResult.swift in Sources */,
+				361776212757789700509772 /* AbstractRequestFactory.swift in Sources */,
+				3617762E27577A9200509772 /* RequestFactory.swift in Sources */,
+				3617761D275777C000509772 /* ErrorParser.swift in Sources */,
 				367864442751488F00E0786F /* ViewController.swift in Sources */,
 				367864402751488F00E0786F /* AppDelegate.swift in Sources */,
+				3617761F275777FE00509772 /* DataRequest.swift in Sources */,
+				36177632275781DC00509772 /* RegisterResult.swift in Sources */,
+				361776252757796600509772 /* LoginResult.swift in Sources */,
 				367864422751488F00E0786F /* SceneDelegate.swift in Sources */,
+				361776272757797300509772 /* User.swift in Sources */,
+				3617761B2757774E00509772 /* AbstractErrorParser.swift in Sources */,
+				3617762C27577A4700509772 /* Auth.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
