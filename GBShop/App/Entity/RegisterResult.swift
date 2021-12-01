@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct RegisterREsult: Codable {
+struct RegisterResult: Codable {
     let result: Int
     let userMessage: String
 }

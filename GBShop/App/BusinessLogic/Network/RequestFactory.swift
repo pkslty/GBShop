@@ -28,4 +28,9 @@ class RequestFactory {
         let errorParser = makeErrorParser()
         return Auth(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
     }
+    
+    func makeRegisterRequestFatory() -> RegistrationRequestFactory {
+        let errorParser = makeErrorParser()
+        return Registration(errorParser: errorParser, sessionManager: commonSession, queue: sessionQueue)
+    }
 }
