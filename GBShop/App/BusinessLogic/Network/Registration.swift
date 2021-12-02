@@ -27,13 +27,13 @@ class Registration: AbstractRequestFactory {
 
 extension Registration: RegistrationRequestFactory {
     
-    func register(userId: Int, userName: String, password: String, email: String, gender: String, creditCard: String, bio: String, completionHandler: @escaping (AFDataResponse<RegisterResult>) -> Void) {
-        let requestModel = UserData(baseUrl: baseUrl, path: "registerUser.json", userId: userId, userName: userName, password: password, email: email, gender: gender, creditCard: creditCard, bio: bio)
+    func register(user: User, completionHandler: @escaping (AFDataResponse<RegisterResult>) -> Void) {
+        let requestModel = UserData(baseUrl: baseUrl, path: "registerUser.json", user: user)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func changeUserData(userId: Int, userName: String, password: String, email: String, gender: String, creditCard: String, bio: String, completionHandler: @escaping (AFDataResponse<PositiveResult>) -> Void) {
-        let requestModel = UserData(baseUrl: baseUrl, path: "changeUserData.json", userId: userId, userName: userName, password: password, email: email, gender: gender, creditCard: creditCard, bio: bio)
+    func changeUserData(user: User, completionHandler: @escaping (AFDataResponse<PositiveResult>) -> Void) {
+        let requestModel = UserData(baseUrl: baseUrl, path: "changeUserData.json", user: user)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
@@ -46,22 +46,16 @@ extension Registration {
         let method: HTTPMethod = .get
         var path: String
         
-        let userId: Int
-        let userName: String
-        let password: String
-        let email: String
-        let gender: String
-        let creditCard: String
-        let bio: String
+        let user: User
         var parameters: Parameters? {
             return [
-                "id_user": userId,
-                "username": userName,
-                "password": password,
-                "email": email,
-                "gender": gender,
-                "creditCard": creditCard,
-                "bio": bio
+                "id_user": user.id,
+                "username": user.login,
+                "password": user.password,
+                "email": user.email,
+                "gender": user.gender,
+                "creditCard": user.creditCard,
+                "bio": user.bio
             ]
         }
     }

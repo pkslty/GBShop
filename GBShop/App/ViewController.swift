@@ -16,9 +16,11 @@ class ViewController: UIViewController {
         
         login(userName: "somebody", password: "mypassword")
         
-        registerUser(userId: 123, userName: "someuser", password: "mypassword", email: "some@some.ru", gender: "m", creditCard: "1234-5678-9123-4567", bio: "Some biography")
+        let user = User(id: 123, login: "someuser", name: "John", lastname: "Doe", password: "mypassword", email: "some@some.ru", gender: "m", creditCard: "somenumber", bio: "bio")
         
-        changeUserData(userId: 123, userName: "someuser", password: "mypassword", email: "some@some.ru", gender: "m", creditCard: "1234-5678-9123-4567", bio: "Some biography")
+        registerUser(user: user)
+        
+        changeUserData(user: user)
         
         logout(userId: 123)
         
@@ -28,9 +30,9 @@ class ViewController: UIViewController {
         let auth = requestFactory.makeAuthRequestFactory()
         auth.login(userName: userName, password: password) { response in
             switch response.result {
-            case .success(let login):
+            case .success(let result):
                 print("Authentification:")
-                print(login)
+                print(result)
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -38,19 +40,13 @@ class ViewController: UIViewController {
         }
     }
     
-    func registerUser(userId: Int,
-                      userName: String,
-                      password: String,
-                      email: String,
-                      gender: String,
-                      creditCard: String,
-                      bio: String) {
+    func registerUser(user: User) {
         let register = requestFactory.makeRegisterRequestFactory()
-        register.register(userId: userId, userName: userName, password: password, email: email, gender: gender, creditCard: creditCard, bio: bio) { response in
+        register.register(user: user) { response in
             switch response.result {
-            case .success(let login):
+            case .success(let result):
                 print("Registration:")
-                print(login)
+                print(result)
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -58,19 +54,13 @@ class ViewController: UIViewController {
         }
     }
     
-    func changeUserData(userId: Int,
-                      userName: String,
-                      password: String,
-                      email: String,
-                      gender: String,
-                      creditCard: String,
-                      bio: String) {
+    func changeUserData(user: User) {
         let register = requestFactory.makeRegisterRequestFactory()
-        register.changeUserData(userId: userId, userName: userName, password: password, email: email, gender: gender, creditCard: creditCard, bio: bio) { response in
+        register.changeUserData(user: user) { response in
             switch response.result {
-            case .success(let login):
+            case .success(let result):
                 print("Change User Data:")
-                print(login)
+                print(result)
             case .failure(let error):
                 print(error.localizedDescription)
             }
@@ -82,9 +72,9 @@ class ViewController: UIViewController {
         let auth = requestFactory.makeAuthRequestFactory()
         auth.logout(userId: userId) { response in
             switch response.result {
-            case .success(let login):
+            case .success(let result):
                 print("Authentification:")
-                print(login)
+                print(result)
             case .failure(let error):
                 print(error.localizedDescription)
             }

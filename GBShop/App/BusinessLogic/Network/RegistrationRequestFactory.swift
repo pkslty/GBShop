@@ -9,21 +9,9 @@ import Alamofire
 import Foundation
 
 protocol RegistrationRequestFactory {
-    func register(userId: Int,
-                  userName: String,
-                  password: String,
-                  email: String,
-                  gender: String,
-                  creditCard: String,
-                  bio: String,
+    func register(user: User,
                   completionHandler: @escaping (AFDataResponse<RegisterResult>) -> Void)
     
-    func changeUserData(userId: Int,
-                  userName: String,
-                  password: String,
-                  email: String,
-                  gender: String,
-                  creditCard: String,
-                  bio: String,
+    func changeUserData(user: User,
                   completionHandler: @escaping (AFDataResponse<PositiveResult>) -> Void)
 }
