@@ -28,7 +28,12 @@ class Registration: AbstractRequestFactory {
 extension Registration: RegistrationRequestFactory {
     
     func register(userId: Int, userName: String, password: String, email: String, gender: String, creditCard: String, bio: String, completionHandler: @escaping (AFDataResponse<RegisterResult>) -> Void) {
-        let requestModel = Registration(baseUrl: baseUrl, userId: userId, userName: userName, password: password, email: email, gender: gender, creditCard: creditCard, bio: bio)
+        let requestModel = UserData(baseUrl: baseUrl, path: "registerUser.json", userId: userId, userName: userName, password: password, email: email, gender: gender, creditCard: creditCard, bio: bio)
+        self.request(request: requestModel, completionHandler: completionHandler)
+    }
+    
+    func changeUserData(userId: Int, userName: String, password: String, email: String, gender: String, creditCard: String, bio: String, completionHandler: @escaping (AFDataResponse<PositiveResult>) -> Void) {
+        let requestModel = UserData(baseUrl: baseUrl, path: "changeUserData.json", userId: userId, userName: userName, password: password, email: email, gender: gender, creditCard: creditCard, bio: bio)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
@@ -36,10 +41,10 @@ extension Registration: RegistrationRequestFactory {
 }
 
 extension Registration {
-    struct Registration: RequestRouter {
+    struct UserData: RequestRouter {
         let baseUrl: URL
         let method: HTTPMethod = .get
-        let path: String = "registerUser.json"
+        var path: String
         
         let userId: Int
         let userName: String

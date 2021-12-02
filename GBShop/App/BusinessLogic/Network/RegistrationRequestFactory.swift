@@ -17,4 +17,13 @@ protocol RegistrationRequestFactory {
                   creditCard: String,
                   bio: String,
                   completionHandler: @escaping (AFDataResponse<RegisterResult>) -> Void)
+    
+    func changeUserData(userId: Int,
+                  userName: String,
+                  password: String,
+                  email: String,
+                  gender: String,
+                  creditCard: String,
+                  bio: String,
+                  completionHandler: @escaping (AFDataResponse<PositiveResult>) -> Void)
 }
