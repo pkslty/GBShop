@@ -18,6 +18,8 @@ class ViewController: UIViewController {
         
         registerUser(userId: 123, userName: "someuser", password: "mypassword", email: "some@some.ru", gender: "m", creditCard: "1234-5678-9123-4567", bio: "Some biography")
         
+        logout(userId: 123)
+        
     }
     
     func auth(userName: String, password: String) {
@@ -52,6 +54,18 @@ class ViewController: UIViewController {
             }
     }
 
+    func logout(userId: Int) {
+        let logout = requestFactory.makeLogoutRequestFatory()
+        logout.logout(userId: userId) { response in
+                switch response.result {
+                case .success(let login):
+                    print(login)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+
+            }
+    }
 
 }
 

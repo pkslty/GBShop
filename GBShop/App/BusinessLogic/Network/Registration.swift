@@ -50,7 +50,7 @@ extension Registration {
         let bio: String
         var parameters: Parameters? {
             return [
-                "userId": userId,
+                "id_user": userId,
                 "username": userName,
                 "password": password,
                 "email": email,
