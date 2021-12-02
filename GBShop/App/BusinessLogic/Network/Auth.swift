@@ -26,7 +26,12 @@ class Auth: AbstractRequestFactory {
 
 extension Auth: AuthRequestFactory {
     func login(userName: String, password: String, completionHandler: @escaping (AFDataResponse<LoginResult>) -> Void) {
-        let requestModel = Login(baseUrl: baseUrl, login: userName, password: password)
+        let requestModel = Login(baseUrl: baseUrl, path: "login.json", userId: nil, login: userName, password: password)
+        self.request(request: requestModel, completionHandler: completionHandler)
+    }
+    
+    func logout(userId: Int, completionHandler: @escaping (AFDataResponse<PositiveResult>) -> Void) {
+        let requestModel = Login(baseUrl: baseUrl, path: "logout.json", userId: userId, login: nil, password: nil)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
 }
@@ -35,15 +40,25 @@ extension Auth {
     struct Login: RequestRouter {
         let baseUrl: URL
         let method: HTTPMethod = .get
-        let path: String = "login.json"
+        let path: String
         
-        let login: String
-        let password: String
+        let userId: Int?
+        let login: String?
+        let password: String?
         var parameters: Parameters? {
-            return [
-                "username": login,
-                "password": password
-            ]
+            var parameters: Parameters?
+            if let userId = userId {
+                parameters =  [
+                    "id_user": userId,
+                ]
+            }
+            if let login = login, let password = password {
+                parameters = [
+                    "username": login,
+                    "password": password
+                ]
+            }
+            return parameters
         }
     }
 }

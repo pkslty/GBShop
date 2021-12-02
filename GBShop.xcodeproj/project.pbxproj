@@ -21,8 +21,6 @@
 		36177632275781DC00509772 /* RegisterResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36177631275781DC00509772 /* RegisterResult.swift */; };
 		36177634275792FE00509772 /* RegistrationRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36177633275792FE00509772 /* RegistrationRequestFactory.swift */; };
 		361776362757AC7200509772 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361776352757AC7200509772 /* Registration.swift */; };
-		361776382758D17F00509772 /* LogoutRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361776372758D17F00509772 /* LogoutRequestFactory.swift */; };
-		3617763A2758D1ED00509772 /* Logout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361776392758D1ED00509772 /* Logout.swift */; };
 		367864402751488F00E0786F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3678643F2751488F00E0786F /* AppDelegate.swift */; };
 		367864422751488F00E0786F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367864412751488F00E0786F /* SceneDelegate.swift */; };
 		367864442751488F00E0786F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367864432751488F00E0786F /* ViewController.swift */; };
@@ -67,8 +65,6 @@
 		36177631275781DC00509772 /* RegisterResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResult.swift; sourceTree = "<group>"; };
 		36177633275792FE00509772 /* RegistrationRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRequestFactory.swift; sourceTree = "<group>"; };
 		361776352757AC7200509772 /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
-		361776372758D17F00509772 /* LogoutRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoutRequestFactory.swift; sourceTree = "<group>"; };
-		361776392758D1ED00509772 /* Logout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logout.swift; sourceTree = "<group>"; };
 		3678643C2751488F00E0786F /* GBShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GBShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3678643F2751488F00E0786F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		367864412751488F00E0786F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,8 +126,6 @@
 				3617762D27577A9200509772 /* RequestFactory.swift */,
 				36177633275792FE00509772 /* RegistrationRequestFactory.swift */,
 				361776352757AC7200509772 /* Registration.swift */,
-				361776372758D17F00509772 /* LogoutRequestFactory.swift */,
-				361776392758D1ED00509772 /* Logout.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -399,9 +393,7 @@
 				361776302757817800509772 /* PositiveResult.swift in Sources */,
 				361776212757789700509772 /* AbstractRequestFactory.swift in Sources */,
 				3617762E27577A9200509772 /* RequestFactory.swift in Sources */,
-				3617763A2758D1ED00509772 /* Logout.swift in Sources */,
 				3617761D275777C000509772 /* ErrorParser.swift in Sources */,
-				361776382758D17F00509772 /* LogoutRequestFactory.swift in Sources */,
 				367864442751488F00E0786F /* ViewController.swift in Sources */,
 				367864402751488F00E0786F /* AppDelegate.swift in Sources */,
 				3617761F275777FE00509772 /* DataRequest.swift in Sources */,
