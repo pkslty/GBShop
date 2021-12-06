@@ -38,6 +38,7 @@
 		3693A86F275E10C000FA275E /* Goods.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693A86E275E10C000FA275E /* Goods.swift */; };
 		3693A871275E210B00FA275E /* AuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693A870275E210B00FA275E /* AuthTests.swift */; };
 		3693A873275E37BE00FA275E /* GoodsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693A872275E37BE00FA275E /* GoodsTests.swift */; };
+		3693A875275E468F00FA275E /* RegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693A874275E468F00FA275E /* RegistrationTests.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -92,6 +93,7 @@
 		3693A86E275E10C000FA275E /* Goods.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goods.swift; sourceTree = "<group>"; };
 		3693A870275E210B00FA275E /* AuthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTests.swift; sourceTree = "<group>"; };
 		3693A872275E37BE00FA275E /* GoodsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsTests.swift; sourceTree = "<group>"; };
+		3693A874275E468F00FA275E /* RegistrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationTests.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 				367864562751489700E0786F /* GBShopTests.swift */,
 				3693A870275E210B00FA275E /* AuthTests.swift */,
 				3693A872275E37BE00FA275E /* GoodsTests.swift */,
+				3693A874275E468F00FA275E /* RegistrationTests.swift */,
 			);
 			path = GBShopTests;
 			sourceTree = "<group>";
@@ -438,6 +441,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3693A875275E468F00FA275E /* RegistrationTests.swift in Sources */,
 				367864572751489700E0786F /* GBShopTests.swift in Sources */,
 				3693A871275E210B00FA275E /* AuthTests.swift in Sources */,
 				3693A873275E37BE00FA275E /* GoodsTests.swift in Sources */,

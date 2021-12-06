@@ -41,7 +41,7 @@ class ViewController: UIViewController {
     }
     
     func registerUser(user: User) {
-        let register = requestFactory.makeRegisterRequestFactory()
+        let register = requestFactory.makeRegistrationRequestFactory()
         
         register.register(user: user) { response in
             switch response.result {
@@ -56,7 +56,7 @@ class ViewController: UIViewController {
     }
     
     func changeUserData(user: User) {
-        let register = requestFactory.makeRegisterRequestFactory()
+        let register = requestFactory.makeRegistrationRequestFactory()
         register.changeUserData(user: user) { response in
             switch response.result {
             case .success(let result):
