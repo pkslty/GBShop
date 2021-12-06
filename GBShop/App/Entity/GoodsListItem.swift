@@ -18,3 +18,11 @@ struct GoodsListItem: Codable {
         case price = "price"
     }
 }
+
+extension GoodsListItem: Equatable {
+    static func == (lhs: GoodsListItem, rhs: GoodsListItem) -> Bool {
+        lhs.productId == rhs.productId &&
+        lhs.productName == rhs.productName &&
+        lhs.price == rhs.price
+    }
+}

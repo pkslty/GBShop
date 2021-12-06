@@ -20,3 +20,12 @@ struct GoodByIdResult: Codable {
         case description = "product_description"
     }
 }
+
+extension GoodByIdResult: Equatable {
+    static func == (lhs: GoodByIdResult, rhs: GoodByIdResult) -> Bool {
+        lhs.result == rhs.result &&
+        lhs.productName == rhs.productName &&
+        lhs.price == rhs.price &&
+        lhs.description == rhs.description
+    }
+}

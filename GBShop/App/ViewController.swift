@@ -42,6 +42,7 @@ class ViewController: UIViewController {
     
     func registerUser(user: User) {
         let register = requestFactory.makeRegisterRequestFactory()
+        
         register.register(user: user) { response in
             switch response.result {
             case .success(let result):

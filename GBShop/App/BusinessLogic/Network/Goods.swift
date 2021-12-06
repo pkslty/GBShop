@@ -33,7 +33,7 @@ extension Goods: GoodsRequestFactory {
     }
     
     func getGoodsList(page: Int, categoryId: Int, completionHandler: @escaping (AFDataResponse<[GoodsListItem]>) -> Void) {
-        let requestModel = GoodsListData(baseUrl: baseUrl, path: "changeUserData.json", page: page, categoryId: categoryId)
+        let requestModel = GoodsListData(baseUrl: baseUrl, path: "catalogData.json", page: page, categoryId: categoryId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     

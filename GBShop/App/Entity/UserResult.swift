@@ -20,3 +20,12 @@ struct UserResult: Codable {
         case lastname = "user_lastname"
     }
 }
+
+extension UserResult: Equatable {
+    static func == (lhs: UserResult, rhs: UserResult) -> Bool {
+        lhs.id == rhs.id &&
+        lhs.login == rhs.login &&
+        lhs.name == rhs.name &&
+        lhs.lastname == rhs.lastname
+    }
+}

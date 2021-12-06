@@ -10,3 +10,9 @@ import Foundation
 struct PositiveResult: Codable {
     let result: Int
 }
+
+extension PositiveResult: Equatable {
+    static func == (lhs: PositiveResult, rhs: PositiveResult) -> Bool {
+        lhs.result == rhs.result 
+    }
+}
