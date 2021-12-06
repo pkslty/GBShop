@@ -11,79 +11,41 @@ import Alamofire
 
 class GoodsTests: XCTestCase {
     
-    let expectations = [XCTestExpectation(description: "GetGoodsById"),
-                        XCTestExpectation(description: "GetGoodsList")]
-    var errorParser: ErrorParserStub!
+    var requestFactory: RequestFactory!
 
-    enum ApiErrorStub: Error {
-        case fatalError
+    override func setUp() {
+        requestFactory = RequestFactory()
     }
 
-    struct ErrorParserStub: AbstractErrorParser {
-        func parse(_ result: Error) -> Error {
-            return ApiErrorStub.fatalError
-        }
+    override func tearDown() {
         
-        func parse(response: HTTPURLResponse?, data: Data?, error: Error?) -> Error? {
-            return error
-        }
-    }
-
-    override func setUpWithError() throws {
-        
-        errorParser = ErrorParserStub()
-
-    }
-
-    override func tearDownWithError() throws {
-        
-        errorParser = nil
+        requestFactory = nil
         
     }
     
     func testGetGoodsById() {
-        
-        let errorParser = ErrorParserStub()
-        
-        let session: Session = {
-            let configuration = URLSessionConfiguration.default
-            configuration.httpShouldSetCookies = false
-            configuration.headers = .default
-            let manager = Session(configuration: configuration)
-            return manager
-        }()
-        let queue = DispatchQueue.global(qos: .utility)
-        
-        let goods = Goods(errorParser: errorParser, sessionManager: session, queue: queue)
-    
+                
         let successValue = GoodByIdResult(result: 1,
                                           productName: "Ноутбук",
                                           price: 45600,
                                           description: "Мощный игровой ноутбук")
-        goods.getGoodById(id: 123) { result in
-            guard let value = result.value, value == successValue else {
-                XCTFail()
-                return
+        let expectation = expectation(description: "GetGoodById")
+        
+        let request = requestFactory.makeGoodsRequestFactory()
+        
+        request.getGoodById(id: 123) { response in
+            switch response.result {
+            case .success(let result):
+                XCTAssertEqual(result, successValue)
+                expectation.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
             }
-            self.expectations[0].fulfill()
         }
-        wait(for: [expectations[0]], timeout: 10.0)
+        wait(for: [expectation], timeout: 10.0)
     }
     
     func testGetGoodsList() {
-        
-        let errorParser = ErrorParserStub()
-        
-        let session: Session = {
-            let configuration = URLSessionConfiguration.default
-            configuration.httpShouldSetCookies = false
-            configuration.headers = .default
-            let manager = Session(configuration: configuration)
-            return manager
-        }()
-        let queue = DispatchQueue.global(qos: .utility)
-        
-        let goods = Goods(errorParser: errorParser, sessionManager: session, queue: queue)
         
         let successValue = [GoodsListItem(productId: 123,
                                           productName: "Ноутбук",
@@ -91,14 +53,20 @@ class GoodsTests: XCTestCase {
                             GoodsListItem(productId: 456,
                                           productName: "Мышка",
                                           price: 1000)]
-        goods.getGoodsList(page: 1, categoryId: 1) { result in
-            guard let value = result.value, value == successValue else {
-                XCTFail()
-                return
+        let expectation = expectation(description: "GetGoodsList")
+        
+        let request = requestFactory.makeGoodsRequestFactory()
+        
+        request.getGoodsList(page: 1, categoryId: 1) { response in
+            switch response.result {
+            case .success(let result):
+                XCTAssertEqual(result, successValue)
+                expectation.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
             }
-            self.expectations[1].fulfill()
         }
-        wait(for: [expectations[1]], timeout: 10.0)
+        wait(for: [expectation], timeout: 10.0)
     }
 
 
