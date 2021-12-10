@@ -54,7 +54,7 @@ extension Auth {
             }
             if let login = login, let password = password {
                 parameters = [
-                    "username": login,
+                    "login": login,
                     "password": password
                 ]
             }

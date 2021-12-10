@@ -13,7 +13,8 @@ class Registration: AbstractRequestFactory {
     var errorParser: AbstractErrorParser
     var sessionManager: Session
     var queue: DispatchQueue
-    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")!
+    let baseUrl = URL(string: "https://vast-hollows-60312.herokuapp.com/")!
+    //let baseUrl = URL(string: "http://127.0.0.1:8080/")!
     
     init(
         errorParser: AbstractErrorParser,
@@ -28,12 +29,12 @@ class Registration: AbstractRequestFactory {
 extension Registration: RegistrationRequestFactory {
     
     func register(user: User, completionHandler: @escaping (AFDataResponse<RegisterResult>) -> Void) {
-        let requestModel = UserData(baseUrl: baseUrl, path: "registerUser.json", user: user)
+        let requestModel = UserData(baseUrl: baseUrl, path: "register", user: user)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
     func changeUserData(user: User, completionHandler: @escaping (AFDataResponse<PositiveResult>) -> Void) {
-        let requestModel = UserData(baseUrl: baseUrl, path: "changeUserData.json", user: user)
+        let requestModel = UserData(baseUrl: baseUrl, path: "changeUserData", user: user)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
@@ -43,18 +44,20 @@ extension Registration: RegistrationRequestFactory {
 extension Registration {
     struct UserData: RequestRouter {
         let baseUrl: URL
-        let method: HTTPMethod = .get
+        let method: HTTPMethod = .post
         var path: String
         
         let user: User
         var parameters: Parameters? {
             return [
-                "id_user": user.id,
-                "username": user.login,
+                "id": user.id,
+                "login": user.login,
                 "password": user.password,
+                "name": user.name,
+                "lastname": user.lastname,
                 "email": user.email,
                 "gender": user.gender,
-                "creditCard": user.creditCard,
+                "creditcard": user.creditCard,
                 "bio": user.bio
             ]
         }

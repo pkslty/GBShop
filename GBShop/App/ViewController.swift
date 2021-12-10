@@ -14,7 +14,7 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        login(userName: "somebody", password: "mypassword")
+        //login(userName: "somebody", password: "mypassword")
         
         let user = User(id: 123, login: "someuser", name: "John", lastname: "Doe", password: "mypassword", email: "some@some.ru", gender: "m", creditCard: "somenumber", bio: "bio")
         
@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         
         changeUserData(user: user)
         
-        logout(userId: 123)
+        //logout(userId: 123)
         
     }
     
