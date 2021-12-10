@@ -10,5 +10,5 @@ import Foundation
 
 protocol AuthRequestFactory {
     func login(userName: String, password: String, completionHandler: @escaping (AFDataResponse<LoginResult>) -> Void)
-    func logout(userId: Int, completionHandler: @escaping (AFDataResponse<PositiveResult>) -> Void)
+    func logout(userId: Int, completionHandler: @escaping (AFDataResponse<CommonResult>) -> Void)
 }
