@@ -12,7 +12,7 @@ import Alamofire
 class RegistrationTests: XCTestCase {
     
     var requestFactory: RequestFactory!
-    let user = User(id: 123,
+    let user = User(id: 1,
                     login: "Somebody",
                     name: "John",
                     lastname: "Doe",
