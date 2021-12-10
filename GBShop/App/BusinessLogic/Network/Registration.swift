@@ -13,8 +13,8 @@ class Registration: AbstractRequestFactory {
     var errorParser: AbstractErrorParser
     var sessionManager: Session
     var queue: DispatchQueue
-    let baseUrl = URL(string: "https://vast-hollows-60312.herokuapp.com/")!
-    //let baseUrl = URL(string: "http://127.0.0.1:8080/")!
+    //let baseUrl = URL(string: "https://vast-hollows-60312.herokuapp.com/")!
+    let baseUrl = URL(string: "http://127.0.0.1:8080/")!
     
     init(
         errorParser: AbstractErrorParser,
@@ -28,12 +28,12 @@ class Registration: AbstractRequestFactory {
 
 extension Registration: RegistrationRequestFactory {
     
-    func register(user: User, completionHandler: @escaping (AFDataResponse<RegisterResult>) -> Void) {
+    func register(user: User, completionHandler: @escaping (AFDataResponse<CommonResult>) -> Void) {
         let requestModel = UserData(baseUrl: baseUrl, path: "register", user: user)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func changeUserData(user: User, completionHandler: @escaping (AFDataResponse<PositiveResult>) -> Void) {
+    func changeUserData(user: User, completionHandler: @escaping (AFDataResponse<CommonResult>) -> Void) {
         let requestModel = UserData(baseUrl: baseUrl, path: "changeUserData", user: user)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
@@ -57,7 +57,7 @@ extension Registration {
                 "lastname": user.lastname,
                 "email": user.email,
                 "gender": user.gender,
-                "creditcard": user.creditCard,
+                "creditCard": user.creditCard,
                 "bio": user.bio
             ]
         }
