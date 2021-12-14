@@ -1,0 +1,24 @@
+{
+  "configurations" : [
+    {
+      "id" : "EF4640E6-76EA-494B-8752-473BAFB47BCF",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "testTimeoutsEnabled" : true
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:GBShop.xcodeproj",
+        "identifier" : "367864512751489700E0786F",
+        "name" : "GBShopTests"
+      }
+    }
+  ],
+  "version" : 1
+}

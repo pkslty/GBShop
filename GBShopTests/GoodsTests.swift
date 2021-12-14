@@ -23,20 +23,44 @@ class GoodsTests: XCTestCase {
         
     }
     
-    func testGetGoodsById() {
+    func testGetGoodById() {
                 
-        let successValue = GoodByIdResult(result: 1,
-                                          productName: "Ноутбук",
-                                          price: 45600,
-                                          description: "Мощный игровой ноутбук")
+        let successValue = 1
         let expectation = expectation(description: "GetGoodById")
         
         let request = requestFactory.makeGoodsRequestFactory()
         
-        request.getGoodById(id: 123) { response in
+        request.getGoodById(id: 1) { response in
             switch response.result {
             case .success(let result):
-                XCTAssertEqual(result, successValue)
+                XCTAssertEqual(result.result, successValue)
+                XCTAssertNotNil(result.description)
+                XCTAssertNotNil(result.price)
+                XCTAssertNotNil(result.productName)
+                XCTAssertNil(result.errorMessage)
+                expectation.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+        wait(for: [expectation], timeout: 10.0)
+    }
+    
+    func testGetGoodsByIdFail() {
+                
+        let successValue = 0
+        let expectation = expectation(description: "GetGoodByIdFail")
+        
+        let request = requestFactory.makeGoodsRequestFactory()
+        
+        request.getGoodById(id: -1) { response in
+            switch response.result {
+            case .success(let result):
+                XCTAssertEqual(result.result, successValue)
+                XCTAssertNotNil(result.errorMessage)
+                XCTAssertNil(result.description)
+                XCTAssertNil(result.price)
+                XCTAssertNil(result.productName)
                 expectation.fulfill()
             case .failure(let error):
                 XCTFail(error.localizedDescription)
@@ -47,12 +71,7 @@ class GoodsTests: XCTestCase {
     
     func testGetGoodsList() {
         
-        let successValue = [GoodsListItem(productId: 123,
-                                          productName: "Ноутбук",
-                                          price: 45600),
-                            GoodsListItem(productId: 456,
-                                          productName: "Мышка",
-                                          price: 1000)]
+        let successValue = 1
         let expectation = expectation(description: "GetGoodsList")
         
         let request = requestFactory.makeGoodsRequestFactory()
@@ -60,7 +79,9 @@ class GoodsTests: XCTestCase {
         request.getGoodsList(page: 1, categoryId: 1) { response in
             switch response.result {
             case .success(let result):
-                XCTAssertEqual(result, successValue)
+                XCTAssertEqual(result.result, successValue)
+                XCTAssertNotNil(result.products)
+                XCTAssertNil(result.errorMessage)
                 expectation.fulfill()
             case .failure(let error):
                 XCTFail(error.localizedDescription)

@@ -34,6 +34,8 @@ class AuthTests: XCTestCase {
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result.result, 1)
+                XCTAssertNotNil(result.user)
+                XCTAssertNil(result.errorMessage)
                 expectation.fulfill()
             case .failure(let error):
                 XCTFail(error.localizedDescription)
@@ -51,7 +53,7 @@ class AuthTests: XCTestCase {
         
         let request = requestFactory.makeAuthRequestFactory()
         
-        request.logout(userId: 1) { response in
+        request.logout(userId: 2) { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result, successValue)
