@@ -9,9 +9,9 @@ import Foundation
 
 struct Review: Codable {
     
-    let id: UUID
+    let id: Int
     let productId: Int
-    let userId: UUID
+    let userId: Int
     let text: String
     let rating: Int
     let likes: Int

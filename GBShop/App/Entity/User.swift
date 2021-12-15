@@ -8,12 +8,12 @@
 import Foundation
 
 struct User: Codable {
-    let id: UUID
+    let id: Int
     let login: String
     let name: String
     let lastname: String
     let password: String
-    var email: String
+    let email: String
     let gender: String
     let creditCard: String
     let bio: String

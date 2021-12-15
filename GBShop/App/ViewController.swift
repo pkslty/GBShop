@@ -16,7 +16,7 @@ class ViewController: UIViewController {
         
         //login(userName: "somebody", password: "mypassword")
         
-        let user = User(id: UUID(), login: "someuser", name: "John", lastname: "Doe", password: "mypassword", email: "some@some.ru", gender: "m", creditCard: "somenumber", bio: "bio")
+        let user = User(id: 123, login: "someuser", name: "John", lastname: "Doe", password: "mypassword", email: "some@some.ru", gender: "m", creditCard: "somenumber", bio: "bio")
         
         //registerUser(user: user)
         

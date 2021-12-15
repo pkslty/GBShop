@@ -12,19 +12,18 @@ import Alamofire
 class RegistrationTests: XCTestCase {
     
     var requestFactory: RequestFactory!
-    var user: User!
+    let user = User(id: 2,
+                    login: "Somebody",
+                    name: "John",
+                    lastname: "Doe",
+                    password: "mypassword",
+                    email: "some@some.ru",
+                    gender: "m",
+                    creditCard: "9872389-2424-234224-234",
+                    bio: "This is good! I think I will switch to another language")
 
     override func setUp() {
         requestFactory = RequestFactory()
-        user = User(id: UUID(),
-                      login: UUID().uuidString,
-                      name: "John",
-                      lastname: "Doe",
-                      password: "mypassword",
-                      email: UUID().uuidString,
-                      gender: "m",
-                      creditCard: "9872389-2424-234224-234",
-                      bio: "This is good! I think I will switch to another language")
     }
 
     override func tearDown() {
@@ -33,7 +32,7 @@ class RegistrationTests: XCTestCase {
         
     }
     
-    func test1RegisterSuccess() {
+    func testRegisterSuccess() {
                 
         let successValue = CommonResult(result: 1,
                                         userMessage: "Регистрация прошла успешно!",
@@ -43,7 +42,7 @@ class RegistrationTests: XCTestCase {
         let expectation = expectation(description: "User registered")
         
         let request = requestFactory.makeRegistrationRequestFactory()
-        print(user)
+        
         request.register(user: user) { response in
             switch response.result {
             case .success(let result):
@@ -56,7 +55,7 @@ class RegistrationTests: XCTestCase {
         wait(for: [expectation], timeout: 10.0)
     }
     
-    func test2RegisterReject() {
+    func testRegisterReject() {
                 
         let successValue = CommonResult(result: 0,
                                         userMessage: nil,
@@ -67,10 +66,6 @@ class RegistrationTests: XCTestCase {
         
         let request = requestFactory.makeRegistrationRequestFactory()
         
-        user.email = "some@some.ru"
-        
-        print(user)
-        
         request.register(user: user) { response in
             switch response.result {
             case .success(let result):
@@ -83,7 +78,7 @@ class RegistrationTests: XCTestCase {
         wait(for: [expectation], timeout: 10.0)
     }
     
-    func test3changeUserData() {
+    func testchangeUserData() {
         
         let successValue = CommonResult(result: 1,
                                         userMessage: "Succesfully changed user data!",
@@ -91,7 +86,7 @@ class RegistrationTests: XCTestCase {
         let expectation = expectation(description: "User changes data")
         
         let request = requestFactory.makeRegistrationRequestFactory()
-        print(user)
+        
         request.changeUserData(user: user) { response in
             switch response.result {
             case .success(let result):

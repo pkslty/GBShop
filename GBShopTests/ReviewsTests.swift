@@ -51,7 +51,7 @@ class ReviewsTests: XCTestCase {
         
         let request = requestFactory.makeReviewsRequestFactory()
         
-        request.addReview(productId: 1, userId: UUID(), text: "Test review", rating: 5) { response in
+        request.addReview(productId: 1, userId: -1, text: "Test review", rating: 5) { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result.result, successValue)
@@ -72,7 +72,7 @@ class ReviewsTests: XCTestCase {
         
         let request = requestFactory.makeReviewsRequestFactory()
         
-        request.removeReview(reviewId: UUID()) { response in
+        request.removeReview(reviewId: 2) { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result.result, successValue)
