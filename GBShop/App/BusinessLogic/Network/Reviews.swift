@@ -32,12 +32,12 @@ extension Reviews: ReviewsRequestFactory {
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func addReview(productId: Int, userId: Int, text: String, rating: Int, completionHandler: @escaping (AFDataResponse<CommonResult>) -> Void) {
+    func addReview(productId: Int, userId: UUID, text: String, rating: Int, completionHandler: @escaping (AFDataResponse<CommonResult>) -> Void) {
         let requestModel = ReviewData(baseUrl: baseUrl, path: "addReview", productId: productId, userId: userId, text: text, rating: rating)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func removeReview(reviewId: Int, completionHandler: @escaping (AFDataResponse<CommonResult>) -> Void) {
+    func removeReview(reviewId: UUID, completionHandler: @escaping (AFDataResponse<CommonResult>) -> Void) {
         let requestModel = ReviewData(baseUrl: baseUrl, path: "removeReview", reviewId: reviewId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
@@ -63,18 +63,17 @@ extension Reviews {
         var path: String
         
         var productId: Int? = nil
-        var userId: Int? = nil
-        var text: String? = nil
+        var userId: UUID? = nil
+        var text: String = String()
         var rating: Int? = nil
-        var reviewId: Int? = nil
+        var reviewId: UUID? = nil
         var parameters: Parameters? {
             return [
                 "productId": productId as Any,
                 "userId": userId as Any,
-                "text": text as Any,
+                "text": text,
                 "rating": rating as Any,
-                "reviewId": reviewId as Any
-            ]
+                "reviewId": reviewId as Any]
         }
         
         init(baseUrl: URL, path: String, productId: Int) {
@@ -83,13 +82,13 @@ extension Reviews {
             self.productId = productId
         }
         
-        init(baseUrl: URL, path: String, reviewId: Int) {
+        init(baseUrl: URL, path: String, reviewId: UUID) {
             self.baseUrl = baseUrl
             self.path = path
             self.reviewId = reviewId
         }
         
-        init(baseUrl: URL, path: String, productId: Int, userId: Int, text: String, rating: Int) {
+        init(baseUrl: URL, path: String, productId: Int, userId: UUID, text: String, rating: Int) {
             self.baseUrl = baseUrl
             self.path = path
             self.productId = productId
