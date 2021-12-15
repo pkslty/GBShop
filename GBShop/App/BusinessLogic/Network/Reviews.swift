@@ -38,7 +38,8 @@ extension Reviews: ReviewsRequestFactory {
     }
     
     func removeReview(reviewId: Int, completionHandler: @escaping (AFDataResponse<CommonResult>) -> Void) {
-        
+        let requestModel = RemoveReviewData(baseUrl: baseUrl, path: "removeReview", reviewId: reviewId)
+        self.request(request: requestModel, completionHandler: completionHandler)
     }
 }
 
@@ -71,6 +72,19 @@ extension Reviews {
                 "userId": userId,
                 "text": text,
                 "rating": rating
+            ]
+        }
+    }
+    
+    struct RemoveReviewData: RequestRouter {
+        let baseUrl: URL
+        let method: HTTPMethod = .post
+        var path: String
+        
+        let reviewId: Int
+        var parameters: Parameters? {
+            return [
+                "reviewId": reviewId
             ]
         }
     }
