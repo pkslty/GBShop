@@ -28,17 +28,17 @@ class Reviews: AbstractRequestFactory {
 
 extension Reviews: ReviewsRequestFactory {
     func getReviews(productId: Int, completionHandler: @escaping (AFDataResponse<GetReviewsResult>) -> Void) {
-        let requestModel = GetReviewsData(baseUrl: baseUrl, path: "getReviews", productId: productId)
+        let requestModel = ReviewData(baseUrl: baseUrl, path: "getReviews", productId: productId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
     func addReview(productId: Int, userId: Int, text: String, rating: Int, completionHandler: @escaping (AFDataResponse<CommonResult>) -> Void) {
-        let requestModel = AddReviewData(baseUrl: baseUrl, path: "addReview", productId: productId, userId: userId, text: text, rating: rating)
+        let requestModel = ReviewData(baseUrl: baseUrl, path: "addReview", productId: productId, userId: userId, text: text, rating: rating)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
     func removeReview(reviewId: Int, completionHandler: @escaping (AFDataResponse<CommonResult>) -> Void) {
-        let requestModel = RemoveReviewData(baseUrl: baseUrl, path: "removeReview", reviewId: reviewId)
+        let requestModel = ReviewData(baseUrl: baseUrl, path: "removeReview", reviewId: reviewId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
 }
@@ -57,35 +57,45 @@ extension Reviews {
         }
     }
     
-    struct AddReviewData: RequestRouter {
+    struct ReviewData: RequestRouter {
         let baseUrl: URL
         let method: HTTPMethod = .post
         var path: String
         
-        let productId: Int
-        let userId: Int
-        let text: String
-        let rating: Int
+        var productId: Int? = nil
+        var userId: Int? = nil
+        var text: String? = nil
+        var rating: Int? = nil
+        var reviewId: Int? = nil
         var parameters: Parameters? {
             return [
-                "productId": productId,
-                "userId": userId,
-                "text": text,
-                "rating": rating
+                "productId": productId as Any,
+                "userId": userId as Any,
+                "text": text as Any,
+                "rating": rating as Any,
+                "reviewId": reviewId as Any
             ]
         }
-    }
-    
-    struct RemoveReviewData: RequestRouter {
-        let baseUrl: URL
-        let method: HTTPMethod = .post
-        var path: String
         
-        let reviewId: Int
-        var parameters: Parameters? {
-            return [
-                "reviewId": reviewId
-            ]
+        init(baseUrl: URL, path: String, productId: Int) {
+            self.baseUrl = baseUrl
+            self.path = path
+            self.productId = productId
+        }
+        
+        init(baseUrl: URL, path: String, reviewId: Int) {
+            self.baseUrl = baseUrl
+            self.path = path
+            self.reviewId = reviewId
+        }
+        
+        init(baseUrl: URL, path: String, productId: Int, userId: Int, text: String, rating: Int) {
+            self.baseUrl = baseUrl
+            self.path = path
+            self.productId = productId
+            self.userId = userId
+            self.text = text
+            self.rating = rating
         }
     }
 }
