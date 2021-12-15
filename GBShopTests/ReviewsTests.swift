@@ -1,15 +1,15 @@
 //
-//  GoodsTests.swift
+//  ReviewsTests.swift
 //  GBShopTests
 //
-//  Created by Denis Kuzmin on 06.12.2021.
+//  Created by Denis Kuzmin on 15.12.2021.
 //
 
 import XCTest
 import Alamofire
 @testable import GBShop
 
-class GoodsTests: XCTestCase {
+class ReviewsTests: XCTestCase {
     
     var requestFactory: RequestFactory!
 
@@ -23,20 +23,18 @@ class GoodsTests: XCTestCase {
         
     }
     
-    func testGetGoodById() {
+    func testGetReviews() {
                 
         let successValue = 1
-        let expectation = expectation(description: "GetGoodById")
+        let expectation = expectation(description: "GetReviews")
         
-        let request = requestFactory.makeGoodsRequestFactory()
+        let request = requestFactory.makeReviewsRequestFactory()
         
-        request.getGoodById(id: 1) { response in
+        request.getReviews(productId: 1) { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result.result, successValue)
-                XCTAssertNotNil(result.description)
-                XCTAssertNotNil(result.price)
-                XCTAssertNotNil(result.productName)
+                XCTAssertNotNil(result.reviews)
                 XCTAssertNil(result.errorMessage)
                 expectation.fulfill()
             case .failure(let error):
@@ -46,21 +44,19 @@ class GoodsTests: XCTestCase {
         wait(for: [expectation], timeout: 10.0)
     }
     
-    func testGetGoodsByIdFail() {
+    func testAddReview() {
                 
-        let successValue = 0
-        let expectation = expectation(description: "GetGoodByIdFail")
+        let successValue = 1
+        let expectation = expectation(description: "AddReview")
         
-        let request = requestFactory.makeGoodsRequestFactory()
+        let request = requestFactory.makeReviewsRequestFactory()
         
-        request.getGoodById(id: -1) { response in
+        request.addReview(productId: 1, userId: -1, text: "Test review", rating: 5) { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result.result, successValue)
-                XCTAssertNotNil(result.errorMessage)
-                XCTAssertNil(result.description)
-                XCTAssertNil(result.price)
-                XCTAssertNil(result.productName)
+                XCTAssertNotNil(result.userMessage)
+                XCTAssertNil(result.errorMessage)
                 expectation.fulfill()
             case .failure(let error):
                 XCTFail(error.localizedDescription)
@@ -69,18 +65,18 @@ class GoodsTests: XCTestCase {
         wait(for: [expectation], timeout: 10.0)
     }
     
-    func testGetGoodsList() {
+    func testRemoveReview() {
         
         let successValue = 1
-        let expectation = expectation(description: "GetGoodsList")
+        let expectation = expectation(description: "RemoveReview")
         
-        let request = requestFactory.makeGoodsRequestFactory()
+        let request = requestFactory.makeReviewsRequestFactory()
         
-        request.getGoodsList(page: 1, categoryId: 1) { response in
+        request.removeReview(reviewId: 2) { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result.result, successValue)
-                XCTAssertNotNil(result.products)
+                XCTAssertNotNil(result.userMessage)
                 XCTAssertNil(result.errorMessage)
                 expectation.fulfill()
             case .failure(let error):
