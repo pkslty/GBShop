@@ -59,7 +59,6 @@ extension Auth {
                     "password": password
                 ]
             }
-            print(parameters)
             return parameters
         }
     }
