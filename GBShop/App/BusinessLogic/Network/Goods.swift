@@ -13,8 +13,8 @@ class Goods: AbstractRequestFactory {
     var errorParser: AbstractErrorParser
     var sessionManager: Session
     var queue: DispatchQueue
-    //let baseUrl = URL(string: "https://vast-hollows-60312.herokuapp.com/")!
-    let baseUrl = URL(string: "http://127.0.0.1:8080/")!
+    let baseUrl = URL(string: "https://vast-hollows-60312.herokuapp.com/")!
+    //let baseUrl = URL(string: "http://127.0.0.1:8080/")!
     
     init(
         errorParser: AbstractErrorParser,
