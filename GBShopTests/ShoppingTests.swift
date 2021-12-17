@@ -65,7 +65,7 @@ class ShoppingTests: XCTestCase {
         wait(for: [expectation], timeout: 10.0)
     }
     
-    func testRemoveReview() {
+    func testPayCart() {
         
         let successValue = 1
         let expectation = expectation(description: "payCart")
