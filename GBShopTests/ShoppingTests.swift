@@ -65,10 +65,10 @@ class ShoppingTests: XCTestCase {
         wait(for: [expectation], timeout: 10.0)
     }
     
-    func testPayCart() {
+    func testPayCartSuccess() {
         
         let successValue = 1
-        let expectation = expectation(description: "payCart")
+        let expectation = expectation(description: "payCartSuccess")
         
         let request = requestFactory.makeShoppingRequestFactory()
         
@@ -78,6 +78,50 @@ class ShoppingTests: XCTestCase {
                 XCTAssertEqual(result.result, successValue)
                 XCTAssertNotNil(result.userMessage)
                 XCTAssertNil(result.errorMessage)
+                expectation.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+        wait(for: [expectation], timeout: 10.0)
+    }
+    
+    func testPayCartWrongQuantity() {
+        
+        let successValue = 0
+        let expectation = expectation(description: "payCartWrongQuantity")
+        
+        let request = requestFactory.makeShoppingRequestFactory()
+        
+        request.payCart(userId: 3) { response in
+            switch response.result {
+            case .success(let result):
+                XCTAssertEqual(result.result, successValue)
+                XCTAssertNil(result.userMessage)
+                XCTAssertNotNil(result.errorMessage)
+                XCTAssertEqual(result.errorMessage, "Wrong quantity")
+                expectation.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+        wait(for: [expectation], timeout: 10.0)
+    }
+    
+    func testPayCartEmptyCart() {
+        
+        let successValue = 0
+        let expectation = expectation(description: "payCartEmptyCart")
+        
+        let request = requestFactory.makeShoppingRequestFactory()
+        
+        request.payCart(userId: 10) { response in
+            switch response.result {
+            case .success(let result):
+                XCTAssertEqual(result.result, successValue)
+                XCTAssertNil(result.userMessage)
+                XCTAssertNotNil(result.errorMessage)
+                XCTAssertEqual(result.errorMessage, "The Cart is empty")
                 expectation.fulfill()
             case .failure(let error):
                 XCTFail(error.localizedDescription)
