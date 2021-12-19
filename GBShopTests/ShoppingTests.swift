@@ -30,7 +30,7 @@ class ShoppingTests: XCTestCase {
         
         let request = requestFactory.makeShoppingRequestFactory()
         
-        request.addToCart(productId: 1, userId: 1, quantity: 2) { response in
+        request.addToCart(productId: 1, userId: 1, quantity: 1) { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result.result, successValue)
@@ -51,7 +51,7 @@ class ShoppingTests: XCTestCase {
         
         let request = requestFactory.makeShoppingRequestFactory()
         
-        request.removeFromCart(productId: 1, userId: 1, quantity: 2) { response in
+        request.removeFromCart(productId: 1, userId: 3, quantity: 1) { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result.result, successValue)
