@@ -17,7 +17,6 @@
 		3617762A275779DF00509772 /* AuthRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36177629275779DF00509772 /* AuthRequestFactory.swift */; };
 		3617762C27577A4700509772 /* Auth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3617762B27577A4700509772 /* Auth.swift */; };
 		3617762E27577A9200509772 /* RequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3617762D27577A9200509772 /* RequestFactory.swift */; };
-		361776302757817800509772 /* PositiveResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3617762F2757817800509772 /* PositiveResult.swift */; };
 		36177632275781DC00509772 /* RegisterResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36177631275781DC00509772 /* RegisterResult.swift */; };
 		36177634275792FE00509772 /* RegistrationRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36177633275792FE00509772 /* RegistrationRequestFactory.swift */; };
 		361776362757AC7200509772 /* Registration.swift in Sources */ = {isa = PBXBuildFile; fileRef = 361776352757AC7200509772 /* Registration.swift */; };
@@ -49,6 +48,7 @@
 		3693A871275E210B00FA275E /* AuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693A870275E210B00FA275E /* AuthTests.swift */; };
 		3693A873275E37BE00FA275E /* GoodsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693A872275E37BE00FA275E /* GoodsTests.swift */; };
 		3693A875275E468F00FA275E /* RegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693A874275E468F00FA275E /* RegistrationTests.swift */; };
+		36A7D5FF277372290037E5CB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D5FE277372290037E5CB /* Logger.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -79,7 +79,6 @@
 		36177629275779DF00509772 /* AuthRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthRequestFactory.swift; sourceTree = "<group>"; };
 		3617762B27577A4700509772 /* Auth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Auth.swift; sourceTree = "<group>"; };
 		3617762D27577A9200509772 /* RequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestFactory.swift; sourceTree = "<group>"; };
-		3617762F2757817800509772 /* PositiveResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PositiveResult.swift; sourceTree = "<group>"; };
 		36177631275781DC00509772 /* RegisterResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterResult.swift; sourceTree = "<group>"; };
 		36177633275792FE00509772 /* RegistrationRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationRequestFactory.swift; sourceTree = "<group>"; };
 		361776352757AC7200509772 /* Registration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Registration.swift; sourceTree = "<group>"; };
@@ -115,6 +114,7 @@
 		3693A870275E210B00FA275E /* AuthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTests.swift; sourceTree = "<group>"; };
 		3693A872275E37BE00FA275E /* GoodsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsTests.swift; sourceTree = "<group>"; };
 		3693A874275E468F00FA275E /* RegistrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationTests.swift; sourceTree = "<group>"; };
+		36A7D5FE277372290037E5CB /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -254,7 +254,6 @@
 			children = (
 				361776242757796600509772 /* LoginResult.swift */,
 				361776262757797300509772 /* UserResult.swift */,
-				3617762F2757817800509772 /* PositiveResult.swift */,
 				36177631275781DC00509772 /* RegisterResult.swift */,
 				3617763B2759454700509772 /* User.swift */,
 				3693A868275E0CD300FA275E /* GoodsListItem.swift */,
@@ -284,6 +283,7 @@
 		36786474275249E900E0786F /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				36A7D5FD277372090037E5CB /* Helpers */,
 				361776192757771700509772 /* Network */,
 			);
 			path = Core;
@@ -305,6 +305,14 @@
 				3678644D2751489600E0786F /* Info.plist */,
 			);
 			path = Environments;
+			sourceTree = "<group>";
+		};
+		36A7D5FD277372090037E5CB /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				36A7D5FE277372290037E5CB /* Logger.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -444,9 +452,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36A7D5FF277372290037E5CB /* Logger.swift in Sources */,
 				3617762A275779DF00509772 /* AuthRequestFactory.swift in Sources */,
 				36177623275778E000509772 /* RequestRouter.swift in Sources */,
-				361776302757817800509772 /* PositiveResult.swift in Sources */,
 				361776212757789700509772 /* AbstractRequestFactory.swift in Sources */,
 				3693A86F275E10C000FA275E /* Goods.swift in Sources */,
 				3693A86D275E0EED00FA275E /* GoodsRequestFactory.swift in Sources */,

@@ -13,14 +13,3 @@ struct LoginResult: Codable {
     let token: String?
     let errorMessage: String?
 }
-
-extension LoginResult: Equatable {
-    static func == (lhs: LoginResult, rhs: LoginResult) -> Bool {
-        lhs.result == rhs.result &&
-        lhs.user == rhs.user &&
-        lhs.token == rhs.token &&
-        lhs.errorMessage == rhs.errorMessage
-    }
-    
-    
-}

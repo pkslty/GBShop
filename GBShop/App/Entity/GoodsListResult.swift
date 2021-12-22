@@ -12,11 +12,4 @@ struct GoodsListResult: Codable {
     let pageNumber: Int?
     let products: [GoodsListItem]?
     let errorMessage: String?
-    
-    enum CodingKeys: String, CodingKey {
-        case result
-        case pageNumber = "page_number"
-        case products
-        case errorMessage
-    }
 }

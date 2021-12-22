@@ -7,17 +7,8 @@
 
 import Foundation
 
-struct CommonResult: Codable {
+struct CommonResult: Codable, Equatable {
     let result: Int
     let userMessage: String?
     let errorMessage: String?
 }
-
-extension CommonResult: Equatable {
-    static func == (lhs: CommonResult, rhs: CommonResult) -> Bool {
-        lhs.result == rhs.result &&
-        lhs.userMessage == rhs.userMessage &&
-        lhs.errorMessage == rhs.errorMessage
-    }
-}
-

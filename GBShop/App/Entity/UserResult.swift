@@ -16,30 +16,6 @@ struct UserResult: Codable {
     let gender: String?
     let creditCard: String?
     let bio: String?
-    
-    enum CodingKeys: String, CodingKey {
-        case id
-        case login
-        case name
-        case lastname
-        case email
-        case gender
-        case creditCard
-        case bio
-    }
-}
-
-extension UserResult: Equatable {
-    static func == (lhs: UserResult, rhs: UserResult) -> Bool {
-        lhs.id == rhs.id &&
-        lhs.login == rhs.login &&
-        lhs.name == rhs.name &&
-        lhs.lastname == rhs.lastname &&
-        lhs.email == rhs.email &&
-        lhs.gender == rhs.gender &&
-        lhs.creditCard == rhs.creditCard &&
-        lhs.bio == rhs.bio
-    }
 }
 
 

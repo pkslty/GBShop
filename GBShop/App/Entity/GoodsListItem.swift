@@ -12,11 +12,3 @@ struct GoodsListItem: Codable {
     let productName: String
     let price: Double
 }
-
-extension GoodsListItem: Equatable {
-    static func == (lhs: GoodsListItem, rhs: GoodsListItem) -> Bool {
-        lhs.productId == rhs.productId &&
-        lhs.productName == rhs.productName &&
-        lhs.price == rhs.price
-    }
-}

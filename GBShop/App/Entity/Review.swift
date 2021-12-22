@@ -7,8 +7,7 @@
 
 import Foundation
 
-struct Review: Codable {
-    
+struct Review: Codable {    
     let id: Int
     let productId: Int
     let userId: Int
