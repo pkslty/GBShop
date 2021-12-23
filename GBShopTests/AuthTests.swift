@@ -29,10 +29,13 @@ class AuthTests: XCTestCase {
         let expectation = expectation(description: "User log in")
         
         let request = requestFactory.makeAuthRequestFactory()
-        
+        @UserDefault(key: "authorizationToken", defaultValue: nil) var token: String?
+        print("token is \(token ?? "nil") ")
         request.login(userName: "Somebody", password: "mypassword") { response in
             switch response.result {
             case .success(let result):
+                token = result.token
+                print("token is \(token ?? "nil")")
                 XCTAssertEqual(result.result, 1)
                 XCTAssertNotNil(result.user)
                 XCTAssertNil(result.errorMessage)
@@ -53,9 +56,14 @@ class AuthTests: XCTestCase {
         
         let request = requestFactory.makeAuthRequestFactory()
         
+        @UserDefault(key: "authorizationToken", defaultValue: nil) var token: String?
+        print("token is \(token ?? "nil")")
+        
         request.logout(userId: 2) { response in
             switch response.result {
             case .success(let result):
+                token = nil
+                print("token is \(token ?? "nil")")
                 XCTAssertEqual(result, successValue)
                 expectation.fulfill()
             case .failure(let error):
