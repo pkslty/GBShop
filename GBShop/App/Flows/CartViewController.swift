@@ -1,5 +1,5 @@
 //
-//  MainTabBarController.swift
+//  CartViewController.swift
 //  GBShop
 //
 //  Created by Denis Kuzmin on 23.12.2021.
@@ -7,16 +7,12 @@
 
 import UIKit
 
-class MainTabBarController: UITabBarController {
+class CartViewController: UIViewController {
 
-    var authCoordinator: AuthCoordinator!
-    var cartCoordinator: CartCoordinator!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.tabBar.backgroundColor = .white
-        print("we are here")
-        viewControllers = [authCoordinator.navigationController, cartCoordinator.navigationController]
+
+        // Do any additional setup after loading the view.
     }
     
 

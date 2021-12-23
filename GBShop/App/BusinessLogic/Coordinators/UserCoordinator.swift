@@ -1,5 +1,5 @@
 //
-//  AppCoordinator.swift
+//  UserCoordinator.swift
 //  GBShop
 //
 //  Created by Denis Kuzmin on 23.12.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class AppCoordinator: Coordinator {
+class UserCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     
@@ -16,7 +16,7 @@ class AppCoordinator: Coordinator {
     }
     
     func start() {
-        let mainTabBarController = AuthViewController.instantiate()
+        let mainTabBarController = UserViewController.instantiate()
         navigationController.pushViewController(mainTabBarController, animated: false)
     }
     

@@ -51,10 +51,16 @@
 		36A7D5FF277372290037E5CB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D5FE277372290037E5CB /* Logger.swift */; };
 		36A7D6022773CAAB0037E5CB /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D6012773CAAA0037E5CB /* Coordinator.swift */; };
 		36A7D6042773CBDF0037E5CB /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D6032773CBDF0037E5CB /* Storyboarded.swift */; };
-		36A7D6062773D78F0037E5CB /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D6052773D78F0037E5CB /* AppCoordinator.swift */; };
+		36A7D6062773D78F0037E5CB /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D6052773D78F0037E5CB /* MainCoordinator.swift */; };
 		36A7D6082773DB820037E5CB /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D6072773DB820037E5CB /* UserDefault.swift */; };
 		36A7D60A27746F2E0037E5CB /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D60927746F2E0037E5CB /* AuthViewController.swift */; };
 		36A7D60C2774798F0037E5CB /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D60B2774798F0037E5CB /* MainTabBarController.swift */; };
+		36A7D60E2774A6940037E5CB /* UserCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D60D2774A6940037E5CB /* UserCoordinator.swift */; };
+		36A7D6102774B0F20037E5CB /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D60F2774B0F20037E5CB /* UserViewController.swift */; };
+		36A7D6122774B1110037E5CB /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D6112774B1110037E5CB /* CartViewController.swift */; };
+		36A7D6142774B12E0037E5CB /* CartCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D6132774B12D0037E5CB /* CartCoordinator.swift */; };
+		36A7D6162774B1A50037E5CB /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D6152774B1A50037E5CB /* AuthCoordinator.swift */; };
+		36A7D6182774B4F30037E5CB /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D6172774B4F30037E5CB /* TabBarCoordinator.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -123,10 +129,16 @@
 		36A7D5FE277372290037E5CB /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		36A7D6012773CAAA0037E5CB /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		36A7D6032773CBDF0037E5CB /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
-		36A7D6052773D78F0037E5CB /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		36A7D6052773D78F0037E5CB /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		36A7D6072773DB820037E5CB /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		36A7D60927746F2E0037E5CB /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		36A7D60B2774798F0037E5CB /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		36A7D60D2774A6940037E5CB /* UserCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCoordinator.swift; sourceTree = "<group>"; };
+		36A7D60F2774B0F20037E5CB /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
+		36A7D6112774B1110037E5CB /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		36A7D6132774B12D0037E5CB /* CartCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCoordinator.swift; sourceTree = "<group>"; };
+		36A7D6152774B1A50037E5CB /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
+		36A7D6172774B4F30037E5CB /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -291,6 +303,8 @@
 			children = (
 				36A7D60927746F2E0037E5CB /* AuthViewController.swift */,
 				36A7D60B2774798F0037E5CB /* MainTabBarController.swift */,
+				36A7D60F2774B0F20037E5CB /* UserViewController.swift */,
+				36A7D6112774B1110037E5CB /* CartViewController.swift */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -336,7 +350,11 @@
 			isa = PBXGroup;
 			children = (
 				36A7D6012773CAAA0037E5CB /* Coordinator.swift */,
-				36A7D6052773D78F0037E5CB /* AppCoordinator.swift */,
+				36A7D6052773D78F0037E5CB /* MainCoordinator.swift */,
+				36A7D60D2774A6940037E5CB /* UserCoordinator.swift */,
+				36A7D6132774B12D0037E5CB /* CartCoordinator.swift */,
+				36A7D6152774B1A50037E5CB /* AuthCoordinator.swift */,
+				36A7D6172774B4F30037E5CB /* TabBarCoordinator.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -478,7 +496,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				36A7D6062773D78F0037E5CB /* AppCoordinator.swift in Sources */,
+				36A7D6062773D78F0037E5CB /* MainCoordinator.swift in Sources */,
 				36A7D5FF277372290037E5CB /* Logger.swift in Sources */,
 				36A7D60C2774798F0037E5CB /* MainTabBarController.swift in Sources */,
 				3617762A275779DF00509772 /* AuthRequestFactory.swift in Sources */,
@@ -492,11 +510,13 @@
 				3617761D275777C000509772 /* ErrorParser.swift in Sources */,
 				367953472768D810009DE93B /* GoodsListResult.swift in Sources */,
 				36A7D6082773DB820037E5CB /* UserDefault.swift in Sources */,
+				36A7D6142774B12E0037E5CB /* CartCoordinator.swift in Sources */,
 				367864442751488F00E0786F /* ViewController.swift in Sources */,
 				367864402751488F00E0786F /* AppDelegate.swift in Sources */,
 				3617761F275777FE00509772 /* DataRequest.swift in Sources */,
 				36177632275781DC00509772 /* RegisterResult.swift in Sources */,
 				36A7D60A27746F2E0037E5CB /* AuthViewController.swift in Sources */,
+				36A7D6122774B1110037E5CB /* CartViewController.swift in Sources */,
 				367953512769F10F009DE93B /* Reviews.swift in Sources */,
 				361776252757796600509772 /* LoginResult.swift in Sources */,
 				3693A86B275E0DEB00FA275E /* GoodByIdResult.swift in Sources */,
@@ -504,6 +524,7 @@
 				3693A869275E0CD300FA275E /* GoodsListItem.swift in Sources */,
 				363CFB45276BA4AA00B9CBC8 /* Shopping.swift in Sources */,
 				361776362757AC7200509772 /* Registration.swift in Sources */,
+				36A7D6162774B1A50037E5CB /* AuthCoordinator.swift in Sources */,
 				367864422751488F00E0786F /* SceneDelegate.swift in Sources */,
 				361776272757797300509772 /* UserResult.swift in Sources */,
 				3679534F2769EBF0009DE93B /* Review.swift in Sources */,
@@ -511,9 +532,12 @@
 				3679534D2769EB03009DE93B /* GetReviewsResult.swift in Sources */,
 				36177634275792FE00509772 /* RegistrationRequestFactory.swift in Sources */,
 				3617761B2757774E00509772 /* AbstractErrorParser.swift in Sources */,
+				36A7D60E2774A6940037E5CB /* UserCoordinator.swift in Sources */,
 				3617762C27577A4700509772 /* Auth.swift in Sources */,
+				36A7D6182774B4F30037E5CB /* TabBarCoordinator.swift in Sources */,
 				3679534427634040009DE93B /* CommonResult.swift in Sources */,
 				36A7D6042773CBDF0037E5CB /* Storyboarded.swift in Sources */,
+				36A7D6102774B0F20037E5CB /* UserViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
