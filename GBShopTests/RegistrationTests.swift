@@ -38,12 +38,22 @@ class RegistrationTests: XCTestCase {
                                         userMessage: "Регистрация прошла успешно!",
                                         errorMessage: nil)
         
+        let newUser = User(id: 2,
+                           login: UUID().uuidString,
+                        name: "John",
+                        lastname: "Doe",
+                        password: "mypassword",
+                           email: UUID().uuidString,
+                        gender: "m",
+                        creditCard: "9872389-2424-234224-234",
+                        bio: "This is good! I think I will switch to another language")
+        
         
         let expectation = expectation(description: "User registered")
         
         let request = requestFactory.makeRegistrationRequestFactory()
         
-        request.register(user: user) { response in
+        request.register(user: newUser) { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result, successValue)

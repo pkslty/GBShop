@@ -34,6 +34,11 @@
 		367864792755522C00E0786F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 367864782755522C00E0786F /* Alamofire */; };
 		3679534427634040009DE93B /* CommonResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367953432763403F009DE93B /* CommonResult.swift */; };
 		367953472768D810009DE93B /* GoodsListResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367953462768D80F009DE93B /* GoodsListResult.swift */; };
+		367953492769E796009DE93B /* ReviewsRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367953482769E795009DE93B /* ReviewsRequestFactory.swift */; };
+		3679534B2769E7E9009DE93B /* ReviewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3679534A2769E7E8009DE93B /* ReviewsTests.swift */; };
+		3679534D2769EB03009DE93B /* GetReviewsResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3679534C2769EB03009DE93B /* GetReviewsResult.swift */; };
+		3679534F2769EBF0009DE93B /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3679534E2769EBF0009DE93B /* Review.swift */; };
+		367953512769F10F009DE93B /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367953502769F10F009DE93B /* Reviews.swift */; };
 		3693A869275E0CD300FA275E /* GoodsListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693A868275E0CD300FA275E /* GoodsListItem.swift */; };
 		3693A86B275E0DEB00FA275E /* GoodByIdResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693A86A275E0DEB00FA275E /* GoodByIdResult.swift */; };
 		3693A86D275E0EED00FA275E /* GoodsRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693A86C275E0EED00FA275E /* GoodsRequestFactory.swift */; };
@@ -92,6 +97,11 @@
 		367953432763403F009DE93B /* CommonResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonResult.swift; sourceTree = "<group>"; };
 		3679534527637D63009DE93B /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan.xctestplan; sourceTree = "<group>"; };
 		367953462768D80F009DE93B /* GoodsListResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsListResult.swift; sourceTree = "<group>"; };
+		367953482769E795009DE93B /* ReviewsRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsRequestFactory.swift; sourceTree = "<group>"; };
+		3679534A2769E7E8009DE93B /* ReviewsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsTests.swift; sourceTree = "<group>"; };
+		3679534C2769EB03009DE93B /* GetReviewsResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetReviewsResult.swift; sourceTree = "<group>"; };
+		3679534E2769EBF0009DE93B /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
+		367953502769F10F009DE93B /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
 		3693A868275E0CD300FA275E /* GoodsListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsListItem.swift; sourceTree = "<group>"; };
 		3693A86A275E0DEB00FA275E /* GoodByIdResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodByIdResult.swift; sourceTree = "<group>"; };
 		3693A86C275E0EED00FA275E /* GoodsRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsRequestFactory.swift; sourceTree = "<group>"; };
@@ -149,6 +159,8 @@
 				361776352757AC7200509772 /* Registration.swift */,
 				3693A86C275E0EED00FA275E /* GoodsRequestFactory.swift */,
 				3693A86E275E10C000FA275E /* Goods.swift */,
+				367953482769E795009DE93B /* ReviewsRequestFactory.swift */,
+				367953502769F10F009DE93B /* Reviews.swift */,
 			);
 			path = Network;
 			sourceTree = "<group>";
@@ -192,6 +204,7 @@
 				3693A872275E37BE00FA275E /* GoodsTests.swift */,
 				3693A874275E468F00FA275E /* RegistrationTests.swift */,
 				3679534527637D63009DE93B /* TestPlan.xctestplan */,
+				3679534A2769E7E8009DE93B /* ReviewsTests.swift */,
 			);
 			path = GBShopTests;
 			sourceTree = "<group>";
@@ -239,6 +252,8 @@
 				3693A86A275E0DEB00FA275E /* GoodByIdResult.swift */,
 				367953432763403F009DE93B /* CommonResult.swift */,
 				367953462768D80F009DE93B /* GoodsListResult.swift */,
+				3679534C2769EB03009DE93B /* GetReviewsResult.swift */,
+				3679534E2769EBF0009DE93B /* Review.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -433,13 +448,17 @@
 				367864402751488F00E0786F /* AppDelegate.swift in Sources */,
 				3617761F275777FE00509772 /* DataRequest.swift in Sources */,
 				36177632275781DC00509772 /* RegisterResult.swift in Sources */,
+				367953512769F10F009DE93B /* Reviews.swift in Sources */,
 				361776252757796600509772 /* LoginResult.swift in Sources */,
 				3693A86B275E0DEB00FA275E /* GoodByIdResult.swift in Sources */,
+				367953492769E796009DE93B /* ReviewsRequestFactory.swift in Sources */,
 				3693A869275E0CD300FA275E /* GoodsListItem.swift in Sources */,
 				361776362757AC7200509772 /* Registration.swift in Sources */,
 				367864422751488F00E0786F /* SceneDelegate.swift in Sources */,
 				361776272757797300509772 /* UserResult.swift in Sources */,
+				3679534F2769EBF0009DE93B /* Review.swift in Sources */,
 				3617763C2759454700509772 /* User.swift in Sources */,
+				3679534D2769EB03009DE93B /* GetReviewsResult.swift in Sources */,
 				36177634275792FE00509772 /* RegistrationRequestFactory.swift in Sources */,
 				3617761B2757774E00509772 /* AbstractErrorParser.swift in Sources */,
 				3617762C27577A4700509772 /* Auth.swift in Sources */,
@@ -453,6 +472,7 @@
 			files = (
 				3693A875275E468F00FA275E /* RegistrationTests.swift in Sources */,
 				367864572751489700E0786F /* GBShopTests.swift in Sources */,
+				3679534B2769E7E9009DE93B /* ReviewsTests.swift in Sources */,
 				3693A871275E210B00FA275E /* AuthTests.swift in Sources */,
 				3693A873275E37BE00FA275E /* GoodsTests.swift in Sources */,
 			);
