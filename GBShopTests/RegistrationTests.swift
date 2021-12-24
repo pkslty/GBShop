@@ -12,7 +12,7 @@ import Alamofire
 class RegistrationTests: XCTestCase {
     
     var requestFactory: RequestFactory!
-    let user = User(id: 123,
+    let user = User(id: 2,
                     login: "Somebody",
                     name: "John",
                     lastname: "Doe",
@@ -32,10 +32,11 @@ class RegistrationTests: XCTestCase {
         
     }
     
-    func testRegister() {
+    func testRegisterSuccess() {
                 
-        let successValue = RegisterResult(result: 1,
-                                          userMessage: "Регистрация прошла успешно!")
+        let successValue = CommonResult(result: 1,
+                                        userMessage: "Регистрация прошла успешно!",
+                                        errorMessage: nil)
         
         
         let expectation = expectation(description: "User registered")
@@ -54,9 +55,34 @@ class RegistrationTests: XCTestCase {
         wait(for: [expectation], timeout: 10.0)
     }
     
+    func testRegisterReject() {
+                
+        let successValue = CommonResult(result: 0,
+                                        userMessage: nil,
+                                        errorMessage: "Error: username or e-mail already exists")
+        
+        
+        let expectation = expectation(description: "User already exists")
+        
+        let request = requestFactory.makeRegistrationRequestFactory()
+        
+        request.register(user: user) { response in
+            switch response.result {
+            case .success(let result):
+                XCTAssertEqual(result, successValue)
+                expectation.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+        wait(for: [expectation], timeout: 10.0)
+    }
+    
     func testchangeUserData() {
         
-        let successValue = PositiveResult(result: 1)
+        let successValue = CommonResult(result: 1,
+                                        userMessage: "Succesfully changed user data!",
+                                        errorMessage: nil)
         let expectation = expectation(description: "User changes data")
         
         let request = requestFactory.makeRegistrationRequestFactory()

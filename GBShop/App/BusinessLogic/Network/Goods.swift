@@ -13,7 +13,8 @@ class Goods: AbstractRequestFactory {
     var errorParser: AbstractErrorParser
     var sessionManager: Session
     var queue: DispatchQueue
-    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")!
+    let baseUrl = URL(string: "https://vast-hollows-60312.herokuapp.com/")!
+    //let baseUrl = URL(string: "http://127.0.0.1:8080/")!
     
     init(
         errorParser: AbstractErrorParser,
@@ -28,12 +29,12 @@ class Goods: AbstractRequestFactory {
 extension Goods: GoodsRequestFactory {
     
     func getGoodById(id: Int, completionHandler: @escaping (AFDataResponse<GoodByIdResult>) -> Void) {
-        let requestModel = GoodData(baseUrl: baseUrl, path: "getGoodById.json", id: id)
+        let requestModel = GoodData(baseUrl: baseUrl, path: "getGoodById", id: id)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func getGoodsList(page: Int, categoryId: Int, completionHandler: @escaping (AFDataResponse<[GoodsListItem]>) -> Void) {
-        let requestModel = GoodsListData(baseUrl: baseUrl, path: "catalogData.json", page: page, categoryId: categoryId)
+    func getGoodsList(page: Int, categoryId: Int, completionHandler: @escaping (AFDataResponse<GoodsListResult>) -> Void) {
+        let requestModel = GoodsListData(baseUrl: baseUrl, path: "getGoodsList", page: page, categoryId: categoryId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
@@ -43,28 +44,28 @@ extension Goods: GoodsRequestFactory {
 extension Goods {
     struct GoodData: RequestRouter {
         let baseUrl: URL
-        let method: HTTPMethod = .get
+        let method: HTTPMethod = .post
         var path: String
         
         let id: Int
         var parameters: Parameters? {
             return [
-                "id_product": id
+                "productId": id
             ]
         }
     }
     
     struct GoodsListData: RequestRouter {
         let baseUrl: URL
-        let method: HTTPMethod = .get
+        let method: HTTPMethod = .post
         var path: String
         
         let page: Int
         let categoryId: Int
         var parameters: Parameters? {
             return [
-                "page_number": page,
-                "id_category": categoryId
+                "pageNumber": page,
+                "categoryId": categoryId
             ]
         }
     }

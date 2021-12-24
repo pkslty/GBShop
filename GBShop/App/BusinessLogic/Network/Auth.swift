@@ -12,7 +12,8 @@ class Auth: AbstractRequestFactory {
     let errorParser: AbstractErrorParser
     let sessionManager: Session
     let queue: DispatchQueue
-    let baseUrl = URL(string: "https://raw.githubusercontent.com/GeekBrainsTutorial/online-store-api/master/responses/")!
+    let baseUrl = URL(string: "https://vast-hollows-60312.herokuapp.com/")!
+    //let baseUrl = URL(string: "http://127.0.0.1:8080/")!
     
     init(
         errorParser: AbstractErrorParser,
@@ -26,12 +27,12 @@ class Auth: AbstractRequestFactory {
 
 extension Auth: AuthRequestFactory {
     func login(userName: String, password: String, completionHandler: @escaping (AFDataResponse<LoginResult>) -> Void) {
-        let requestModel = Login(baseUrl: baseUrl, path: "login.json", userId: nil, login: userName, password: password)
+        let requestModel = Login(baseUrl: baseUrl, path: "login", userId: nil, login: userName, password: password)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func logout(userId: Int, completionHandler: @escaping (AFDataResponse<PositiveResult>) -> Void) {
-        let requestModel = Login(baseUrl: baseUrl, path: "logout.json", userId: userId, login: nil, password: nil)
+    func logout(userId: Int, completionHandler: @escaping (AFDataResponse<CommonResult>) -> Void) {
+        let requestModel = Login(baseUrl: baseUrl, path: "logout", userId: userId, login: nil, password: nil)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
 }
@@ -39,7 +40,7 @@ extension Auth: AuthRequestFactory {
 extension Auth {
     struct Login: RequestRouter {
         let baseUrl: URL
-        let method: HTTPMethod = .get
+        let method: HTTPMethod = .post
         let path: String
         
         let userId: Int?
@@ -49,12 +50,12 @@ extension Auth {
             var parameters: Parameters?
             if let userId = userId {
                 parameters =  [
-                    "id_user": userId,
+                    "id": userId,
                 ]
             }
             if let login = login, let password = password {
                 parameters = [
-                    "username": login,
+                    "login": login,
                     "password": password
                 ]
             }

@@ -10,14 +10,22 @@ import Foundation
 struct UserResult: Codable {
     let id: Int
     let login: String
-    let name: String
-    let lastname: String
+    let name: String?
+    let lastname: String?
+    let email: String
+    let gender: String?
+    let creditCard: String?
+    let bio: String?
     
     enum CodingKeys: String, CodingKey {
-        case id = "id_user"
-        case login = "user_login"
-        case name = "user_name"
-        case lastname = "user_lastname"
+        case id
+        case login
+        case name
+        case lastname
+        case email
+        case gender
+        case creditCard
+        case bio
     }
 }
 
@@ -26,6 +34,12 @@ extension UserResult: Equatable {
         lhs.id == rhs.id &&
         lhs.login == rhs.login &&
         lhs.name == rhs.name &&
-        lhs.lastname == rhs.lastname
+        lhs.lastname == rhs.lastname &&
+        lhs.email == rhs.email &&
+        lhs.gender == rhs.gender &&
+        lhs.creditCard == rhs.creditCard &&
+        lhs.bio == rhs.bio
     }
 }
+
+
