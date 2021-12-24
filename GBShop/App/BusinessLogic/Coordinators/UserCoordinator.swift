@@ -11,14 +11,22 @@ class UserCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     
+    @UserDefault(key: "authorizationToken", defaultValue: nil) var token: String?
+    
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
     func start() {
-        let mainTabBarController = UserViewController.instantiate()
-        navigationController.pushViewController(mainTabBarController, animated: false)
+        
+        if token != nil {
+            let childCoordinator = UserDetailCoordinator(navigationController: navigationController)
+            childCoordinators.append(childCoordinator)
+            childCoordinator.start()
+        } else {
+            let viewController = AuthViewController.instantiate()
+            navigationController.pushViewController(viewController, animated: false)
+        }
+        
     }
-    
-    
 }

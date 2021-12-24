@@ -56,11 +56,14 @@
 		36A7D60A27746F2E0037E5CB /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D60927746F2E0037E5CB /* AuthViewController.swift */; };
 		36A7D60C2774798F0037E5CB /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D60B2774798F0037E5CB /* MainTabBarController.swift */; };
 		36A7D60E2774A6940037E5CB /* UserCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D60D2774A6940037E5CB /* UserCoordinator.swift */; };
-		36A7D6102774B0F20037E5CB /* UserViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D60F2774B0F20037E5CB /* UserViewController.swift */; };
 		36A7D6122774B1110037E5CB /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D6112774B1110037E5CB /* CartViewController.swift */; };
 		36A7D6142774B12E0037E5CB /* CartCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D6132774B12D0037E5CB /* CartCoordinator.swift */; };
 		36A7D6162774B1A50037E5CB /* AuthCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D6152774B1A50037E5CB /* AuthCoordinator.swift */; };
-		36A7D6182774B4F30037E5CB /* TabBarCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D6172774B4F30037E5CB /* TabBarCoordinator.swift */; };
+		36A7D61A277502790037E5CB /* TabBarPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D619277502790037E5CB /* TabBarPage.swift */; };
+		36A7D61C277514870037E5CB /* UserDetailCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D61B277514870037E5CB /* UserDetailCoordinator.swift */; };
+		36A7D61F27751DCF0037E5CB /* UserDetailView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36A7D61E27751DCF0037E5CB /* UserDetailView.xib */; };
+		36A7D62227752BAF0037E5CB /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D62027752BAF0037E5CB /* UserDetailViewController.swift */; };
+		36A7D62327752BAF0037E5CB /* UserDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36A7D62127752BAF0037E5CB /* UserDetailViewController.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -134,11 +137,14 @@
 		36A7D60927746F2E0037E5CB /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
 		36A7D60B2774798F0037E5CB /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		36A7D60D2774A6940037E5CB /* UserCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCoordinator.swift; sourceTree = "<group>"; };
-		36A7D60F2774B0F20037E5CB /* UserViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewController.swift; sourceTree = "<group>"; };
 		36A7D6112774B1110037E5CB /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		36A7D6132774B12D0037E5CB /* CartCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCoordinator.swift; sourceTree = "<group>"; };
 		36A7D6152774B1A50037E5CB /* AuthCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthCoordinator.swift; sourceTree = "<group>"; };
-		36A7D6172774B4F30037E5CB /* TabBarCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarCoordinator.swift; sourceTree = "<group>"; };
+		36A7D619277502790037E5CB /* TabBarPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarPage.swift; sourceTree = "<group>"; };
+		36A7D61B277514870037E5CB /* UserDetailCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailCoordinator.swift; sourceTree = "<group>"; };
+		36A7D61E27751DCF0037E5CB /* UserDetailView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDetailView.xib; sourceTree = "<group>"; };
+		36A7D62027752BAF0037E5CB /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
+		36A7D62127752BAF0037E5CB /* UserDetailViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserDetailViewController.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -303,8 +309,9 @@
 			children = (
 				36A7D60927746F2E0037E5CB /* AuthViewController.swift */,
 				36A7D60B2774798F0037E5CB /* MainTabBarController.swift */,
-				36A7D60F2774B0F20037E5CB /* UserViewController.swift */,
+				36A7D61D27751D4B0037E5CB /* UserDetailFlow */,
 				36A7D6112774B1110037E5CB /* CartViewController.swift */,
+				36A7D619277502790037E5CB /* TabBarPage.swift */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -354,9 +361,19 @@
 				36A7D60D2774A6940037E5CB /* UserCoordinator.swift */,
 				36A7D6132774B12D0037E5CB /* CartCoordinator.swift */,
 				36A7D6152774B1A50037E5CB /* AuthCoordinator.swift */,
-				36A7D6172774B4F30037E5CB /* TabBarCoordinator.swift */,
+				36A7D61B277514870037E5CB /* UserDetailCoordinator.swift */,
 			);
 			path = Coordinators;
+			sourceTree = "<group>";
+		};
+		36A7D61D27751D4B0037E5CB /* UserDetailFlow */ = {
+			isa = PBXGroup;
+			children = (
+				36A7D61E27751DCF0037E5CB /* UserDetailView.xib */,
+				36A7D62027752BAF0037E5CB /* UserDetailViewController.swift */,
+				36A7D62127752BAF0037E5CB /* UserDetailViewController.xib */,
+			);
+			path = UserDetailFlow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -469,6 +486,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36A7D61F27751DCF0037E5CB /* UserDetailView.xib in Resources */,
+				36A7D62327752BAF0037E5CB /* UserDetailViewController.xib in Resources */,
 				3678644C2751489600E0786F /* LaunchScreen.storyboard in Resources */,
 				367864492751489600E0786F /* Assets.xcassets in Resources */,
 				367864472751488F00E0786F /* Main.storyboard in Resources */,
@@ -496,9 +515,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				36A7D61C277514870037E5CB /* UserDetailCoordinator.swift in Sources */,
 				36A7D6062773D78F0037E5CB /* MainCoordinator.swift in Sources */,
 				36A7D5FF277372290037E5CB /* Logger.swift in Sources */,
 				36A7D60C2774798F0037E5CB /* MainTabBarController.swift in Sources */,
+				36A7D62227752BAF0037E5CB /* UserDetailViewController.swift in Sources */,
 				3617762A275779DF00509772 /* AuthRequestFactory.swift in Sources */,
 				36177623275778E000509772 /* RequestRouter.swift in Sources */,
 				361776212757789700509772 /* AbstractRequestFactory.swift in Sources */,
@@ -523,6 +544,7 @@
 				367953492769E796009DE93B /* ReviewsRequestFactory.swift in Sources */,
 				3693A869275E0CD300FA275E /* GoodsListItem.swift in Sources */,
 				363CFB45276BA4AA00B9CBC8 /* Shopping.swift in Sources */,
+				36A7D61A277502790037E5CB /* TabBarPage.swift in Sources */,
 				361776362757AC7200509772 /* Registration.swift in Sources */,
 				36A7D6162774B1A50037E5CB /* AuthCoordinator.swift in Sources */,
 				367864422751488F00E0786F /* SceneDelegate.swift in Sources */,
@@ -534,10 +556,8 @@
 				3617761B2757774E00509772 /* AbstractErrorParser.swift in Sources */,
 				36A7D60E2774A6940037E5CB /* UserCoordinator.swift in Sources */,
 				3617762C27577A4700509772 /* Auth.swift in Sources */,
-				36A7D6182774B4F30037E5CB /* TabBarCoordinator.swift in Sources */,
 				3679534427634040009DE93B /* CommonResult.swift in Sources */,
 				36A7D6042773CBDF0037E5CB /* Storyboarded.swift in Sources */,
-				36A7D6102774B0F20037E5CB /* UserViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

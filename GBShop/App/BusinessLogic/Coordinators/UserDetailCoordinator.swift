@@ -1,5 +1,5 @@
 //
-//  TabBarCoordinator.swift
+//  UserDetailCoordinator.swift
 //  GBShop
 //
 //  Created by Denis Kuzmin on 23.12.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class TabBarCoordinator: Coordinator {
+class UserDetailCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var navigationController: UINavigationController
     
@@ -16,7 +16,11 @@ class TabBarCoordinator: Coordinator {
     }
     
     func start() {
-        let mainTabBarController = MainTabBarController.instantiate()
-        navigationController.pushViewController(mainTabBarController, animated: false)
+        let viewController = UserDetailViewController(nibName: "UserDetailView", bundle: nil)
+        navigationController.pushViewController(viewController, animated: false)
+        
+        
     }
+    
+    
 }

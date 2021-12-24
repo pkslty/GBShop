@@ -1,20 +1,20 @@
 //
-//  UserViewController.swift
+//  UserDetailViewController.swift
 //  GBShop
 //
-//  Created by Denis Kuzmin on 23.12.2021.
+//  Created by Denis Kuzmin on 24.12.2021.
 //
 
 import UIKit
 
-class UserViewController: UIViewController {
+class UserDetailViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
-    
+
 
     /*
     // MARK: - Navigation
