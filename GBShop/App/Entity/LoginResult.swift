@@ -12,3 +12,13 @@ struct LoginResult: Codable {
     let user: UserResult
     let authToken: String
 }
+
+extension LoginResult: Equatable {
+    static func == (lhs: LoginResult, rhs: LoginResult) -> Bool {
+        lhs.result == rhs.result &&
+        lhs.user == rhs.user &&
+        lhs.authToken == rhs.authToken
+    }
+    
+    
+}
