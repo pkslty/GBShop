@@ -9,8 +9,10 @@ import UIKit
 
 class UserDetailPresenter {
     var view: UserDetailView
+    var factory: RequestFactory
     
-    init(view: UserDetailView) {
+    init(factory: RequestFactory, view: UserDetailView) {
+        self.factory = factory
         self.view = view
     }
     

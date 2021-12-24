@@ -14,4 +14,5 @@ protocol RegistrationRequestFactory {
     
     func changeUserData(user: User,
                   completionHandler: @escaping (AFDataResponse<CommonResult>) -> Void)
+    func getUserData(token: String, completionHandler: @escaping (AFDataResponse<LoginResult>) -> Void)
 }

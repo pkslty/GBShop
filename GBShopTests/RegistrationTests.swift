@@ -109,6 +109,29 @@ class RegistrationTests: XCTestCase {
         wait(for: [expectation], timeout: 10.0)
     }
 
+    func testGetUserData() {
+        
+        let successValue = 1
+        let expectation = expectation(description: "GetUserData")
+        
+        let request = requestFactory.makeRegistrationRequestFactory()
+        let token = "4e732ced3463d06de0ca9a15b6153677"
+        
+        request.getUserData(token: token) { response in
+            switch response.result {
+            case .success(let result):
+                XCTAssertEqual(result.result, successValue)
+                XCTAssertNotNil(result.user)
+                XCTAssertEqual(result.token, token)
+                XCTAssertNil(result.errorMessage)
+                expectation.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+        wait(for: [expectation], timeout: 10.0)
+    }
 
 }
+
 

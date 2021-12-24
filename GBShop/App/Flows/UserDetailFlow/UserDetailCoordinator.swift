@@ -17,7 +17,8 @@ class UserDetailCoordinator: Coordinator {
     
     func start() {
         let viewController = UserDetailViewController(nibName: "UserDetailView", bundle: nil)
-        let presenter = UserDetailPresenter(view: viewController)
+        let factory = RequestFactory()
+        let presenter = UserDetailPresenter(factory: factory, view: viewController)
         viewController.presenter = presenter
         navigationController.pushViewController(viewController, animated: false)
         
