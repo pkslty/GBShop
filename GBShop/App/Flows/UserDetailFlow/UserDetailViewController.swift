@@ -11,23 +11,31 @@ protocol UserDetailView {
     func setAvatarImage(image: UIImage?)
     func setFullName(fullName: String)
     func setEmail(email: String)
+    func setUserInfo(userInfo: String)
 }
 
 class UserDetailViewController: UIViewController {
-    @IBOutlet weak var avatar: RoundShadowView!
-    @IBOutlet weak var fullNameField: UITextField!
-    @IBOutlet weak var scrollView: UIScrollView!
-    
-    @IBOutlet weak var emailField: UITextField!
     var presenter: UserDetailPresenter?
     
+    @IBOutlet weak var avatar: RoundShadowView!
+    @IBOutlet weak var emailField: UITextField!
+    @IBOutlet weak var fullNameField: UITextField!
+    
+    @IBOutlet weak var UserInfoTextView: UITextView!
+    @IBOutlet weak var editInfoButton: UIButton!
+    @IBOutlet weak var logoutButton: UIButton!
+    
+    @IBOutlet weak var scrollView: UIScrollView!
+    
     @IBOutlet weak var stackView: UIStackView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConstraints()
         
         presenter?.load()
-        
+        logoutButton.addTarget(self, action: #selector(logoutButtonPressed), for: .touchDown)
 
         // Do any additional setup after loading the view.
     }
@@ -43,10 +51,18 @@ class UserDetailViewController: UIViewController {
         
         stackView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
     }
+    
+    @objc private func logoutButtonPressed() {
+        presenter?.logoutButtonPressed()
+    }
 
 }
 
 extension UserDetailViewController: UserDetailView {
+    func setUserInfo(userInfo: String) {
+        self.UserInfoTextView.text = userInfo
+    }
+    
     func setAvatarImage(image: UIImage?) {
         self.avatar.image = image ?? UIImage(systemName: "person")
     }
@@ -58,6 +74,4 @@ extension UserDetailViewController: UserDetailView {
     func setEmail(email: String) {
         self.emailField.text = email
     }
-    
-    
 }

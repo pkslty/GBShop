@@ -9,7 +9,9 @@ import UIKit
 
 class UserCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
+    var parentCoordinator: Coordinator?
     var navigationController: UINavigationController
+    let type: CoordinatorType = .userCoordinator
     
     @UserDefault(key: "authorizationToken", defaultValue: nil) var token: String?
     
@@ -19,14 +21,42 @@ class UserCoordinator: Coordinator {
     
     func start() {
         
+        var childCoordinator: Coordinator
         if token != nil {
-            let childCoordinator = UserDetailCoordinator(navigationController: navigationController)
-            childCoordinators.append(childCoordinator)
-            childCoordinator.start()
+            childCoordinator = UserDetailCoordinator(navigationController: navigationController)
         } else {
-            let viewController = AuthViewController.instantiate()
-            navigationController.pushViewController(viewController, animated: false)
+            childCoordinator = AuthCoordinator(navigationController: navigationController)
         }
-        
+        childCoordinators.append(childCoordinator)
+        childCoordinator.parentCoordinator = self
+        childCoordinator.start()
+    }
+    
+    func childDidFinish(_ child: Coordinator) {
+        for (index, coordinator) in childCoordinators.enumerated() {
+            if coordinator === child {
+                childCoordinators.remove(at: index)
+            }
+        }
+        var newChild: Coordinator
+        switch child.type {
+        case .userDetailCoordinator:
+            newChild = AuthCoordinator(navigationController: navigationController)
+            childCoordinators.append(newChild)
+            newChild.parentCoordinator = self
+            newChild.start()
+        case .authCoordinator:
+            if token != nil {
+                newChild = UserDetailCoordinator(navigationController: navigationController)
+                childCoordinators.append(newChild)
+                newChild.parentCoordinator = self
+                newChild.start()
+            }
+        default:
+            return
+        }
+    }
+    
+    func presenterDidFinish() {
     }
 }

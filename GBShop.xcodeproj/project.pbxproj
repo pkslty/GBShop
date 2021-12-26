@@ -65,6 +65,9 @@
 		36A7D62227752BAF0037E5CB /* UserDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D62027752BAF0037E5CB /* UserDetailViewController.swift */; };
 		36A7D6252775A97F0037E5CB /* RoundShadowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D6242775A97F0037E5CB /* RoundShadowView.swift */; };
 		36A7D6272775C67D0037E5CB /* UserDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D6262775C67D0037E5CB /* UserDetailPresenter.swift */; };
+		36A7D6292777D7DF0037E5CB /* CoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D6282777D7DE0037E5CB /* CoordinatorType.swift */; };
+		36A7D62C27787A020037E5CB /* AuthView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36A7D62B27787A020037E5CB /* AuthView.xib */; };
+		36A7D62E27789CAE0037E5CB /* AuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D62D27789CAD0037E5CB /* AuthPresenter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -147,6 +150,9 @@
 		36A7D62027752BAF0037E5CB /* UserDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailViewController.swift; sourceTree = "<group>"; };
 		36A7D6242775A97F0037E5CB /* RoundShadowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoundShadowView.swift; sourceTree = "<group>"; };
 		36A7D6262775C67D0037E5CB /* UserDetailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDetailPresenter.swift; sourceTree = "<group>"; };
+		36A7D6282777D7DE0037E5CB /* CoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorType.swift; sourceTree = "<group>"; };
+		36A7D62B27787A020037E5CB /* AuthView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthView.xib; sourceTree = "<group>"; };
+		36A7D62D27789CAD0037E5CB /* AuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPresenter.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -309,7 +315,7 @@
 		36786473275249D900E0786F /* Flows */ = {
 			isa = PBXGroup;
 			children = (
-				36A7D60927746F2E0037E5CB /* AuthViewController.swift */,
+				36A7D62A277879430037E5CB /* AuthFlow */,
 				36A7D60B2774798F0037E5CB /* MainTabBarController.swift */,
 				36A7D61D27751D4B0037E5CB /* UserDetailFlow */,
 				36A7D6112774B1110037E5CB /* CartViewController.swift */,
@@ -363,7 +369,7 @@
 				36A7D6052773D78F0037E5CB /* MainCoordinator.swift */,
 				36A7D60D2774A6940037E5CB /* UserCoordinator.swift */,
 				36A7D6132774B12D0037E5CB /* CartCoordinator.swift */,
-				36A7D6152774B1A50037E5CB /* AuthCoordinator.swift */,
+				36A7D6282777D7DE0037E5CB /* CoordinatorType.swift */,
 			);
 			path = Coordinators;
 			sourceTree = "<group>";
@@ -377,6 +383,17 @@
 				36A7D6262775C67D0037E5CB /* UserDetailPresenter.swift */,
 			);
 			path = UserDetailFlow;
+			sourceTree = "<group>";
+		};
+		36A7D62A277879430037E5CB /* AuthFlow */ = {
+			isa = PBXGroup;
+			children = (
+				36A7D6152774B1A50037E5CB /* AuthCoordinator.swift */,
+				36A7D60927746F2E0037E5CB /* AuthViewController.swift */,
+				36A7D62B27787A020037E5CB /* AuthView.xib */,
+				36A7D62D27789CAD0037E5CB /* AuthPresenter.swift */,
+			);
+			path = AuthFlow;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -492,6 +509,7 @@
 				36A7D61F27751DCF0037E5CB /* UserDetailView.xib in Resources */,
 				3678644C2751489600E0786F /* LaunchScreen.storyboard in Resources */,
 				367864492751489600E0786F /* Assets.xcassets in Resources */,
+				36A7D62C27787A020037E5CB /* AuthView.xib in Resources */,
 				367864472751488F00E0786F /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -544,7 +562,9 @@
 				367953512769F10F009DE93B /* Reviews.swift in Sources */,
 				361776252757796600509772 /* LoginResult.swift in Sources */,
 				3693A86B275E0DEB00FA275E /* GoodByIdResult.swift in Sources */,
+				36A7D62E27789CAE0037E5CB /* AuthPresenter.swift in Sources */,
 				367953492769E796009DE93B /* ReviewsRequestFactory.swift in Sources */,
+				36A7D6292777D7DF0037E5CB /* CoordinatorType.swift in Sources */,
 				3693A869275E0CD300FA275E /* GoodsListItem.swift in Sources */,
 				363CFB45276BA4AA00B9CBC8 /* Shopping.swift in Sources */,
 				36A7D61A277502790037E5CB /* TabBarPage.swift in Sources */,

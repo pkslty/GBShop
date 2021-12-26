@@ -6,10 +6,13 @@
 //
 
 import UIKit
+import SwiftUI
 
 class CartCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
+    var parentCoordinator: Coordinator?
     var navigationController: UINavigationController
+    let type: CoordinatorType = .cartCoordinator
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -21,5 +24,10 @@ class CartCoordinator: Coordinator {
         navigationController.pushViewController(cartViewController, animated: false)
     }
     
+    func childDidFinish(_ child: Coordinator) {
+        
+    }
     
+    func presenterDidFinish() {
+    }
 }

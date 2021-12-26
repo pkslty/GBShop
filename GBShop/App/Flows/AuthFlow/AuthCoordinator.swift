@@ -1,5 +1,5 @@
 //
-//  UserDetailCoordinator.swift
+//  AuthCoordinator.swift
 //  GBShop
 //
 //  Created by Denis Kuzmin on 23.12.2021.
@@ -7,31 +7,31 @@
 
 import UIKit
 
-class UserDetailCoordinator: Coordinator {
+class AuthCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var parentCoordinator: Coordinator?
     var navigationController: UINavigationController
-    let type: CoordinatorType = .userDetailCoordinator
+    let type: CoordinatorType = .authCoordinator
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
     }
     
     func start() {
-        let viewController = UserDetailViewController(nibName: "UserDetailView", bundle: nil)
+        let viewController = AuthViewController(nibName: "AuthView", bundle: nil)
         let factory = RequestFactory()
-        let presenter = UserDetailPresenter(factory: factory, view: viewController)
+        let presenter = AuthPresenter(factory: factory, view: viewController)
         presenter.coordinator = self
         viewController.presenter = presenter
         navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func presenterDidFinish() {
-        //navigationController.removeFromParent()
-        parentCoordinator?.childDidFinish(self)
+    func childDidFinish(_ child: Coordinator) {
+        
     }
     
-    func childDidFinish(_ child: Coordinator) {
+    func presenterDidFinish() {
+        parentCoordinator?.childDidFinish(self)
     }
 }

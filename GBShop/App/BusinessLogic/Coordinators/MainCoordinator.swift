@@ -9,8 +9,10 @@ import UIKit
 
 class MainCoordinator: NSObject, Coordinator, UITabBarControllerDelegate {
     var childCoordinators = [Coordinator]()
+    var parentCoordinator: Coordinator?
     var navigationController: UINavigationController
     var tabBarController: UITabBarController
+    let type: CoordinatorType = .mainCoordinator
     
     init(navigationController: UINavigationController) {
         self.navigationController = navigationController
@@ -24,6 +26,13 @@ class MainCoordinator: NSObject, Coordinator, UITabBarControllerDelegate {
         let controllers: [UINavigationController] = pages.map({ getTabController($0) })
         
         prepareTabBarController(withTabControllers: controllers)
+    }
+    
+    func childDidFinish(_ child: Coordinator) {
+        
+    }
+    
+    func presenterDidFinish() {
     }
     
     private func prepareTabBarController(withTabControllers tabControllers: [UIViewController]) {
@@ -42,11 +51,12 @@ class MainCoordinator: NSObject, Coordinator, UITabBarControllerDelegate {
         navigationController.tabBarItem = UITabBarItem(title: page.pageTitleValue(),
                                                        image: page.pageIcon(),
                                                      tag: page.pageOrderNumber())
+        navigationController.tabBarItem.badgeColor = .purple
 
         switch page {
         case .catalog:
             // If needed: Each tab bar flow can have it's own Coordinator.
-            let catalogViewController = AuthViewController.instantiate()
+            let catalogViewController = CartViewController.instantiate()
             navigationController.pushViewController(catalogViewController, animated: true)
         case .cart:
             let cartViewController = CartViewController.instantiate()
