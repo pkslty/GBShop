@@ -15,6 +15,7 @@
                 <outlet property="loginField" destination="UzS-Wq-sfg" id="AVj-i1-eHk"/>
                 <outlet property="passwordField" destination="zzG-wK-UrB" id="mSL-yv-Kpm"/>
                 <outlet property="scrollView" destination="x0h-61-CIq" id="ciT-kn-OvJ"/>
+                <outlet property="signUpButton" destination="ejr-UO-V1H" id="onf-7X-jtG"/>
                 <outlet property="stackView" destination="4jU-kr-oFd" id="VjR-00-ucZ"/>
                 <outlet property="view" destination="iN0-l3-epB" id="UWm-h3-w5w"/>
             </connections>
@@ -47,8 +48,17 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="898"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <subviews>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="login" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UzS-Wq-sfg">
-                    <rect key="frame" x="20" y="52" width="374" height="75"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Authorization" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="qVU-U6-ned">
+                    <rect key="frame" x="20" y="52" width="374" height="100"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="100" id="h3N-FY-qX2"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="25"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Username" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="UzS-Wq-sfg">
+                    <rect key="frame" x="20" y="162" width="374" height="75"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="75" id="0ik-kS-ffe"/>
                     </constraints>
@@ -56,7 +66,7 @@
                     <textInputTraits key="textInputTraits" textContentType="username"/>
                 </textField>
                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="password" borderStyle="roundedRect" textAlignment="natural" clearsOnBeginEditing="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zzG-wK-UrB">
-                    <rect key="frame" x="20" y="137" width="374" height="38"/>
+                    <rect key="frame" x="20" y="247" width="374" height="75"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="75" id="GjL-io-3Q4"/>
                     </constraints>
@@ -64,14 +74,28 @@
                     <textInputTraits key="textInputTraits" secureTextEntry="YES" textContentType="password"/>
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D2z-MU-TQx">
-                    <rect key="frame" x="20" y="185" width="374" height="75"/>
+                    <rect key="frame" x="20" y="332" width="374" height="75"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="75" id="QdM-Xk-3wa"/>
                     </constraints>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="filled" title="Log In">
+                    <buttonConfiguration key="configuration" style="filled" title="Sign In">
                         <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
                         <color key="baseBackgroundColor" systemColor="systemIndigoColor"/>
+                    </buttonConfiguration>
+                </button>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aQA-VN-R6u">
+                    <rect key="frame" x="20" y="417" width="374" height="20.5"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ejr-UO-V1H">
+                    <rect key="frame" x="20" y="447.5" width="374" height="408.5"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="plain" title="Sign Up">
+                        <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
+                        <color key="baseForegroundColor" systemColor="systemIndigoColor"/>
                     </buttonConfiguration>
                 </button>
             </subviews>

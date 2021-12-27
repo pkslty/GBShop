@@ -26,7 +26,6 @@
 		363CFB45276BA4AA00B9CBC8 /* Shopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363CFB44276BA4AA00B9CBC8 /* Shopping.swift */; };
 		367864402751488F00E0786F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3678643F2751488F00E0786F /* AppDelegate.swift */; };
 		367864422751488F00E0786F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367864412751488F00E0786F /* SceneDelegate.swift */; };
-		367864442751488F00E0786F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367864432751488F00E0786F /* ViewController.swift */; };
 		367864472751488F00E0786F /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 367864452751488F00E0786F /* Main.storyboard */; };
 		367864492751489600E0786F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 367864482751489600E0786F /* Assets.xcassets */; };
 		3678644C2751489600E0786F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3678644A2751489600E0786F /* LaunchScreen.storyboard */; };
@@ -56,7 +55,6 @@
 		36A7D6062773D78F0037E5CB /* MainCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D6052773D78F0037E5CB /* MainCoordinator.swift */; };
 		36A7D6082773DB820037E5CB /* UserDefault.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D6072773DB820037E5CB /* UserDefault.swift */; };
 		36A7D60A27746F2E0037E5CB /* AuthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D60927746F2E0037E5CB /* AuthViewController.swift */; };
-		36A7D60C2774798F0037E5CB /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D60B2774798F0037E5CB /* MainTabBarController.swift */; };
 		36A7D60E2774A6940037E5CB /* UserCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D60D2774A6940037E5CB /* UserCoordinator.swift */; };
 		36A7D6122774B1110037E5CB /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D6112774B1110037E5CB /* CartViewController.swift */; };
 		36A7D6142774B12E0037E5CB /* CartCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D6132774B12D0037E5CB /* CartCoordinator.swift */; };
@@ -110,7 +108,6 @@
 		3678643C2751488F00E0786F /* GBShop.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GBShop.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		3678643F2751488F00E0786F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		367864412751488F00E0786F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		367864432751488F00E0786F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		367864462751488F00E0786F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		367864482751489600E0786F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3678644B2751489600E0786F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -143,7 +140,6 @@
 		36A7D6052773D78F0037E5CB /* MainCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCoordinator.swift; sourceTree = "<group>"; };
 		36A7D6072773DB820037E5CB /* UserDefault.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefault.swift; sourceTree = "<group>"; };
 		36A7D60927746F2E0037E5CB /* AuthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewController.swift; sourceTree = "<group>"; };
-		36A7D60B2774798F0037E5CB /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
 		36A7D60D2774A6940037E5CB /* UserCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserCoordinator.swift; sourceTree = "<group>"; };
 		36A7D6112774B1110037E5CB /* CartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
 		36A7D6132774B12D0037E5CB /* CartCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartCoordinator.swift; sourceTree = "<group>"; };
@@ -278,7 +274,6 @@
 				36786473275249D900E0786F /* Flows */,
 				3678643F2751488F00E0786F /* AppDelegate.swift */,
 				367864412751488F00E0786F /* SceneDelegate.swift */,
-				367864432751488F00E0786F /* ViewController.swift */,
 			);
 			path = App;
 			sourceTree = "<group>";
@@ -286,7 +281,7 @@
 		367864702752499800E0786F /* BusinessLogic */ = {
 			isa = PBXGroup;
 			children = (
-				36A7D6002773CA8A0037E5CB /* Coordinators */,
+				36A7D6002773CA8A0037E5CB /* Coordinator */,
 				36177628275779C400509772 /* Network */,
 			);
 			path = BusinessLogic;
@@ -319,11 +314,11 @@
 		36786473275249D900E0786F /* Flows */ = {
 			isa = PBXGroup;
 			children = (
+				36A7D632277929BF0037E5CB /* Main */,
+				36A7D6312779294F0037E5CB /* User Flow */,
+				36A7D63027791B730037E5CB /* CatalogFlow */,
 				36A7D62A277879430037E5CB /* AuthFlow */,
-				36A7D60B2774798F0037E5CB /* MainTabBarController.swift */,
-				36A7D61D27751D4B0037E5CB /* UserDetailFlow */,
-				36A7D6112774B1110037E5CB /* CartViewController.swift */,
-				36A7D619277502790037E5CB /* TabBarPage.swift */,
+				36A7D62F27791B540037E5CB /* CartFlow */,
 			);
 			path = Flows;
 			sourceTree = "<group>";
@@ -366,16 +361,13 @@
 			path = Helpers;
 			sourceTree = "<group>";
 		};
-		36A7D6002773CA8A0037E5CB /* Coordinators */ = {
+		36A7D6002773CA8A0037E5CB /* Coordinator */ = {
 			isa = PBXGroup;
 			children = (
 				36A7D6012773CAAA0037E5CB /* Coordinator.swift */,
-				36A7D6052773D78F0037E5CB /* MainCoordinator.swift */,
-				36A7D60D2774A6940037E5CB /* UserCoordinator.swift */,
-				36A7D6132774B12D0037E5CB /* CartCoordinator.swift */,
 				36A7D6282777D7DE0037E5CB /* CoordinatorType.swift */,
 			);
-			path = Coordinators;
+			path = Coordinator;
 			sourceTree = "<group>";
 		};
 		36A7D61D27751D4B0037E5CB /* UserDetailFlow */ = {
@@ -400,6 +392,40 @@
 				36A7D62D27789CAD0037E5CB /* AuthPresenter.swift */,
 			);
 			path = AuthFlow;
+			sourceTree = "<group>";
+		};
+		36A7D62F27791B540037E5CB /* CartFlow */ = {
+			isa = PBXGroup;
+			children = (
+				36A7D6112774B1110037E5CB /* CartViewController.swift */,
+				36A7D6132774B12D0037E5CB /* CartCoordinator.swift */,
+			);
+			path = CartFlow;
+			sourceTree = "<group>";
+		};
+		36A7D63027791B730037E5CB /* CatalogFlow */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = CatalogFlow;
+			sourceTree = "<group>";
+		};
+		36A7D6312779294F0037E5CB /* User Flow */ = {
+			isa = PBXGroup;
+			children = (
+				36A7D60D2774A6940037E5CB /* UserCoordinator.swift */,
+				36A7D61D27751D4B0037E5CB /* UserDetailFlow */,
+			);
+			path = "User Flow";
+			sourceTree = "<group>";
+		};
+		36A7D632277929BF0037E5CB /* Main */ = {
+			isa = PBXGroup;
+			children = (
+				36A7D6052773D78F0037E5CB /* MainCoordinator.swift */,
+				36A7D619277502790037E5CB /* TabBarPage.swift */,
+			);
+			path = Main;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -545,7 +571,6 @@
 				36A7D61C277514870037E5CB /* UserDetailCoordinator.swift in Sources */,
 				36A7D6062773D78F0037E5CB /* MainCoordinator.swift in Sources */,
 				36A7D5FF277372290037E5CB /* Logger.swift in Sources */,
-				36A7D60C2774798F0037E5CB /* MainTabBarController.swift in Sources */,
 				36A7D62227752BAF0037E5CB /* UserDetailViewController.swift in Sources */,
 				3680357B277A2BB2007AD6C5 /* UserEditInfoViewController.swift in Sources */,
 				3617762A275779DF00509772 /* AuthRequestFactory.swift in Sources */,
@@ -561,7 +586,6 @@
 				36A7D6272775C67D0037E5CB /* UserDetailPresenter.swift in Sources */,
 				36A7D6082773DB820037E5CB /* UserDefault.swift in Sources */,
 				36A7D6142774B12E0037E5CB /* CartCoordinator.swift in Sources */,
-				367864442751488F00E0786F /* ViewController.swift in Sources */,
 				367864402751488F00E0786F /* AppDelegate.swift in Sources */,
 				3617761F275777FE00509772 /* DataRequest.swift in Sources */,
 				36177632275781DC00509772 /* RegisterResult.swift in Sources */,

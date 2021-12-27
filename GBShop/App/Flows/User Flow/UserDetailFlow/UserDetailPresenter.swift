@@ -12,14 +12,21 @@ class UserDetailPresenter {
     var factory: RequestFactory
     var coordinator: Coordinator?
     @UserDefault(key: "authorizationToken", defaultValue: nil) var token: String?
+    var user: UserResult?
     
-    init(factory: RequestFactory, view: UserDetailView) {
+    init(factory: RequestFactory, view: UserDetailView, with user: UserResult? = nil) {
         self.factory = factory
         self.view = view
+        self.user = user
     }
     
     func load() {
         view.setAvatarImage(image: UIImage(systemName: "person"))
+        
+        guard user == nil else {
+            fillDetails()
+            return
+        }
         
         let request = factory.makeRegistrationRequestFactory()
         if let token = token {
@@ -27,9 +34,8 @@ class UserDetailPresenter {
                 if let value = response.value {
                     DispatchQueue.main.async {
                         if let user = value.user {
-                            self.view.setFullName(fullName: "\(user.name ?? "") \(user.lastname ?? "")")
-                            self.view.setEmail(email: user.email)
-                            self.view.setUserInfo(userInfo: user.bio ?? "")
+                            self.user = user
+                            self.fillDetails()
                         }
                     }
                 }
@@ -44,6 +50,13 @@ class UserDetailPresenter {
     
     func logoutButtonPressed() {
         token = nil
-        coordinator?.presenterDidFinish()
+        coordinator?.presenterDidFinish(with: nil)
+    }
+    
+    private func fillDetails() {
+        guard let user = user else { return }
+        view.setFullName(fullName: "\(user.name ?? "") \(user.lastname ?? "")")
+        view.setEmail(email: user.email)
+        view.setUserInfo(userInfo: user.bio ?? "")
     }
 }

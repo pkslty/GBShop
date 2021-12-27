@@ -28,11 +28,11 @@ class MainCoordinator: NSObject, Coordinator, UITabBarControllerDelegate {
         prepareTabBarController(withTabControllers: controllers)
     }
     
-    func childDidFinish(_ child: Coordinator) {
+    func childDidFinish(_ child: Coordinator, with data: Any?) {
         
     }
     
-    func presenterDidFinish() {
+    func presenterDidFinish(with data: Any?) {
     }
     
     private func prepareTabBarController(withTabControllers tabControllers: [UIViewController]) {
