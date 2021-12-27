@@ -7,11 +7,7 @@
 
 import UIKit
 
-protocol UserDetailEditing {
-    func editInfo()
-}
-
-class UserDetailCoordinator: Coordinator, UserDetailEditing {
+class UserDetailCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var parentCoordinator: Coordinator?
     var navigationController: UINavigationController
@@ -32,14 +28,10 @@ class UserDetailCoordinator: Coordinator, UserDetailEditing {
     }
     
     func presenterDidFinish() {
+        //navigationController.removeFromParent()
         parentCoordinator?.childDidFinish(self)
     }
     
     func childDidFinish(_ child: Coordinator) {
-    }
-    
-    func editInfo() {
-        let editInfoViewController = UserEditInfoViewController(role: .editInfo)
-        navigationController.pushViewController(editInfoViewController, animated: true)
     }
 }

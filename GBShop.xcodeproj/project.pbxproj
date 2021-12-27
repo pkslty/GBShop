@@ -42,7 +42,7 @@
 		3679534F2769EBF0009DE93B /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3679534E2769EBF0009DE93B /* Review.swift */; };
 		367953512769F10F009DE93B /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367953502769F10F009DE93B /* Reviews.swift */; };
 		3680357B277A2BB2007AD6C5 /* UserEditInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36803579277A2BB2007AD6C5 /* UserEditInfoViewController.swift */; };
-		3680357C277A2BB2007AD6C5 /* UserEditInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3680357A277A2BB2007AD6C5 /* UserEditInfoView.xib */; };
+		3680357C277A2BB2007AD6C5 /* UserEditInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3680357A277A2BB2007AD6C5 /* UserEditInfoViewController.xib */; };
 		3693A869275E0CD300FA275E /* GoodsListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693A868275E0CD300FA275E /* GoodsListItem.swift */; };
 		3693A86B275E0DEB00FA275E /* GoodByIdResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693A86A275E0DEB00FA275E /* GoodByIdResult.swift */; };
 		3693A86D275E0EED00FA275E /* GoodsRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693A86C275E0EED00FA275E /* GoodsRequestFactory.swift */; };
@@ -129,7 +129,7 @@
 		3679534E2769EBF0009DE93B /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		367953502769F10F009DE93B /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
 		36803579277A2BB2007AD6C5 /* UserEditInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEditInfoViewController.swift; sourceTree = "<group>"; };
-		3680357A277A2BB2007AD6C5 /* UserEditInfoView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserEditInfoView.xib; sourceTree = "<group>"; };
+		3680357A277A2BB2007AD6C5 /* UserEditInfoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = UserEditInfoViewController.xib; sourceTree = "<group>"; };
 		3693A868275E0CD300FA275E /* GoodsListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsListItem.swift; sourceTree = "<group>"; };
 		3693A86A275E0DEB00FA275E /* GoodByIdResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodByIdResult.swift; sourceTree = "<group>"; };
 		3693A86C275E0EED00FA275E /* GoodsRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsRequestFactory.swift; sourceTree = "<group>"; };
@@ -386,7 +386,7 @@
 				36A7D62027752BAF0037E5CB /* UserDetailViewController.swift */,
 				36A7D6262775C67D0037E5CB /* UserDetailPresenter.swift */,
 				36803579277A2BB2007AD6C5 /* UserEditInfoViewController.swift */,
-				3680357A277A2BB2007AD6C5 /* UserEditInfoView.xib */,
+				3680357A277A2BB2007AD6C5 /* UserEditInfoViewController.xib */,
 			);
 			path = UserDetailFlow;
 			sourceTree = "<group>";
@@ -515,7 +515,7 @@
 				36A7D61F27751DCF0037E5CB /* UserDetailView.xib in Resources */,
 				3678644C2751489600E0786F /* LaunchScreen.storyboard in Resources */,
 				367864492751489600E0786F /* Assets.xcassets in Resources */,
-				3680357C277A2BB2007AD6C5 /* UserEditInfoView.xib in Resources */,
+				3680357C277A2BB2007AD6C5 /* UserEditInfoViewController.xib in Resources */,
 				36A7D62C27787A020037E5CB /* AuthView.xib in Resources */,
 				367864472751488F00E0786F /* Main.storyboard in Resources */,
 			);
