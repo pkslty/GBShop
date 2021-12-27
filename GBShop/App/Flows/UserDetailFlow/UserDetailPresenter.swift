@@ -10,7 +10,7 @@ import UIKit
 class UserDetailPresenter {
     var view: UserDetailView
     var factory: RequestFactory
-    var coordinator: Coordinator?
+    var coordinator: (Coordinator & UserDetailEditing)?
     @UserDefault(key: "authorizationToken", defaultValue: nil) var token: String?
     
     init(factory: RequestFactory, view: UserDetailView) {
@@ -45,5 +45,9 @@ class UserDetailPresenter {
     func logoutButtonPressed() {
         token = nil
         coordinator?.presenterDidFinish()
+    }
+    
+    func editInfoButtonPressed() {
+        coordinator?.editInfo()
     }
 }

@@ -36,6 +36,7 @@ class UserDetailViewController: UIViewController {
         
         presenter?.load()
         logoutButton.addTarget(self, action: #selector(logoutButtonPressed), for: .touchDown)
+        editInfoButton.addTarget(self, action: #selector(editInfoButtonPressed), for: .touchDown)
 
         // Do any additional setup after loading the view.
     }
@@ -54,6 +55,10 @@ class UserDetailViewController: UIViewController {
     
     @objc private func logoutButtonPressed() {
         presenter?.logoutButtonPressed()
+    }
+    
+    @objc private func editInfoButtonPressed() {
+        presenter?.editInfoButtonPressed()
     }
 
 }
