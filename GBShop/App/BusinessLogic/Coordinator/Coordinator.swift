@@ -14,6 +14,6 @@ protocol Coordinator: AnyObject {
     var type: CoordinatorType { get }
     
     func start()
-    func childDidFinish(_ child: Coordinator)
-    func presenterDidFinish()
+    func childDidFinish(_ child: Coordinator, with data: Any?)
+    func presenterDidFinish(with data: Any?)
 }

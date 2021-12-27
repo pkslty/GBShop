@@ -27,11 +27,11 @@ class AuthCoordinator: Coordinator {
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func childDidFinish(_ child: Coordinator) {
+    func childDidFinish(_ child: Coordinator, with data: Any?) {
         
     }
     
-    func presenterDidFinish() {
-        parentCoordinator?.childDidFinish(self)
+    func presenterDidFinish(with data: Any?) {
+        parentCoordinator?.childDidFinish(self, with: data)
     }
 }

@@ -13,25 +13,28 @@ class UserDetailCoordinator: Coordinator {
     var navigationController: UINavigationController
     let type: CoordinatorType = .userDetailCoordinator
     
-    init(navigationController: UINavigationController) {
+    var user: UserResult?
+    
+    init(navigationController: UINavigationController, with user: UserResult? = nil) {
         self.navigationController = navigationController
+        self.user = user
     }
     
     func start() {
         let viewController = UserDetailViewController(nibName: "UserDetailView", bundle: nil)
         let factory = RequestFactory()
-        let presenter = UserDetailPresenter(factory: factory, view: viewController)
+        let presenter = UserDetailPresenter(factory: factory, view: viewController, with: user)
         presenter.coordinator = self
         viewController.presenter = presenter
         navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(viewController, animated: true)
     }
     
-    func presenterDidFinish() {
+    func presenterDidFinish(with data: Any?) {
         //navigationController.removeFromParent()
-        parentCoordinator?.childDidFinish(self)
+        parentCoordinator?.childDidFinish(self, with: nil)
     }
     
-    func childDidFinish(_ child: Coordinator) {
+    func childDidFinish(_ child: Coordinator, with data: Any?) {
     }
 }

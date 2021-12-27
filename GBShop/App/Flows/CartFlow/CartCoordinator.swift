@@ -24,10 +24,10 @@ class CartCoordinator: Coordinator {
         navigationController.pushViewController(cartViewController, animated: false)
     }
     
-    func childDidFinish(_ child: Coordinator) {
+    func childDidFinish(_ child: Coordinator, with data: Any?) {
         
     }
     
-    func presenterDidFinish() {
+    func presenterDidFinish(with data: Any?) {
     }
 }

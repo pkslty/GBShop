@@ -33,19 +33,23 @@ class AuthPresenter {
                     switch value.result {
                     case 1:
                         self.token = value.token
-                        self.coordinator?.presenterDidFinish()
+                        let user = value.user
+                        self.coordinator?.presenterDidFinish(with: user)
                     default:
-                        self.view.showAlert("Error", "Wrong username or password", nil)
+                        self.view.showAlert("Error", "Wrong username or password") {[weak self] in
+                            guard let self = self else { return }
+                            self.view.setActive()
+                        }
                     }
-                    self.view.setActive()
                 }
             } else {
                 DispatchQueue.main.async {
-                    self.view.showAlert("Server error", "Something goes wrong, try again later", nil)
-                    self.view.setActive()
+                    self.view.showAlert("Server error", "Something goes wrong, try again later") {[weak self] in
+                        guard let self = self else { return }
+                        self.view.setActive()
+                    }
                 }
             }
         }
-        coordinator?.presenterDidFinish()
     }
 }
