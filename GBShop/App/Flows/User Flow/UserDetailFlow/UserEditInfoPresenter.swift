@@ -1,27 +1,26 @@
 //
-//  UserDetailPresenter.swift
+//  UserEditInfoPresenter.swift
 //  GBShop
 //
-//  Created by Denis Kuzmin on 24.12.2021.
+//  Created by Denis Kuzmin on 28.12.2021.
 //
 
 import UIKit
 
-class UserDetailPresenter {
-    var view: UserDetailView
+class UserEditInfoPresenter {
+    var view: UserEditInfoView
     var factory: RequestFactory
     var coordinator: (Coordinator & UserDetailEditable)?
     @UserDefault(key: "authorizationToken", defaultValue: nil) var token: String?
     var user: UserResult?
     
-    init(factory: RequestFactory, view: UserDetailView, with user: UserResult? = nil) {
+    init(factory: RequestFactory, view: UserEditInfoView, with user: UserResult? = nil) {
         self.factory = factory
         self.view = view
         self.user = user
     }
     
     func load() {
-        view.setAvatarImage(image: UIImage(systemName: "person"))
         
         guard user == nil else {
             fillDetails()
@@ -42,25 +41,29 @@ class UserDetailPresenter {
             }
         }
         else {
-            view.setFullName(fullName: "FirstName SecondName")
-            view.setEmail(email: "email@emai.com")
+            view.showAlert("Error", "User data missed\nTry sign out and sign in", nil)
         }
+        
 
     }
     
-    func logoutButtonPressed() {
-        token = nil
-        coordinator?.presenterDidFinish(with: nil)
-    }
-    
-    func editInfoButtonPressed() {
-        coordinator?.editInfo(of: user)
-    }
     
     private func fillDetails() {
         guard let user = user else { return }
-        view.setFullName(fullName: "\(user.name ?? "") \(user.lastname ?? "")")
+        view.setUserName(userName: user.login)
+        view.setFirstName(firstName: user.name ?? "First Name")
+        view.setLastName(lastName: user.lastname ?? "Last Name")
         view.setEmail(email: user.email)
-        view.setUserInfo(userInfo: user.bio ?? "")
+        view.setBio(bio: user.bio ?? "Add something about yourself")
+        if let gender = user.gender {
+            switch gender {
+            case "m":
+                view.setGender(gender: .male)
+            case "f":
+                view.setGender(gender: .female)
+            default:
+                view.setGender(gender: .other)
+            }
+        }
     }
 }

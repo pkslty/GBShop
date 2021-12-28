@@ -36,8 +36,7 @@ class UserDetailViewController: UIViewController {
         
         presenter?.load()
         logoutButton.addTarget(self, action: #selector(logoutButtonPressed), for: .touchDown)
-
-        // Do any additional setup after loading the view.
+        editInfoButton.addTarget(self, action: #selector(editInfoButtonPressed), for: .touchDown)
     }
 
     private func setupConstraints() {
@@ -56,6 +55,9 @@ class UserDetailViewController: UIViewController {
         presenter?.logoutButtonPressed()
     }
 
+    @objc private func editInfoButtonPressed() {
+        presenter?.editInfoButtonPressed()
+    }
 }
 
 extension UserDetailViewController: UserDetailView {

@@ -7,22 +7,27 @@
 
 import UIKit
 
+protocol UserDetailEditable {
+    func editInfo(of user: UserResult?)
+}
+
 class UserDetailCoordinator: Coordinator {
     var childCoordinators = [Coordinator]()
     var parentCoordinator: Coordinator?
     var navigationController: UINavigationController
     let type: CoordinatorType = .userDetailCoordinator
+    var factory: RequestFactory
     
     var user: UserResult?
     
     init(navigationController: UINavigationController, with user: UserResult? = nil) {
         self.navigationController = navigationController
         self.user = user
+        self.factory = RequestFactory()
     }
     
     func start() {
         let viewController = UserDetailViewController(nibName: "UserDetailView", bundle: nil)
-        let factory = RequestFactory()
         let presenter = UserDetailPresenter(factory: factory, view: viewController, with: user)
         presenter.coordinator = self
         viewController.presenter = presenter
@@ -38,3 +43,14 @@ class UserDetailCoordinator: Coordinator {
     func childDidFinish(_ child: Coordinator, with data: Any?) {
     }
 }
+
+extension UserDetailCoordinator: UserDetailEditable {
+    func editInfo(of user: UserResult?) {
+        self.user = user
+        let editInfoViewController = UserEditInfoViewController(role: .editInfo)
+        let presenter = UserEditInfoPresenter(factory: factory, view: editInfoViewController, with: user)
+        editInfoViewController.presenter = presenter
+        navigationController.pushViewController(editInfoViewController, animated: true)
+    }
+}
+
