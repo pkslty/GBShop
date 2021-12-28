@@ -355,6 +355,26 @@
 			path = Environments;
 			sourceTree = "<group>";
 		};
+		36803583277A961B007AD6C5 /* ViewIDetail */ = {
+			isa = PBXGroup;
+			children = (
+				36A7D61E27751DCF0037E5CB /* UserDetailView.xib */,
+				36A7D62027752BAF0037E5CB /* UserDetailViewController.swift */,
+				36A7D6262775C67D0037E5CB /* UserDetailPresenter.swift */,
+			);
+			path = ViewIDetail;
+			sourceTree = "<group>";
+		};
+		36803584277A9650007AD6C5 /* ChangeDetail */ = {
+			isa = PBXGroup;
+			children = (
+				36803579277A2BB2007AD6C5 /* UserEditInfoViewController.swift */,
+				3680357D277A6F72007AD6C5 /* UserEditInfoView.xib */,
+				3680357F277A71B4007AD6C5 /* UserEditInfoPresenter.swift */,
+			);
+			path = ChangeDetail;
+			sourceTree = "<group>";
+		};
 		36A7D5FD277372090037E5CB /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -379,12 +399,8 @@
 			isa = PBXGroup;
 			children = (
 				36A7D61B277514870037E5CB /* UserDetailCoordinator.swift */,
-				36A7D61E27751DCF0037E5CB /* UserDetailView.xib */,
-				36A7D62027752BAF0037E5CB /* UserDetailViewController.swift */,
-				36A7D6262775C67D0037E5CB /* UserDetailPresenter.swift */,
-				36803579277A2BB2007AD6C5 /* UserEditInfoViewController.swift */,
-				3680357D277A6F72007AD6C5 /* UserEditInfoView.xib */,
-				3680357F277A71B4007AD6C5 /* UserEditInfoPresenter.swift */,
+				36803583277A961B007AD6C5 /* ViewIDetail */,
+				36803584277A9650007AD6C5 /* ChangeDetail */,
 			);
 			path = UserDetailFlow;
 			sourceTree = "<group>";

@@ -8,6 +8,14 @@
 import UIKit
 
 protocol UserEditInfoView {
+    var userName: String { get }
+    var firstName: String { get }
+    var lastName: String { get }
+    var email: String { get }
+    var gender: String { get }
+    var password: String { get }
+    var bio: String { get }
+    
     func setTitle(title: String)
     func setUserName(userName: String)
     func setFirstName(firstName: String)
@@ -60,6 +68,7 @@ class UserEditInfoViewController: UIViewController {
         super.viewDidLoad()
         setupConstraints()
         presenter?.load()
+        saveButton.addTarget(self, action: #selector(saveChanges), for: .touchDown)
     }
 
     private func setupConstraints() {
@@ -73,9 +82,27 @@ class UserEditInfoViewController: UIViewController {
         
         stackView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
     }
+    
+    @objc private func saveChanges() {
+        presenter?.saveChanges()
+    }
 }
 
 extension UserEditInfoViewController: UserEditInfoView {
+    var userName: String { usernameField.text ?? "" }
+    var firstName: String { firstNameField.text ?? "" }
+    var lastName: String { lastNameField.text ?? "" }
+    var email: String { emailField.text ?? "" }
+    var gender: String {
+        switch genderSegment.selectedSegmentIndex {
+        case 0: return "m"
+        case 2: return "f"
+        default: return "other"
+        }
+    }
+    var password: String { passwordField.text ?? "" }
+    var bio: String { bioText.text ?? "" }
+    
     func setTitle(title: String) {
         titleLabel.text = title
     }

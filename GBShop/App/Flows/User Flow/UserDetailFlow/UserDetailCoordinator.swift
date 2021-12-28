@@ -9,6 +9,7 @@ import UIKit
 
 protocol UserDetailEditable {
     func editInfo(of user: UserResult?)
+    func didSaveUserInfo()
 }
 
 class UserDetailCoordinator: Coordinator {
@@ -49,8 +50,13 @@ extension UserDetailCoordinator: UserDetailEditable {
         self.user = user
         let editInfoViewController = UserEditInfoViewController(role: .editInfo)
         let presenter = UserEditInfoPresenter(factory: factory, view: editInfoViewController, with: user)
+        presenter.coordinator = self
         editInfoViewController.presenter = presenter
         navigationController.pushViewController(editInfoViewController, animated: true)
+    }
+    
+    func didSaveUserInfo() {
+        navigationController.popViewController(animated: true)
     }
 }
 

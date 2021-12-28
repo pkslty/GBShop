@@ -47,9 +47,35 @@ class UserEditInfoPresenter {
 
     }
     
+    func saveChanges() {
+        guard let user = user else { return }
+
+        let changedUser = User(id: user.id,
+                               login: view.userName,
+                               name: view.firstName,
+                               lastname: view.lastName,
+                               password: view.password,
+                               email: view.email,
+                               gender: view.gender,
+                               creditCard: "",
+                               bio: view.bio)
+        let request = factory.makeRegistrationRequestFactory()
+        request.changeUserData(user: changedUser) { response in
+            if let value = response.value {
+                DispatchQueue.main.async {
+                    if value.result == 1 {
+                        self.coordinator?.didSaveUserInfo()
+                    } else {
+                        self.view.showAlert("Error", "Error saving user info", nil)
+                    }
+                }
+            }
+        }
+    }
     
     private func fillDetails() {
         guard let user = user else { return }
+        view.setTitle(title: "Edit User Info")
         view.setUserName(userName: user.login)
         view.setFirstName(firstName: user.name ?? "First Name")
         view.setLastName(lastName: user.lastname ?? "Last Name")
