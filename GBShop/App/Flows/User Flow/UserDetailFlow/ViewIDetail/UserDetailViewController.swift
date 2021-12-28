@@ -33,10 +33,13 @@ class UserDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConstraints()
-        
-        presenter?.load()
+
         logoutButton.addTarget(self, action: #selector(logoutButtonPressed), for: .touchDown)
         editInfoButton.addTarget(self, action: #selector(editInfoButtonPressed), for: .touchDown)
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        presenter?.load()
     }
 
     private func setupConstraints() {

@@ -64,7 +64,8 @@ class UserEditInfoPresenter {
             if let value = response.value {
                 DispatchQueue.main.async {
                     if value.result == 1 {
-                        self.coordinator?.didSaveUserInfo()
+                        //Temporary
+                        self.coordinator?.didSaveUserInfo(with: changedUser)
                     } else {
                         self.view.showAlert("Error", "Error saving user info", nil)
                     }
