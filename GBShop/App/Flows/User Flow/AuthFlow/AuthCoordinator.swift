@@ -26,6 +26,11 @@ class AuthCoordinator: Coordinator {
     }
     
     func start() {
+        navigationController.children.forEach {
+            if $0 is AuthViewController {
+                $0.removeFromParent()
+            }
+        }
         let viewController = AuthViewController(nibName: "AuthView", bundle: nil)
         let factory = RequestFactory()
         authPresenter = AuthPresenter(factory: factory, view: viewController)

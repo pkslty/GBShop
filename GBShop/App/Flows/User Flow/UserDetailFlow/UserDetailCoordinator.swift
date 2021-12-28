@@ -29,11 +29,15 @@ class UserDetailCoordinator: Coordinator {
     }
     
     func start() {
+        navigationController.children.forEach {
+            if $0 is UserDetailViewController {
+                $0.removeFromParent()
+            }
+        }
         let viewController = UserDetailViewController(nibName: "UserDetailView", bundle: nil)
         userDetailPresenter = UserDetailPresenter(factory: factory, view: viewController, with: user)
         userDetailPresenter?.coordinator = self
         viewController.presenter = userDetailPresenter
-        navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(viewController, animated: true)
     }
     
@@ -53,7 +57,9 @@ extension UserDetailCoordinator: UserDetailEditable {
         let userEditInfoPresenter = UserEditInfoPresenter(factory: factory, view: editInfoViewController, with: user)
         userEditInfoPresenter.coordinator = self
         editInfoViewController.presenter = userEditInfoPresenter
+        
         navigationController.pushViewController(editInfoViewController, animated: true)
+        
     }
     
     func didSaveUserInfo(with user: User) {
@@ -66,6 +72,7 @@ extension UserDetailCoordinator: UserDetailEditable {
                                creditCard: user.creditCard,
                                bio: user.bio)
         userDetailPresenter?.user = self.user
+        navigationController.navigationBar.isHidden = true
         navigationController.popViewController(animated: true)
         
     }

@@ -67,10 +67,31 @@ class UserEditInfoViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupConstraints()
-        presenter?.load()
+        setupView()
         saveButton.addTarget(self, action: #selector(saveChanges), for: .touchDown)
+        
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        presenter?.load()
     }
 
+    private func setupView() {
+        navigationController?.navigationBar.isHidden = false
+        passwordField.delegate = self
+        passwordRepeatField.delegate = self
+        switch role {
+        case .register:
+            titleLabel.text = "Register New User"
+            saveButton.titleLabel?.text = "Register"
+            //navigationItem.title = "Register New User"
+        case .editInfo:
+            titleLabel.text = "Edit User Info"
+            saveButton.titleLabel?.text = "Save changes"
+            //navigationItem.title = "Edit User Info"
+        }
+    }
+    
     private func setupConstraints() {
         scrollView.addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -148,3 +169,13 @@ extension UserEditInfoViewController: UserEditInfoView {
     }
 }
 
+extension UserEditInfoViewController: UITextFieldDelegate {
+    
+    func textFieldDidChangeSelection(_ textField: UITextField) {
+        if passwordRepeatField.text != passwordField.text {
+            passwordRepeatField.textColor = .red
+        } else {
+            passwordRepeatField.textColor = .black
+        }
+    }
+}
