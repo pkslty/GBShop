@@ -37,6 +37,8 @@ class AuthViewController: UIViewController {
         loginButton.addTarget(self, action: #selector(loginButtonPressed), for: .touchDown)
         addEyeButton()
         
+        signUpButton.addTarget(self, action: #selector(signUpButtonPressed), for: .touchDown)
+        
         let keyboardHideGesture = UITapGestureRecognizer(target: self, action: #selector(hideKeyboard))
         scrollView.addGestureRecognizer(keyboardHideGesture)
     }
@@ -83,6 +85,10 @@ class AuthViewController: UIViewController {
     
     @objc private func loginButtonPressed() {
         presenter?.loginButtonPressed()
+    }
+    
+    @objc private func signUpButtonPressed() {
+        presenter?.signUpButtonPressed()
     }
     
     @objc private func showHidePassword() {

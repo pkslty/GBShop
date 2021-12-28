@@ -7,7 +7,12 @@
 
 import UIKit
 
-class UserEditInfoPresenter {
+protocol UserEditInfoPresentable {
+    func load()
+    func saveChanges()
+}
+
+class UserEditInfoPresenter: UserEditInfoPresentable {
     var view: UserEditInfoView
     var factory: RequestFactory
     var coordinator: (Coordinator & UserDetailEditable)?

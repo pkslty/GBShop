@@ -95,7 +95,7 @@
                         <constraint firstItem="Zb0-qT-YU5" firstAttribute="leading" secondItem="Lmn-DC-yzS" secondAttribute="leading" constant="25" id="pEI-0X-tH7"/>
                     </constraints>
                 </view>
-                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="E-mail" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vHl-U6-hPC">
+                <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="E-mail" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="vHl-U6-hPC">
                     <rect key="frame" x="20" y="684" width="374" height="75"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="75" id="juS-DS-BAs"/>

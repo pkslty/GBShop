@@ -53,7 +53,7 @@ class UserEditInfoViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var stackView: UIStackView!
     let role: ViewRole
-    var presenter: UserEditInfoPresenter?
+    var presenter: UserEditInfoPresentable?
     
     init(role: ViewRole) {
         self.role = role

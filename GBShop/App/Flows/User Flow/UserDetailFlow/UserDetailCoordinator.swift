@@ -19,7 +19,6 @@ class UserDetailCoordinator: Coordinator {
     let type: CoordinatorType = .userDetailCoordinator
     var factory: RequestFactory
     var userDetailPresenter: UserDetailPresenter?
-    var userEditInfoPresenter: UserEditInfoPresenter?
     
     var user: UserResult?
     
@@ -51,8 +50,8 @@ extension UserDetailCoordinator: UserDetailEditable {
     func editInfo(of user: UserResult?) {
         self.user = user
         let editInfoViewController = UserEditInfoViewController(role: .editInfo)
-        userEditInfoPresenter = UserEditInfoPresenter(factory: factory, view: editInfoViewController, with: user)
-        userEditInfoPresenter?.coordinator = self
+        let userEditInfoPresenter = UserEditInfoPresenter(factory: factory, view: editInfoViewController, with: user)
+        userEditInfoPresenter.coordinator = self
         editInfoViewController.presenter = userEditInfoPresenter
         navigationController.pushViewController(editInfoViewController, animated: true)
     }

@@ -44,6 +44,7 @@
 		3680357E277A6F72007AD6C5 /* UserEditInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 3680357D277A6F72007AD6C5 /* UserEditInfoView.xib */; };
 		36803580277A71B4007AD6C5 /* UserEditInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3680357F277A71B4007AD6C5 /* UserEditInfoPresenter.swift */; };
 		36803582277A8444007AD6C5 /* ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36803581277A8444007AD6C5 /* ShowAlert.swift */; };
+		36803588277B3243007AD6C5 /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36803587277B3242007AD6C5 /* SignUpPresenter.swift */; };
 		3693A869275E0CD300FA275E /* GoodsListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693A868275E0CD300FA275E /* GoodsListItem.swift */; };
 		3693A86B275E0DEB00FA275E /* GoodByIdResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693A86A275E0DEB00FA275E /* GoodByIdResult.swift */; };
 		3693A86D275E0EED00FA275E /* GoodsRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693A86C275E0EED00FA275E /* GoodsRequestFactory.swift */; };
@@ -131,6 +132,7 @@
 		3680357D277A6F72007AD6C5 /* UserEditInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserEditInfoView.xib; sourceTree = "<group>"; };
 		3680357F277A71B4007AD6C5 /* UserEditInfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEditInfoPresenter.swift; sourceTree = "<group>"; };
 		36803581277A8444007AD6C5 /* ShowAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAlert.swift; sourceTree = "<group>"; };
+		36803587277B3242007AD6C5 /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
 		3693A868275E0CD300FA275E /* GoodsListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsListItem.swift; sourceTree = "<group>"; };
 		3693A86A275E0DEB00FA275E /* GoodByIdResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodByIdResult.swift; sourceTree = "<group>"; };
 		3693A86C275E0EED00FA275E /* GoodsRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsRequestFactory.swift; sourceTree = "<group>"; };
@@ -321,7 +323,6 @@
 				36A7D632277929BF0037E5CB /* Main */,
 				36A7D6312779294F0037E5CB /* User Flow */,
 				36A7D63027791B730037E5CB /* CatalogFlow */,
-				36A7D62A277879430037E5CB /* AuthFlow */,
 				36A7D62F27791B540037E5CB /* CartFlow */,
 			);
 			path = Flows;
@@ -375,6 +376,24 @@
 			path = ChangeDetail;
 			sourceTree = "<group>";
 		};
+		36803585277B1F56007AD6C5 /* Auth */ = {
+			isa = PBXGroup;
+			children = (
+				36A7D60927746F2E0037E5CB /* AuthViewController.swift */,
+				36A7D62B27787A020037E5CB /* AuthView.xib */,
+				36A7D62D27789CAD0037E5CB /* AuthPresenter.swift */,
+			);
+			path = Auth;
+			sourceTree = "<group>";
+		};
+		36803586277B1F6F007AD6C5 /* SignUp */ = {
+			isa = PBXGroup;
+			children = (
+				36803587277B3242007AD6C5 /* SignUpPresenter.swift */,
+			);
+			path = SignUp;
+			sourceTree = "<group>";
+		};
 		36A7D5FD277372090037E5CB /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -409,9 +428,8 @@
 			isa = PBXGroup;
 			children = (
 				36A7D6152774B1A50037E5CB /* AuthCoordinator.swift */,
-				36A7D60927746F2E0037E5CB /* AuthViewController.swift */,
-				36A7D62B27787A020037E5CB /* AuthView.xib */,
-				36A7D62D27789CAD0037E5CB /* AuthPresenter.swift */,
+				36803585277B1F56007AD6C5 /* Auth */,
+				36803586277B1F6F007AD6C5 /* SignUp */,
 			);
 			path = AuthFlow;
 			sourceTree = "<group>";
@@ -437,6 +455,7 @@
 			children = (
 				36A7D60D2774A6940037E5CB /* UserCoordinator.swift */,
 				36A7D61D27751D4B0037E5CB /* UserDetailFlow */,
+				36A7D62A277879430037E5CB /* AuthFlow */,
 			);
 			path = "User Flow";
 			sourceTree = "<group>";
@@ -622,6 +641,7 @@
 				36A7D6292777D7DF0037E5CB /* CoordinatorType.swift in Sources */,
 				3693A869275E0CD300FA275E /* GoodsListItem.swift in Sources */,
 				363CFB45276BA4AA00B9CBC8 /* Shopping.swift in Sources */,
+				36803588277B3243007AD6C5 /* SignUpPresenter.swift in Sources */,
 				36A7D61A277502790037E5CB /* TabBarPage.swift in Sources */,
 				361776362757AC7200509772 /* Registration.swift in Sources */,
 				36A7D6162774B1A50037E5CB /* AuthCoordinator.swift in Sources */,

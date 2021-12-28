@@ -10,7 +10,7 @@ import UIKit
 class AuthPresenter {
     var view: AuthView
     var factory: RequestFactory
-    var coordinator: Coordinator?
+    var coordinator: (Coordinator & SignUppable)?
     @UserDefault(key: "authorizationToken", defaultValue: nil) var token: String?
     
     init(factory: RequestFactory, view: AuthView) {
@@ -51,5 +51,9 @@ class AuthPresenter {
                 }
             }
         }
+    }
+    
+    func signUpButtonPressed() {
+        coordinator?.signUp()
     }
 }
