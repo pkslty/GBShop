@@ -36,7 +36,6 @@ class AuthCoordinator: Coordinator {
         authPresenter = AuthPresenter(factory: factory, view: viewController)
         authPresenter?.coordinator = self
         viewController.presenter = authPresenter
-        navigationController.navigationBar.isHidden = true
         navigationController.pushViewController(viewController, animated: true)
     }
     

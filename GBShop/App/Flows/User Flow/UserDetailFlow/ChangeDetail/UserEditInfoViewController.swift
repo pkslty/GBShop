@@ -74,6 +74,7 @@ class UserEditInfoViewController: UIViewController {
     
     override func viewWillAppear(_ animated: Bool) {
         presenter?.load()
+        navigationController?.navigationBar.isHidden = false
     }
 
     private func setupView() {

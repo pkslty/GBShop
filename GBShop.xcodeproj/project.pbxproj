@@ -45,6 +45,8 @@
 		36803580277A71B4007AD6C5 /* UserEditInfoPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3680357F277A71B4007AD6C5 /* UserEditInfoPresenter.swift */; };
 		36803582277A8444007AD6C5 /* ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36803581277A8444007AD6C5 /* ShowAlert.swift */; };
 		36803588277B3243007AD6C5 /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36803587277B3242007AD6C5 /* SignUpPresenter.swift */; };
+		3680358B277C5092007AD6C5 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3680358A277C5092007AD6C5 /* ImageLoader.swift */; };
+		3680358D277C5229007AD6C5 /* NetworkService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3680358C277C5228007AD6C5 /* NetworkService.swift */; };
 		3693A869275E0CD300FA275E /* GoodsListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693A868275E0CD300FA275E /* GoodsListItem.swift */; };
 		3693A86B275E0DEB00FA275E /* GoodByIdResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693A86A275E0DEB00FA275E /* GoodByIdResult.swift */; };
 		3693A86D275E0EED00FA275E /* GoodsRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693A86C275E0EED00FA275E /* GoodsRequestFactory.swift */; };
@@ -133,6 +135,8 @@
 		3680357F277A71B4007AD6C5 /* UserEditInfoPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserEditInfoPresenter.swift; sourceTree = "<group>"; };
 		36803581277A8444007AD6C5 /* ShowAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAlert.swift; sourceTree = "<group>"; };
 		36803587277B3242007AD6C5 /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
+		3680358A277C5092007AD6C5 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
+		3680358C277C5228007AD6C5 /* NetworkService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetworkService.swift; sourceTree = "<group>"; };
 		3693A868275E0CD300FA275E /* GoodsListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsListItem.swift; sourceTree = "<group>"; };
 		3693A86A275E0DEB00FA275E /* GoodByIdResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodByIdResult.swift; sourceTree = "<group>"; };
 		3693A86C275E0EED00FA275E /* GoodsRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsRequestFactory.swift; sourceTree = "<group>"; };
@@ -331,6 +335,7 @@
 		36786474275249E900E0786F /* Core */ = {
 			isa = PBXGroup;
 			children = (
+				36803589277C5047007AD6C5 /* Services */,
 				36A7D6242775A97F0037E5CB /* RoundShadowView.swift */,
 				36A7D5FD277372090037E5CB /* Helpers */,
 				361776192757771700509772 /* Network */,
@@ -392,6 +397,15 @@
 				36803587277B3242007AD6C5 /* SignUpPresenter.swift */,
 			);
 			path = SignUp;
+			sourceTree = "<group>";
+		};
+		36803589277C5047007AD6C5 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				3680358A277C5092007AD6C5 /* ImageLoader.swift */,
+				3680358C277C5228007AD6C5 /* NetworkService.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		36A7D5FD277372090037E5CB /* Helpers */ = {
@@ -631,6 +645,7 @@
 				36803582277A8444007AD6C5 /* ShowAlert.swift in Sources */,
 				3617761F275777FE00509772 /* DataRequest.swift in Sources */,
 				36177632275781DC00509772 /* RegisterResult.swift in Sources */,
+				3680358D277C5229007AD6C5 /* NetworkService.swift in Sources */,
 				36A7D60A27746F2E0037E5CB /* AuthViewController.swift in Sources */,
 				36A7D6122774B1110037E5CB /* CartViewController.swift in Sources */,
 				367953512769F10F009DE93B /* Reviews.swift in Sources */,
@@ -651,6 +666,7 @@
 				3679534F2769EBF0009DE93B /* Review.swift in Sources */,
 				3617763C2759454700509772 /* User.swift in Sources */,
 				3679534D2769EB03009DE93B /* GetReviewsResult.swift in Sources */,
+				3680358B277C5092007AD6C5 /* ImageLoader.swift in Sources */,
 				36177634275792FE00509772 /* RegistrationRequestFactory.swift in Sources */,
 				3617761B2757774E00509772 /* AbstractErrorParser.swift in Sources */,
 				36A7D60E2774A6940037E5CB /* UserCoordinator.swift in Sources */,

@@ -42,7 +42,6 @@ class UserDetailCoordinator: Coordinator {
     }
     
     func presenterDidFinish(with data: Any?) {
-        //navigationController.removeFromParent()
         parentCoordinator?.childDidFinish(self, with: nil)
     }
     
@@ -61,7 +60,7 @@ extension UserDetailCoordinator: UserDetailEditable {
         navigationController.pushViewController(editInfoViewController, animated: true)
         
     }
-    
+    //MARK - Need to refactor
     func didSaveUserInfo(with user: User) {
         self.user = UserResult(id: user.id,
                                login: user.login,
@@ -72,7 +71,6 @@ extension UserDetailCoordinator: UserDetailEditable {
                                creditCard: user.creditCard,
                                bio: user.bio)
         userDetailPresenter?.user = self.user
-        navigationController.navigationBar.isHidden = true
         navigationController.popViewController(animated: true)
         
     }

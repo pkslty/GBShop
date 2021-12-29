@@ -57,8 +57,16 @@ class UserDetailPresenter {
         coordinator?.editInfo(of: user)
     }
     
+    private func setAvatarImage() {
+        ImageLoader.getImage(from: "http://dnk.net.ru/gb_shop/photos/users/en_logo.png") {[weak self] in
+            guard let self = self else { return }
+            self.view.setAvatarImage(image: $0)
+        }
+    }
+    
     private func fillDetails() {
         guard let user = user else { return }
+        setAvatarImage()
         view.setFullName(fullName: "\(user.name ?? "") \(user.lastname ?? "")")
         view.setEmail(email: user.email)
         view.setUserInfo(userInfo: user.bio ?? "")
