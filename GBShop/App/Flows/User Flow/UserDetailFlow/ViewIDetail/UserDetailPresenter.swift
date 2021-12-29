@@ -12,9 +12,9 @@ class UserDetailPresenter {
     var factory: RequestFactory
     var coordinator: (Coordinator & UserDetailEditable)?
     @UserDefault(key: "authorizationToken", defaultValue: nil) var token: String?
-    var user: UserResult?
+    var user: User?
     
-    init(factory: RequestFactory, view: UserDetailView, with user: UserResult? = nil) {
+    init(factory: RequestFactory, view: UserDetailView, with user: User? = nil) {
         self.factory = factory
         self.view = view
         self.user = user
@@ -67,7 +67,7 @@ class UserDetailPresenter {
     private func fillDetails() {
         guard let user = user else { return }
         setAvatarImage()
-        view.setFullName(fullName: "\(user.name ?? "") \(user.lastname ?? "")")
+        view.setFullName(fullName: "\(user.name ?? "") \(user.lastName ?? "")")
         view.setEmail(email: user.email)
         view.setUserInfo(userInfo: user.bio ?? "")
     }

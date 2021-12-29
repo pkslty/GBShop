@@ -34,8 +34,6 @@ class AuthTests: XCTestCase {
         request.login(userName: "Somebody", password: "mypassword") { response in
             switch response.result {
             case .success(let result):
-                token = result.token
-                print("token is \(token ?? "nil")")
                 XCTAssertEqual(result.result, 1)
                 XCTAssertNotNil(result.user)
                 XCTAssertNil(result.errorMessage)
@@ -49,7 +47,7 @@ class AuthTests: XCTestCase {
     
     func testLogoutSuccess() {
         
-        let successValue = CommonResult(result: 1,
+        let successValue = DefaultResult(result: 1,
                                         userMessage: "Succesfully logged out!",
                                         errorMessage: nil)
         let expectation = expectation(description: "User log out")
@@ -75,7 +73,7 @@ class AuthTests: XCTestCase {
     
     func testLogoutNoSuchUser() {
         
-        let successValue = CommonResult(result: 0,
+        let successValue = DefaultResult(result: 0,
                                         userMessage: nil,
                                         errorMessage: "No such user")
         let expectation = expectation(description: "User log out")
@@ -96,7 +94,7 @@ class AuthTests: XCTestCase {
     
     func testLogoutUserWasNotLoggedIn() {
         
-        let successValue = CommonResult(result: 0,
+        let successValue = DefaultResult(result: 0,
                                         userMessage: nil,
                                         errorMessage: "User was not logged in")
         let expectation = expectation(description: "User was not logged in")

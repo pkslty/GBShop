@@ -32,12 +32,12 @@ extension Reviews: ReviewsRequestFactory {
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func addReview(productId: Int, userId: Int, text: String, rating: Int, completionHandler: @escaping (AFDataResponse<CommonResult>) -> Void) {
+    func addReview(productId: Int, userId: Int, text: String, rating: Int, completionHandler: @escaping (AFDataResponse<DefaultResult>) -> Void) {
         let requestModel = ReviewData(baseUrl: baseUrl, path: "addReview", productId: productId, userId: userId, text: text, rating: rating)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func removeReview(reviewId: Int, completionHandler: @escaping (AFDataResponse<CommonResult>) -> Void) {
+    func removeReview(reviewId: Int, completionHandler: @escaping (AFDataResponse<DefaultResult>) -> Void) {
         let requestModel = ReviewData(baseUrl: baseUrl, path: "removeReview", reviewId: reviewId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }

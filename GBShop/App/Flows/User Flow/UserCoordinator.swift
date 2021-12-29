@@ -47,7 +47,7 @@ class UserCoordinator: Coordinator {
             newChild.start()
         case .authCoordinator:
             if token != nil {
-                newChild = UserDetailCoordinator(navigationController: navigationController, with: data as? UserResult)
+                newChild = UserDetailCoordinator(navigationController: navigationController, with: data as? User)
                 childCoordinators.append(newChild)
                 newChild.parentCoordinator = self
                 newChild.start()

@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct CommonResult: Codable, Equatable {
+struct DefaultResult: Codable, Equatable {
     let result: Int
     let userMessage: String?
     let errorMessage: String?

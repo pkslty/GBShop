@@ -17,9 +17,9 @@ class UserEditInfoPresenter: UserEditInfoPresentable {
     var factory: RequestFactory
     var coordinator: (Coordinator & UserDetailEditable)?
     @UserDefault(key: "authorizationToken", defaultValue: nil) var token: String?
-    var user: UserResult?
+    var user: User?
     
-    init(factory: RequestFactory, view: UserEditInfoView, with user: UserResult? = nil) {
+    init(factory: RequestFactory, view: UserEditInfoView, with user: User? = nil) {
         self.factory = factory
         self.view = view
         self.user = user
@@ -56,14 +56,18 @@ class UserEditInfoPresenter: UserEditInfoPresentable {
         guard let user = user else { return }
 
         let changedUser = User(id: user.id,
-                               login: view.userName,
+                               username: view.userName,
                                name: view.firstName,
-                               lastname: view.lastName,
-                               password: view.password,
+                               middleName: "",
+                               lastName: view.lastName,
+                               password: "",
                                email: view.email,
                                gender: view.gender,
-                               creditCard: "",
-                               bio: view.bio)
+                               creditCardId: "",
+                               bio: view.bio,
+                               token: "",
+                               photoUrlString: "")
+
         let request = factory.makeRegistrationRequestFactory()
         request.changeUserData(user: changedUser) { response in
             if let value = response.value {
@@ -82,9 +86,9 @@ class UserEditInfoPresenter: UserEditInfoPresentable {
     private func fillDetails() {
         guard let user = user else { return }
         view.setTitle(title: "Edit User Info")
-        view.setUserName(userName: user.login)
+        view.setUserName(userName: user.username)
         view.setFirstName(firstName: user.name ?? "First Name")
-        view.setLastName(lastName: user.lastname ?? "Last Name")
+        view.setLastName(lastName: user.lastName ?? "Last Name")
         view.setEmail(email: user.email)
         view.setBio(bio: user.bio ?? "Add something about yourself")
         if let gender = user.gender {

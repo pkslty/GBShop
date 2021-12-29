@@ -33,7 +33,7 @@
 		367864612751489700E0786F /* GBShopUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367864602751489700E0786F /* GBShopUITests.swift */; };
 		367864632751489700E0786F /* GBShopUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367864622751489700E0786F /* GBShopUITestsLaunchTests.swift */; };
 		367864792755522C00E0786F /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 367864782755522C00E0786F /* Alamofire */; };
-		3679534427634040009DE93B /* CommonResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367953432763403F009DE93B /* CommonResult.swift */; };
+		3679534427634040009DE93B /* DefaultResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367953432763403F009DE93B /* DefaultResult.swift */; };
 		367953472768D810009DE93B /* GoodsListResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367953462768D80F009DE93B /* GoodsListResult.swift */; };
 		367953492769E796009DE93B /* ReviewsRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 367953482769E795009DE93B /* ReviewsRequestFactory.swift */; };
 		3679534B2769E7E9009DE93B /* ReviewsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3679534A2769E7E8009DE93B /* ReviewsTests.swift */; };
@@ -122,7 +122,7 @@
 		3678645C2751489700E0786F /* GBShopUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GBShopUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		367864602751489700E0786F /* GBShopUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GBShopUITests.swift; sourceTree = "<group>"; };
 		367864622751489700E0786F /* GBShopUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GBShopUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		367953432763403F009DE93B /* CommonResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonResult.swift; sourceTree = "<group>"; };
+		367953432763403F009DE93B /* DefaultResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultResult.swift; sourceTree = "<group>"; };
 		3679534527637D63009DE93B /* TestPlan.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = TestPlan.xctestplan; sourceTree = "<group>"; };
 		367953462768D80F009DE93B /* GoodsListResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoodsListResult.swift; sourceTree = "<group>"; };
 		367953482769E795009DE93B /* ReviewsRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsRequestFactory.swift; sourceTree = "<group>"; };
@@ -306,7 +306,7 @@
 				3617763B2759454700509772 /* User.swift */,
 				3693A868275E0CD300FA275E /* GoodsListItem.swift */,
 				3693A86A275E0DEB00FA275E /* GoodByIdResult.swift */,
-				367953432763403F009DE93B /* CommonResult.swift */,
+				367953432763403F009DE93B /* DefaultResult.swift */,
 				367953462768D80F009DE93B /* GoodsListResult.swift */,
 				3679534C2769EB03009DE93B /* GetReviewsResult.swift */,
 				3679534E2769EBF0009DE93B /* Review.swift */,
@@ -672,7 +672,7 @@
 				36A7D60E2774A6940037E5CB /* UserCoordinator.swift in Sources */,
 				36803580277A71B4007AD6C5 /* UserEditInfoPresenter.swift in Sources */,
 				3617762C27577A4700509772 /* Auth.swift in Sources */,
-				3679534427634040009DE93B /* CommonResult.swift in Sources */,
+				3679534427634040009DE93B /* DefaultResult.swift in Sources */,
 				36A7D6042773CBDF0037E5CB /* Storyboarded.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

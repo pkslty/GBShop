@@ -9,7 +9,6 @@ import Foundation
 
 struct LoginResult: Codable {
     let result: Int
-    let user: UserResult?
-    let token: String?
+    let user: User?
     let errorMessage: String?
 }

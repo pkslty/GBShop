@@ -32,7 +32,7 @@ class AuthPresenter {
                 DispatchQueue.main.async {
                     switch value.result {
                     case 1:
-                        self.token = value.token
+                        self.token = value.user?.token ?? ""
                         let user = value.user
                         self.coordinator?.presenterDidFinish(with: user)
                     default:

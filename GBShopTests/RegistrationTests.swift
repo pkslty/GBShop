@@ -12,15 +12,18 @@ import Alamofire
 class RegistrationTests: XCTestCase {
     
     var requestFactory: RequestFactory!
-    let user = User(id: 2,
-                    login: "Somebody",
+    let user = User(id: UUID(),
+                    username: "Somebody",
                     name: "John",
-                    lastname: "Doe",
+                    middleName: "",
+                    lastName: "Doe",
                     password: "mypassword",
                     email: "some@some.ru",
                     gender: "m",
-                    creditCard: "9872389-2424-234224-234",
-                    bio: "This is good! I think I will switch to another language")
+                    creditCardId: "9872389-2424-234224-234",
+                    bio: "This is good! I think I will switch to another language",
+                    token: "",
+                    photoUrlString: "")
 
     override func setUp() {
         requestFactory = RequestFactory()
@@ -34,19 +37,22 @@ class RegistrationTests: XCTestCase {
     
     func testRegisterSuccess() {
                 
-        let successValue = CommonResult(result: 1,
-                                        userMessage: "Регистрация прошла успешно!",
+        let successValue = DefaultResult(result: 1,
+                                        userMessage: "Succesfully register!",
                                         errorMessage: nil)
         
-        let newUser = User(id: 2,
-                           login: UUID().uuidString,
-                        name: "John",
-                        lastname: "Doe",
-                        password: "mypassword",
+        let newUser = User(id: UUID(),
+                           username: UUID().uuidString,
+                           name: "John",
+                           middleName: "",
+                           lastName: "Doe",
+                           password: "mypassword",
                            email: UUID().uuidString,
-                        gender: "m",
-                        creditCard: "9872389-2424-234224-234",
-                        bio: "This is good! I think I will switch to another language")
+                           gender: "m",
+                           creditCardId: "9872389-2424-234224-234",
+                           bio: "This is good! I think I will switch to another language",
+                           token: "",
+                           photoUrlString: "")
         
         
         let expectation = expectation(description: "User registered")
@@ -67,7 +73,7 @@ class RegistrationTests: XCTestCase {
     
     func testRegisterReject() {
                 
-        let successValue = CommonResult(result: 0,
+        let successValue = DefaultResult(result: 0,
                                         userMessage: nil,
                                         errorMessage: "Error: username or e-mail already exists")
         
@@ -89,15 +95,28 @@ class RegistrationTests: XCTestCase {
     }
     
     func testchangeUserData() {
+
+        let changeUser = User(id: UUID(),
+                              username: UUID().uuidString,
+                              name: "John",
+                              middleName: "",
+                              lastName: "Doe",
+                              password: "mypassword",
+                              email: UUID().uuidString,
+                              gender: "m",
+                              creditCardId: "9872389-2424-234224-234",
+                              bio: "This is good! I think I will switch to another language",
+                              token: "9eb3522128ffe2d1d2c46771460ce352",
+                              photoUrlString: "")
         
-        let successValue = CommonResult(result: 1,
+        let successValue = DefaultResult(result: 1,
                                         userMessage: "Succesfully changed user data!",
                                         errorMessage: nil)
         let expectation = expectation(description: "User changes data")
         
         let request = requestFactory.makeRegistrationRequestFactory()
         
-        request.changeUserData(user: user) { response in
+        request.changeUserData(user: changeUser) { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result, successValue)
@@ -115,14 +134,13 @@ class RegistrationTests: XCTestCase {
         let expectation = expectation(description: "GetUserData")
         
         let request = requestFactory.makeRegistrationRequestFactory()
-        let token = "4e732ced3463d06de0ca9a15b6153677"
+        let token = "9eb3522128ffe2d1d2c46771460ce352"
         
         request.getUserData(token: token) { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result.result, successValue)
                 XCTAssertNotNil(result.user)
-                XCTAssertEqual(result.token, token)
                 XCTAssertNil(result.errorMessage)
                 expectation.fulfill()
             case .failure(let error):

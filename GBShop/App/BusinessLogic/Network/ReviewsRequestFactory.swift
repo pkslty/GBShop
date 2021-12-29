@@ -13,7 +13,7 @@ protocol ReviewsRequestFactory {
                   completionHandler: @escaping (AFDataResponse<GetReviewsResult>) -> Void)
     
     func addReview(productId: Int, userId: Int, text: String, rating: Int,
-                  completionHandler: @escaping (AFDataResponse<CommonResult>) -> Void)
+                  completionHandler: @escaping (AFDataResponse<DefaultResult>) -> Void)
     
-    func removeReview(reviewId: Int, completionHandler: @escaping (AFDataResponse<CommonResult>) -> Void)
+    func removeReview(reviewId: Int, completionHandler: @escaping (AFDataResponse<DefaultResult>) -> Void)
 }

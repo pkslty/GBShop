@@ -27,17 +27,17 @@ class Shopping: AbstractRequestFactory {
 }
 
 extension Shopping: ShoppingRequestFactory {
-    func addToCart(productId: Int, userId: Int, quantity: Int, completionHandler: @escaping (AFDataResponse<CommonResult>) -> Void) {
+    func addToCart(productId: Int, userId: Int, quantity: Int, completionHandler: @escaping (AFDataResponse<DefaultResult>) -> Void) {
         let requestModel = ShoppingData(baseUrl: baseUrl, path: "addToCart", productId: productId, userId: userId, quantity: quantity)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func removeFromCart(productId: Int, userId: Int, quantity: Int, completionHandler: @escaping (AFDataResponse<CommonResult>) -> Void) {
+    func removeFromCart(productId: Int, userId: Int, quantity: Int, completionHandler: @escaping (AFDataResponse<DefaultResult>) -> Void) {
         let requestModel = ShoppingData(baseUrl: baseUrl, path: "removeFromCart", productId: productId, userId: userId, quantity: quantity)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func payCart(userId: Int, completionHandler: @escaping (AFDataResponse<CommonResult>) -> Void) {
+    func payCart(userId: Int, completionHandler: @escaping (AFDataResponse<DefaultResult>) -> Void) {
         let requestModel = ShoppingData(baseUrl: baseUrl, path: "payCart", userId: userId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }

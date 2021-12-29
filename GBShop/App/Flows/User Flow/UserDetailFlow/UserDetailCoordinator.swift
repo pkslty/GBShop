@@ -8,7 +8,7 @@
 import UIKit
 
 protocol UserDetailEditable {
-    func editInfo(of user: UserResult?)
+    func editInfo(of user: User?)
     func didSaveUserInfo(with user: User)
 }
 
@@ -20,9 +20,9 @@ class UserDetailCoordinator: Coordinator {
     var factory: RequestFactory
     var userDetailPresenter: UserDetailPresenter?
     
-    var user: UserResult?
+    var user: User?
     
-    init(navigationController: UINavigationController, with user: UserResult? = nil) {
+    init(navigationController: UINavigationController, with user: User? = nil) {
         self.navigationController = navigationController
         self.user = user
         self.factory = RequestFactory()
@@ -50,7 +50,7 @@ class UserDetailCoordinator: Coordinator {
 }
 
 extension UserDetailCoordinator: UserDetailEditable {
-    func editInfo(of user: UserResult?) {
+    func editInfo(of user: User?) {
         self.user = user
         let editInfoViewController = UserEditInfoViewController(role: .editInfo)
         let userEditInfoPresenter = UserEditInfoPresenter(factory: factory, view: editInfoViewController, with: user)
@@ -62,14 +62,7 @@ extension UserDetailCoordinator: UserDetailEditable {
     }
     //MARK - Need to refactor
     func didSaveUserInfo(with user: User) {
-        self.user = UserResult(id: user.id,
-                               login: user.login,
-                               name: user.name,
-                               lastname: user.lastname,
-                               email: user.email,
-                               gender: user.gender,
-                               creditCard: user.creditCard,
-                               bio: user.bio)
+        self.user = user
         userDetailPresenter?.user = self.user
         navigationController.popViewController(animated: true)
         

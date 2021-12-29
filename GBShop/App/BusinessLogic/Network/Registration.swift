@@ -32,12 +32,12 @@ extension Registration: RegistrationRequestFactory {
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func register(user: User, completionHandler: @escaping (AFDataResponse<CommonResult>) -> Void) {
+    func register(user: User, completionHandler: @escaping (AFDataResponse<DefaultResult>) -> Void) {
         let requestModel = UserData(baseUrl: baseUrl, path: "register", user: user)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func changeUserData(user: User, completionHandler: @escaping (AFDataResponse<CommonResult>) -> Void) {
+    func changeUserData(user: User, completionHandler: @escaping (AFDataResponse<DefaultResult>) -> Void) {
         let requestModel = UserData(baseUrl: baseUrl, path: "changeUserData", user: user)
         print(requestModel)
         self.request(request: requestModel, completionHandler: completionHandler)
@@ -56,17 +56,20 @@ extension Registration {
         var token: String? = nil
         var parameters: Parameters? {
             if let user = user {
-                return [
-                    "id": user.id,
-                    "login": user.login,
-                    "password": user.password,
-                    "name": user.name,
-                    "lastname": user.lastname,
-                    "email": user.email,
-                    "gender": user.gender,
-                    "creditCard": user.creditCard,
-                    "bio": user.bio
-                ]
+                var parameters = Parameters()
+                parameters["id"] = user.id
+                parameters["username"] = user.username
+                parameters["password"] = user.password
+                if let name = user.name { parameters["name"] = name }
+                if let middleName = user.middleName { parameters["middleName"] = middleName }
+                if let lastName = user.lastName { parameters["lastName"] = lastName }
+                parameters["email"] = user.email
+                if let gender = user.gender { parameters["gender"] = gender }
+                if let creditCardId = user.creditCardId { parameters["creditCardId"] = creditCardId }
+                if let token = user.token { parameters["token"] = token }
+                if let bio = user.bio { parameters["bio"] = bio }
+                if let photoUrlString = user.photoUrlString { parameters["photoUrlString"] = photoUrlString }
+                return parameters
             } else {
                 if let token = token {
                     return [
