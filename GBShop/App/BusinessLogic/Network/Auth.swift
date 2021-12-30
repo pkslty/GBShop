@@ -26,13 +26,13 @@ class Auth: AbstractRequestFactory {
 }
 
 extension Auth: AuthRequestFactory {
-    func login(userName: String, password: String, completionHandler: @escaping (AFDataResponse<LoginResult>) -> Void) {
-        let requestModel = Login(baseUrl: baseUrl, path: "login", userId: nil, login: userName, password: password)
+    func login(username: String, password: String, completionHandler: @escaping (AFDataResponse<LoginResult>) -> Void) {
+        let requestModel = Login(baseUrl: baseUrl, path: "login", username: username, password: password, token: nil)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func logout(userId: Int, completionHandler: @escaping (AFDataResponse<DefaultResult>) -> Void) {
-        let requestModel = Login(baseUrl: baseUrl, path: "logout", userId: userId, login: nil, password: nil)
+    func logout(token: String, completionHandler: @escaping (AFDataResponse<DefaultResult>) -> Void) {
+        let requestModel = Login(baseUrl: baseUrl, path: "logout", username: nil, password: nil, token: token)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
 }
@@ -43,19 +43,19 @@ extension Auth {
         let method: HTTPMethod = .post
         let path: String
         
-        let userId: Int?
-        let login: String?
+        let username: String?
         let password: String?
+        let token: String?
         var parameters: Parameters? {
             var parameters: Parameters?
-            if let userId = userId {
+            if let token = token {
                 parameters =  [
-                    "id": userId,
+                    "token": token,
                 ]
             }
-            if let login = login, let password = password {
+            if let username = username, let password = password {
                 parameters = [
-                    "login": login,
+                    "username": username,
                     "password": password
                 ]
             }

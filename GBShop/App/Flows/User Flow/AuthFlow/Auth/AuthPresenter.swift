@@ -27,7 +27,7 @@ class AuthPresenter {
         let login = view.getLogin()
         let password = view.getPassword()
         let request = factory.makeAuthRequestFactory()
-        request.login(userName: login, password: password) { response in
+        request.login(username: login, password: password) { response in
             if let value = response.value {
                 DispatchQueue.main.async {
                     switch value.result {

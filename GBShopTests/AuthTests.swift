@@ -31,7 +31,7 @@ class AuthTests: XCTestCase {
         let request = requestFactory.makeAuthRequestFactory()
         @UserDefault(key: "authorizationToken", defaultValue: nil) var token: String?
         print("token is \(token ?? "nil") ")
-        request.login(userName: "Somebody", password: "mypassword") { response in
+        request.login(username: "22DFF4F8-E6C8-4945-A12C-2C225A456CB8", password: "mypassword") { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result.result, 1)
@@ -57,7 +57,7 @@ class AuthTests: XCTestCase {
         @UserDefault(key: "authorizationToken", defaultValue: nil) var token: String?
         print("token is \(token ?? "nil")")
         
-        request.logout(userId: 2) { response in
+        request.logout(token: "eed87e91fbdd0784f63fe201de58ae5d") { response in
             switch response.result {
             case .success(let result):
                 token = nil
@@ -80,28 +80,7 @@ class AuthTests: XCTestCase {
         
         let request = requestFactory.makeAuthRequestFactory()
         
-        request.logout(userId: -1) { response in
-            switch response.result {
-            case .success(let result):
-                XCTAssertEqual(result, successValue)
-                expectation.fulfill()
-            case .failure(let error):
-                XCTFail(error.localizedDescription)
-            }
-        }
-        wait(for: [expectation], timeout: 10.0)
-    }
-    
-    func testLogoutUserWasNotLoggedIn() {
-        
-        let successValue = DefaultResult(result: 0,
-                                        userMessage: nil,
-                                        errorMessage: "User was not logged in")
-        let expectation = expectation(description: "User was not logged in")
-        
-        let request = requestFactory.makeAuthRequestFactory()
-        
-        request.logout(userId: 1) { response in
+        request.logout(token: "token") { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result, successValue)
