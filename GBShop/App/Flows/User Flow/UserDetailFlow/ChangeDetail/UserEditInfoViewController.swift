@@ -26,6 +26,8 @@ protocol UserEditInfoView {
     func setRepeatPassword(password: String)
     func setBio(bio: String)
     func showAlert(_ title: String?,_ message: String?,_ completion: (() -> Void)?)
+    func setWaiting()
+    func setActive()
 }
 
 enum ViewRole {
@@ -52,6 +54,7 @@ class UserEditInfoViewController: UIViewController {
     @IBOutlet weak var usernameField: UITextField!
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var stackView: UIStackView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     let role: ViewRole
     var presenter: UserEditInfoPresentable?
     
@@ -84,12 +87,10 @@ class UserEditInfoViewController: UIViewController {
         switch role {
         case .register:
             titleLabel.text = "Register New User"
-            saveButton.titleLabel?.text = "Register"
-            //navigationItem.title = "Register New User"
+            saveButton.setTitle("Register", for: .normal)
         case .editInfo:
-            titleLabel.text = "Edit User Info"
-            saveButton.titleLabel?.text = "Save changes"
-            //navigationItem.title = "Edit User Info"
+            saveButton.titleLabel?.text = ""
+            saveButton.setTitle("Save changes", for: .normal)
         }
     }
     
@@ -168,6 +169,34 @@ extension UserEditInfoViewController: UserEditInfoView {
         alert.addAction(UIAlertAction(title: "Ok", style: .default))
         present(alert, animated: true, completion: completion)
     }
+    
+    func setWaiting() {
+        activityIndicator.isHidden = false
+        activityIndicator.startAnimating()
+        usernameField.isEnabled = false
+        passwordField.isEnabled = false
+        passwordRepeatField.isEnabled = false
+        firstNameField.isEnabled = false
+        lastNameField.isEnabled = false
+        emailField.isEnabled = false
+        genderSegment.isEnabled = false
+        bioText.isEditable = false
+        saveButton.isEnabled = false
+    }
+    
+    func setActive() {
+        activityIndicator.isHidden = true
+        activityIndicator.stopAnimating()
+        usernameField.isEnabled = true
+        passwordField.isEnabled = true
+        passwordRepeatField.isEnabled = true
+        firstNameField.isEnabled = true
+        lastNameField.isEnabled = true
+        emailField.isEnabled = true
+        genderSegment.isEnabled = true
+        bioText.isEditable = true
+        saveButton.isEnabled = true
+    }
 }
 
 extension UserEditInfoViewController: UITextFieldDelegate {
@@ -175,8 +204,10 @@ extension UserEditInfoViewController: UITextFieldDelegate {
     func textFieldDidChangeSelection(_ textField: UITextField) {
         if passwordRepeatField.text != passwordField.text {
             passwordRepeatField.textColor = .red
+            saveButton.isEnabled = false
         } else {
-            passwordRepeatField.textColor = .black
+            passwordRepeatField.textColor = .label
+            saveButton.isEnabled = true
         }
     }
 }

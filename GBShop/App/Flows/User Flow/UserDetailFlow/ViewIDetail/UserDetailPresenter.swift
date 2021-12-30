@@ -49,8 +49,19 @@ class UserDetailPresenter {
     }
     
     func logoutButtonPressed() {
-        token = nil
-        coordinator?.presenterDidFinish(with: nil)
+        guard let token = token else { return }
+        let request = factory.makeAuthRequestFactory()
+        request.logout(token: token) { [weak self] response in
+            guard let self = self else { return }
+            if let value = response.value {
+                DispatchQueue.main.async {
+                    if value.result == 1 {
+                        self.token = nil
+                        self.coordinator?.presenterDidFinish(with: nil)
+                    }
+                }
+            }
+        }
     }
     
     func editInfoButtonPressed() {

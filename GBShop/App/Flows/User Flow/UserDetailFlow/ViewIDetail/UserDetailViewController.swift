@@ -82,6 +82,7 @@ extension UserDetailViewController: UserDetailView {
     func setEmail(email: String) {
         self.emailField.text = email
     }
+    
 }
 
 //MARK:- Image Picker

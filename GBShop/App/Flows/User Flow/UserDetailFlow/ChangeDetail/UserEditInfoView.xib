@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="UserEditInfoViewController" customModule="GBShop" customModuleProvider="target">
             <connections>
+                <outlet property="activityIndicator" destination="guA-yh-uwU" id="MHv-IY-k2e"/>
                 <outlet property="bioText" destination="xcl-6e-MHM" id="84B-oZ-WWq"/>
                 <outlet property="emailField" destination="mIn-m5-NDq" id="7AN-ia-yYr"/>
                 <outlet property="firstNameField" destination="Q0e-hL-kxB" id="MNQ-hQ-jWK"/>
@@ -30,6 +31,9 @@
             <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="large" translatesAutoresizingMaskIntoConstraints="NO" id="guA-yh-uwU">
+                    <rect key="frame" x="188.5" y="429.5" width="37" height="37"/>
+                </activityIndicatorView>
                 <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6FE-jt-PbQ">
                     <rect key="frame" x="0.0" y="0.0" width="414" height="862"/>
                 </scrollView>
@@ -38,6 +42,8 @@
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="6FE-jt-PbQ" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="8S0-io-frC"/>
+                <constraint firstItem="guA-yh-uwU" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="YEg-0U-4pn"/>
+                <constraint firstItem="guA-yh-uwU" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="avS-sI-kcN"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="6FE-jt-PbQ" secondAttribute="trailing" id="r9m-hh-6Bi"/>
                 <constraint firstItem="6FE-jt-PbQ" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="uwI-ZD-QoB"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="6FE-jt-PbQ" secondAttribute="bottom" id="zDI-be-X0O"/>
@@ -132,8 +138,7 @@
                         <constraint firstAttribute="height" constant="75" id="hmr-zw-LfM"/>
                     </constraints>
                     <state key="normal" title="Button"/>
-                    <buttonConfiguration key="configuration" style="filled" title="Save changes">
-                        <fontDescription key="titleFontDescription" type="system" pointSize="25"/>
+                    <buttonConfiguration key="configuration" style="filled">
                         <color key="baseBackgroundColor" systemColor="systemIndigoColor"/>
                     </buttonConfiguration>
                 </button>

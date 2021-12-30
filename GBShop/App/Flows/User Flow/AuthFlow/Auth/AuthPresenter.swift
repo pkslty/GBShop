@@ -34,6 +34,7 @@ class AuthPresenter {
                     case 1:
                         self.token = value.user?.token ?? ""
                         let user = value.user
+                        self.view.setActive()
                         self.coordinator?.presenterDidFinish(with: user)
                     default:
                         self.view.showAlert("Error", "Wrong username or password") {[weak self] in

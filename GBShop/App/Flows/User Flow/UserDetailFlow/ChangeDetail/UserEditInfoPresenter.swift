@@ -54,18 +54,18 @@ class UserEditInfoPresenter: UserEditInfoPresentable {
     
     func saveChanges() {
         guard let user = user else { return }
-
+        view.setWaiting()
         let changedUser = User(id: user.id,
                                username: view.userName,
                                name: view.firstName,
                                middleName: "",
                                lastName: view.lastName,
-                               password: "",
+                               password: view.password,
                                email: view.email,
                                gender: view.gender,
                                creditCardId: "",
                                bio: view.bio,
-                               token: "",
+                               token: token,
                                photoUrlString: "")
 
         let request = factory.makeRegistrationRequestFactory()
@@ -76,7 +76,9 @@ class UserEditInfoPresenter: UserEditInfoPresentable {
                         //Temporary
                         self.coordinator?.didSaveUserInfo(with: changedUser)
                     } else {
-                        self.view.showAlert("Error", "Error saving user info", nil)
+                        self.view.showAlert("Error", "Error saving user info") {
+                            self.view.setActive()
+                        }
                     }
                 }
             }

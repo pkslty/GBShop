@@ -51,8 +51,9 @@ class AuthCoordinator: Coordinator {
 extension AuthCoordinator: SignUppable {
     
     func signUp() {
-        let signUpPresenter = SignUpPresenter(factory: factory)
         let signUpViewController = UserEditInfoViewController(role: .register)
+        
+        let signUpPresenter = SignUpPresenter(factory: factory, view: signUpViewController)
         signUpViewController.presenter = signUpPresenter
         
         navigationController.pushViewController(signUpViewController, animated: true)
