@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GoodsListItem: Codable {
+struct ProductsListItem: Codable {
     let productId: Int
     let productName: String
     let price: Double

@@ -9,7 +9,7 @@ import XCTest
 import Alamofire
 @testable import GBShop
 
-class GoodsTests: XCTestCase {
+class ProductsTests: XCTestCase {
     
     var requestFactory: RequestFactory!
 
@@ -26,11 +26,11 @@ class GoodsTests: XCTestCase {
     func testGetGoodById() {
                 
         let successValue = 1
-        let expectation = expectation(description: "GetGoodById")
+        let expectation = expectation(description: "GetProductById")
         
-        let request = requestFactory.makeGoodsRequestFactory()
+        let request = requestFactory.makeProductsRequestFactory()
         
-        request.getGoodById(id: 1) { response in
+        request.getProductById(id: 1) { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result.result, successValue)
@@ -49,11 +49,11 @@ class GoodsTests: XCTestCase {
     func testGetGoodsByIdFail() {
                 
         let successValue = 0
-        let expectation = expectation(description: "GetGoodByIdFail")
+        let expectation = expectation(description: "GetProductByIdFail")
         
-        let request = requestFactory.makeGoodsRequestFactory()
+        let request = requestFactory.makeProductsRequestFactory()
         
-        request.getGoodById(id: -1) { response in
+        request.getProductById(id: -1) { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result.result, successValue)
@@ -72,11 +72,11 @@ class GoodsTests: XCTestCase {
     func testGetGoodsList() {
         
         let successValue = 1
-        let expectation = expectation(description: "GetGoodsList")
+        let expectation = expectation(description: "GetProductsList")
         
-        let request = requestFactory.makeGoodsRequestFactory()
+        let request = requestFactory.makeProductsRequestFactory()
         
-        request.getGoodsList(page: 1, categoryId: 1) { response in
+        request.getProductsList(page: 1, categoryId: 1) { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result.result, successValue)

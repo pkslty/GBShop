@@ -8,13 +8,13 @@
 import Alamofire
 import Foundation
 
-class Goods: AbstractRequestFactory {
+class Products: AbstractRequestFactory {
     
     var errorParser: AbstractErrorParser
     var sessionManager: Session
     var queue: DispatchQueue
-    let baseUrl = URL(string: "https://vast-hollows-60312.herokuapp.com/")!
-    //let baseUrl = URL(string: "http://127.0.0.1:8080/")!
+    //let baseUrl = URL(string: "https://vast-hollows-60312.herokuapp.com/")!
+    let baseUrl = URL(string: "http://127.0.0.1:8080/")!
     
     init(
         errorParser: AbstractErrorParser,
@@ -26,23 +26,23 @@ class Goods: AbstractRequestFactory {
     }
 }
 
-extension Goods: GoodsRequestFactory {
+extension Products: ProductsRequestFactory {
     
-    func getGoodById(id: Int, completionHandler: @escaping (AFDataResponse<GoodByIdResult>) -> Void) {
-        let requestModel = GoodData(baseUrl: baseUrl, path: "getGoodById", id: id)
+    func getProductById(id: Int, completionHandler: @escaping (AFDataResponse<ProductByIdResult>) -> Void) {
+        let requestModel = ProductData(baseUrl: baseUrl, path: "getProductById", id: id)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func getGoodsList(page: Int, categoryId: Int, completionHandler: @escaping (AFDataResponse<GoodsListResult>) -> Void) {
-        let requestModel = GoodsListData(baseUrl: baseUrl, path: "getGoodsList", page: page, categoryId: categoryId)
+    func getProductsList(page: Int, categoryId: Int, completionHandler: @escaping (AFDataResponse<ProductsListResult>) -> Void) {
+        let requestModel = GoodsListData(baseUrl: baseUrl, path: "getProductsList", page: page, categoryId: categoryId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
     
 }
 
-extension Goods {
-    struct GoodData: RequestRouter {
+extension Products {
+    struct ProductData: RequestRouter {
         let baseUrl: URL
         let method: HTTPMethod = .post
         var path: String

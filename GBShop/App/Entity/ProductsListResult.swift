@@ -7,9 +7,9 @@
 
 import Foundation
 
-struct GoodsListResult: Codable {
+struct ProductsListResult: Codable {
     let result: Int
     let pageNumber: Int?
-    let products: [GoodsListItem]?
+    let products: [ProductsListItem]?
     let errorMessage: String?
 }
