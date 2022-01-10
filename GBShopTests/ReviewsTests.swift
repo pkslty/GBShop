@@ -30,7 +30,7 @@ class ReviewsTests: XCTestCase {
         
         let request = requestFactory.makeReviewsRequestFactory()
         
-        request.getReviews(productId: 1) { response in
+        request.getReviews(productId: UUID(uuidString: "0475eb70-725b-11ec-b7a6-0800200c9a66")!) { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result.result, successValue)
@@ -51,7 +51,7 @@ class ReviewsTests: XCTestCase {
         
         let request = requestFactory.makeReviewsRequestFactory()
         
-        request.addReview(productId: Int.random(in: -10000 ... -100), userId: Int.random(in: -10000 ... -100), text: "Test review", rating: 5) { response in
+        request.addReview(productId: UUID(uuidString: "0475eb70-725b-11ec-b7a6-0800200c9a67")!, userId: UUID(uuidString: "0475eb70-725b-11ec-b7a6-0800200c9a67")!, text: "Test review", rating: 5) { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result.result, successValue)
@@ -72,7 +72,7 @@ class ReviewsTests: XCTestCase {
         
         let request = requestFactory.makeReviewsRequestFactory()
         
-        request.removeReview(reviewId: 2) { response in
+        request.removeReview(reviewId: UUID(uuidString: "0475eb70-725b-11ec-b7a6-0800200c9a67")!) { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result.result, successValue)

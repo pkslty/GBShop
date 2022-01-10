@@ -13,8 +13,8 @@ class Reviews: AbstractRequestFactory {
     var errorParser: AbstractErrorParser
     var sessionManager: Session
     var queue: DispatchQueue
-    let baseUrl = URL(string: "https://vast-hollows-60312.herokuapp.com/")!
-    //let baseUrl = URL(string: "http://127.0.0.1:8080/")!
+    //let baseUrl = URL(string: "https://vast-hollows-60312.herokuapp.com/")!
+    let baseUrl = URL(string: "http://127.0.0.1:8080/")!
     
     init(
         errorParser: AbstractErrorParser,
@@ -27,17 +27,18 @@ class Reviews: AbstractRequestFactory {
 }
 
 extension Reviews: ReviewsRequestFactory {
-    func getReviews(productId: Int, completionHandler: @escaping (AFDataResponse<GetReviewsResult>) -> Void) {
+    func getReviews(productId: UUID, completionHandler: @escaping (AFDataResponse<GetReviewsResult>) -> Void) {
         let requestModel = ReviewData(baseUrl: baseUrl, path: "getReviews", productId: productId)
+        print(requestModel)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func addReview(productId: Int, userId: Int, text: String, rating: Int, completionHandler: @escaping (AFDataResponse<DefaultResult>) -> Void) {
+    func addReview(productId: UUID, userId: UUID, text: String, rating: Int, completionHandler: @escaping (AFDataResponse<DefaultResult>) -> Void) {
         let requestModel = ReviewData(baseUrl: baseUrl, path: "addReview", productId: productId, userId: userId, text: text, rating: rating)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func removeReview(reviewId: Int, completionHandler: @escaping (AFDataResponse<DefaultResult>) -> Void) {
+    func removeReview(reviewId: UUID, completionHandler: @escaping (AFDataResponse<DefaultResult>) -> Void) {
         let requestModel = ReviewData(baseUrl: baseUrl, path: "removeReview", reviewId: reviewId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
@@ -49,7 +50,7 @@ extension Reviews {
         let method: HTTPMethod = .post
         var path: String
         
-        let productId: Int
+        let productId: UUID
         var parameters: Parameters? {
             return [
                 "productId": productId
@@ -62,34 +63,50 @@ extension Reviews {
         let method: HTTPMethod = .post
         var path: String
         
-        var productId: Int? = nil
-        var userId: Int? = nil
+        var productId: UUID? = nil
+        var userId: UUID? = nil
         var text: String? = nil
         var rating: Int? = nil
-        var reviewId: Int? = nil
+        var reviewId: UUID? = nil
         var parameters: Parameters? {
-            return [
-                "productId": productId as Any,
-                "userId": userId as Any,
-                "text": text as Any,
-                "rating": rating as Any,
-                "reviewId": reviewId as Any
-            ]
+            if let reviewId = reviewId {
+                return [
+                    "reviewId": reviewId
+                ]
+            } else {
+                if let userId = userId, let text = text, let rating = rating, let productId = productId {
+                    return [
+                        "productId": productId,
+                        "userId": userId,
+                        "text": text,
+                        "rating": rating
+                    ]
+                } else {
+                    if let productId = productId {
+                        return [
+                            "productId": productId
+                        ]
+                    } else {
+                        return [:]
+                    }
+                }
+            }
+            
         }
         
-        init(baseUrl: URL, path: String, productId: Int) {
+        init(baseUrl: URL, path: String, productId: UUID) {
             self.baseUrl = baseUrl
             self.path = path
             self.productId = productId
         }
         
-        init(baseUrl: URL, path: String, reviewId: Int) {
+        init(baseUrl: URL, path: String, reviewId: UUID) {
             self.baseUrl = baseUrl
             self.path = path
             self.reviewId = reviewId
         }
         
-        init(baseUrl: URL, path: String, productId: Int, userId: Int, text: String, rating: Int) {
+        init(baseUrl: URL, path: String, productId: UUID, userId: UUID, text: String, rating: Int) {
             self.baseUrl = baseUrl
             self.path = path
             self.productId = productId
