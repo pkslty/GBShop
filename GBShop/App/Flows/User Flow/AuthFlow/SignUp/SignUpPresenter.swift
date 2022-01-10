@@ -15,7 +15,7 @@ class SignUpPresenter: UserEditInfoPresentable {
     }
     
     func saveChanges() {
-        guard view.userName != "", view.password != "", view.email != ""
+        guard !view.userName.isEmpty, !view.password.isEmpty, !view.email.isEmpty
         else {
             let message = " Username, password and e-mail can't be empty"
             

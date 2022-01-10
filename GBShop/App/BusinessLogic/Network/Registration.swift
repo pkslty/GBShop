@@ -59,7 +59,7 @@ extension Registration {
                 var parameters = Parameters()
                 parameters["id"] = user.id
                 parameters["username"] = user.username
-                parameters["password"] = user.password
+                if let password = user.password { parameters["password"] = password }
                 if let name = user.name { parameters["name"] = name }
                 if let middleName = user.middleName { parameters["middleName"] = middleName }
                 if let lastName = user.lastName { parameters["lastName"] = lastName }

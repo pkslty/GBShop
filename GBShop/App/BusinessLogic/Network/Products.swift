@@ -28,12 +28,12 @@ class Products: AbstractRequestFactory {
 
 extension Products: ProductsRequestFactory {
     
-    func getProductById(id: Int, completionHandler: @escaping (AFDataResponse<ProductByIdResult>) -> Void) {
+    func getProductById(id: UUID, completionHandler: @escaping (AFDataResponse<ProductByIdResult>) -> Void) {
         let requestModel = ProductData(baseUrl: baseUrl, path: "getProductById", id: id)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func getProductsList(page: Int, categoryId: Int, completionHandler: @escaping (AFDataResponse<ProductsListResult>) -> Void) {
+    func getProductsList(page: Int, categoryId: UUID, completionHandler: @escaping (AFDataResponse<ProductsListResult>) -> Void) {
         let requestModel = GoodsListData(baseUrl: baseUrl, path: "getProductsList", page: page, categoryId: categoryId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
@@ -47,7 +47,7 @@ extension Products {
         let method: HTTPMethod = .post
         var path: String
         
-        let id: Int
+        let id: UUID
         var parameters: Parameters? {
             return [
                 "productId": id
@@ -61,7 +61,7 @@ extension Products {
         var path: String
         
         let page: Int
-        let categoryId: Int
+        let categoryId: UUID
         var parameters: Parameters? {
             return [
                 "pageNumber": page,

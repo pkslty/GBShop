@@ -55,13 +55,14 @@ class UserEditInfoPresenter: UserEditInfoPresentable {
     func saveChanges() {
         guard let user = user else { return }
         view.setWaiting()
+        
         let changedUser = User(id: user.id,
-                               username: view.userName,
-                               name: view.firstName,
+                               username: view.userName.isEmpty ? user.username : view.userName,
+                               name: view.firstName.isEmpty ? user.name : view.firstName,
                                middleName: "",
-                               lastName: view.lastName,
-                               password: view.password,
-                               email: view.email,
+                               lastName: view.lastName.isEmpty ? user.lastName: view.lastName,
+                               password: view.password.isEmpty ? nil : view.password,
+                               email: view.email.isEmpty ? user.email : view.email,
                                gender: view.gender,
                                creditCardId: "",
                                bio: view.bio,

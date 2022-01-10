@@ -30,7 +30,7 @@ class ProductsTests: XCTestCase {
         
         let request = requestFactory.makeProductsRequestFactory()
         
-        request.getProductById(id: 1) { response in
+        request.getProductById(id: UUID(uuidString: "e6581c80-725a-11ec-b7a6-0800200c9a66")!) { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result.result, successValue)
@@ -53,7 +53,7 @@ class ProductsTests: XCTestCase {
         
         let request = requestFactory.makeProductsRequestFactory()
         
-        request.getProductById(id: -1) { response in
+        request.getProductById(id: UUID(uuidString: "e6581c80-725a-11ec-b7a6-0800200c9a60")!) { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result.result, successValue)
@@ -76,7 +76,7 @@ class ProductsTests: XCTestCase {
         
         let request = requestFactory.makeProductsRequestFactory()
         
-        request.getProductsList(page: 1, categoryId: 1) { response in
+        request.getProductsList(page: 1, categoryId: UUID(uuidString: "cb0b2700-723d-11ec-b7a6-0800200c9a66")!) { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result.result, successValue)

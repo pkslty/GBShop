@@ -10,6 +10,6 @@ import Foundation
 struct ProductsListResult: Codable {
     let result: Int
     let pageNumber: Int?
-    let products: [ProductsListItem]?
+    let products: [Product]?
     let errorMessage: String?
 }
