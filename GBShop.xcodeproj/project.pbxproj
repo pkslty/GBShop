@@ -74,7 +74,7 @@
 		36A7D62C27787A020037E5CB /* AuthView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36A7D62B27787A020037E5CB /* AuthView.xib */; };
 		36A7D62E27789CAE0037E5CB /* AuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D62D27789CAD0037E5CB /* AuthPresenter.swift */; };
 		36B17A9B278D794D00B30570 /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B17A9A278D794C00B30570 /* ListItem.swift */; };
-		36B17A9D278D79AF00B30570 /* ListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B17A9C278D79AF00B30570 /* ListResponse.swift */; };
+		36B17A9D278D79AF00B30570 /* GetListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B17A9C278D79AF00B30570 /* GetListResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -166,7 +166,7 @@
 		36A7D62B27787A020037E5CB /* AuthView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthView.xib; sourceTree = "<group>"; };
 		36A7D62D27789CAD0037E5CB /* AuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPresenter.swift; sourceTree = "<group>"; };
 		36B17A9A278D794C00B30570 /* ListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
-		36B17A9C278D79AF00B30570 /* ListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListResponse.swift; sourceTree = "<group>"; };
+		36B17A9C278D79AF00B30570 /* GetListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetListResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -491,7 +491,7 @@
 				3693A86A275E0DEB00FA275E /* ProductByIdResponse.swift */,
 				367953432763403F009DE93B /* DefaultResponse.swift */,
 				3679534C2769EB03009DE93B /* GetReviewsResponse.swift */,
-				36B17A9C278D79AF00B30570 /* ListResponse.swift */,
+				36B17A9C278D79AF00B30570 /* GetListResponse.swift */,
 				362AF6D6278D8036000FAC48 /* ProductsListResponse.swift */,
 			);
 			path = Responses;
@@ -681,7 +681,7 @@
 				3679534F2769EBF0009DE93B /* Review.swift in Sources */,
 				3617763C2759454700509772 /* User.swift in Sources */,
 				3679534D2769EB03009DE93B /* GetReviewsResponse.swift in Sources */,
-				36B17A9D278D79AF00B30570 /* ListResponse.swift in Sources */,
+				36B17A9D278D79AF00B30570 /* GetListResponse.swift in Sources */,
 				3680358B277C5092007AD6C5 /* ImageLoader.swift in Sources */,
 				36177634275792FE00509772 /* RegistrationRequestFactory.swift in Sources */,
 				3617761B2757774E00509772 /* AbstractErrorParser.swift in Sources */,

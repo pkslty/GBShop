@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ListResponse: Codable {
+struct GetListResponse: Codable {
     let result: Int
     let items: [ListItem]?
     let errorMessage: String?
