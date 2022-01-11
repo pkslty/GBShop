@@ -27,6 +27,16 @@ class Products: AbstractRequestFactory {
 }
 
 extension Products: ProductsRequestFactory {
+    func getCategories(completionHandler: @escaping (AFDataResponse<ListResponse>) -> Void) {
+        let requestModel = GetListData(baseUrl: baseUrl, path: "getCategories")
+        self.request(request: requestModel, completionHandler: completionHandler)
+    }
+    
+    func getBrands(completionHandler: @escaping (AFDataResponse<ListResponse>) -> Void) {
+        let requestModel = GetListData(baseUrl: baseUrl, path: "getBrands")
+        self.request(request: requestModel, completionHandler: completionHandler)
+    }
+    
     
     func getProductById(id: UUID, completionHandler: @escaping (AFDataResponse<ProductByIdResponse>) -> Void) {
         let requestModel = ProductData(baseUrl: baseUrl, path: "getProductById", id: id)
@@ -53,6 +63,14 @@ extension Products {
                 "productId": id
             ]
         }
+    }
+    
+    struct GetListData: RequestRouter {
+        let baseUrl: URL
+        let method: HTTPMethod = .get
+        var path: String
+        
+        var parameters: Parameters? = nil
     }
     
     struct GoodsListData: RequestRouter {

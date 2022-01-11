@@ -89,4 +89,46 @@ class ProductsTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 10.0)
     }
+    
+    func testGetCategories() {
+        
+        let successValue = 1
+        let expectation = expectation(description: "GetCategories")
+        
+        let request = requestFactory.makeProductsRequestFactory()
+        
+        request.getCategories() { response in
+            switch response.result {
+            case .success(let result):
+                XCTAssertEqual(result.result, successValue)
+                XCTAssertNotNil(result.items)
+                XCTAssertNil(result.errorMessage)
+                expectation.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+        wait(for: [expectation], timeout: 10.0)
+    }
+    
+    func testGetBrands() {
+        
+        let successValue = 1
+        let expectation = expectation(description: "GetBrands")
+        
+        let request = requestFactory.makeProductsRequestFactory()
+        
+        request.getCategories() { response in
+            switch response.result {
+            case .success(let result):
+                XCTAssertEqual(result.result, successValue)
+                XCTAssertNotNil(result.items)
+                XCTAssertNil(result.errorMessage)
+                expectation.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+        wait(for: [expectation], timeout: 10.0)
+    }
 }
