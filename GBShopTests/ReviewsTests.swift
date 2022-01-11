@@ -51,7 +51,7 @@ class ReviewsTests: XCTestCase {
         
         let request = requestFactory.makeReviewsRequestFactory()
         
-        request.addReview(productId: UUID(uuidString: "0475eb70-725b-11ec-b7a6-0800200c9a67")!, userId: UUID(uuidString: "0475eb70-725b-11ec-b7a6-0800200c9a67")!, text: "Test review", rating: 5) { response in
+        request.addReview(productId: UUID(), userId: UUID(), text: "Test review", rating: 5) { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result.result, successValue)
@@ -65,19 +65,19 @@ class ReviewsTests: XCTestCase {
         wait(for: [expectation], timeout: 10.0)
     }
     
-    func testRemoveReview() {
+    func testRemoveReviewFail() {
         
-        let successValue = 1
-        let expectation = expectation(description: "RemoveReview")
+        let successValue = 0
+        let expectation = expectation(description: "RemoveReviewFail")
         
         let request = requestFactory.makeReviewsRequestFactory()
         
-        request.removeReview(reviewId: UUID(uuidString: "0475eb70-725b-11ec-b7a6-0800200c9a67")!) { response in
+        request.removeReview(reviewId: UUID()) { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result.result, successValue)
-                XCTAssertNotNil(result.userMessage)
-                XCTAssertNil(result.errorMessage)
+                XCTAssertNil(result.userMessage)
+                XCTAssertNotNil(result.errorMessage)
                 expectation.fulfill()
             case .failure(let error):
                 XCTFail(error.localizedDescription)
