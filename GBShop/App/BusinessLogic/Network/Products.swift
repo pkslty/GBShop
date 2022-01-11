@@ -28,12 +28,12 @@ class Products: AbstractRequestFactory {
 
 extension Products: ProductsRequestFactory {
     
-    func getProductById(id: UUID, completionHandler: @escaping (AFDataResponse<ProductByIdResult>) -> Void) {
+    func getProductById(id: UUID, completionHandler: @escaping (AFDataResponse<ProductByIdResponse>) -> Void) {
         let requestModel = ProductData(baseUrl: baseUrl, path: "getProductById", id: id)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func getProductsList(page: Int, categoryId: UUID, completionHandler: @escaping (AFDataResponse<ProductsListResult>) -> Void) {
+    func getProductsList(page: Int, categoryId: UUID, completionHandler: @escaping (AFDataResponse<ProductsListResponse>) -> Void) {
         let requestModel = GoodsListData(baseUrl: baseUrl, path: "getProductsList", page: page, categoryId: categoryId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }

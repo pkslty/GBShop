@@ -10,8 +10,8 @@ import Foundation
 
 protocol ProductsRequestFactory {
     func getProductById(id: UUID,
-                  completionHandler: @escaping (AFDataResponse<ProductByIdResult>) -> Void)
+                  completionHandler: @escaping (AFDataResponse<ProductByIdResponse>) -> Void)
     
     func getProductsList(page: Int, categoryId: UUID,
-                  completionHandler: @escaping (AFDataResponse<ProductsListResult>) -> Void)
+                  completionHandler: @escaping (AFDataResponse<ProductsListResponse>) -> Void)
 }

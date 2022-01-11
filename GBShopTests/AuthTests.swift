@@ -47,7 +47,7 @@ class AuthTests: XCTestCase {
     
     func testLogoutSuccess() {
         
-        let successValue = DefaultResult(result: 1,
+        let successValue = DefaultResponse(result: 1,
                                         userMessage: "Succesfully logged out!",
                                         errorMessage: nil)
         let expectation = expectation(description: "User log out")
@@ -73,7 +73,7 @@ class AuthTests: XCTestCase {
     
     func testLogoutNoSuchUser() {
         
-        let successValue = DefaultResult(result: 0,
+        let successValue = DefaultResponse(result: 0,
                                         userMessage: nil,
                                         errorMessage: "No such user")
         let expectation = expectation(description: "User log out")

@@ -27,18 +27,18 @@ class Reviews: AbstractRequestFactory {
 }
 
 extension Reviews: ReviewsRequestFactory {
-    func getReviews(productId: UUID, completionHandler: @escaping (AFDataResponse<GetReviewsResult>) -> Void) {
+    func getReviews(productId: UUID, completionHandler: @escaping (AFDataResponse<GetReviewsResponse>) -> Void) {
         let requestModel = ReviewData(baseUrl: baseUrl, path: "getReviews", productId: productId)
         print(requestModel)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func addReview(productId: UUID, userId: UUID, text: String, rating: Int, completionHandler: @escaping (AFDataResponse<DefaultResult>) -> Void) {
+    func addReview(productId: UUID, userId: UUID, text: String, rating: Int, completionHandler: @escaping (AFDataResponse<DefaultResponse>) -> Void) {
         let requestModel = ReviewData(baseUrl: baseUrl, path: "addReview", productId: productId, userId: userId, text: text, rating: rating)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func removeReview(reviewId: UUID, completionHandler: @escaping (AFDataResponse<DefaultResult>) -> Void) {
+    func removeReview(reviewId: UUID, completionHandler: @escaping (AFDataResponse<DefaultResponse>) -> Void) {
         let requestModel = ReviewData(baseUrl: baseUrl, path: "removeReview", reviewId: reviewId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }

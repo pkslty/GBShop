@@ -27,17 +27,17 @@ class Registration: AbstractRequestFactory {
 }
 
 extension Registration: RegistrationRequestFactory {
-    func getUserData(token: String, completionHandler: @escaping (AFDataResponse<LoginResult>) -> Void) {
+    func getUserData(token: String, completionHandler: @escaping (AFDataResponse<LoginResponse>) -> Void) {
         let requestModel = UserData(baseUrl: baseUrl, path: "getUserData", token: token)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func register(user: User, completionHandler: @escaping (AFDataResponse<DefaultResult>) -> Void) {
+    func register(user: User, completionHandler: @escaping (AFDataResponse<DefaultResponse>) -> Void) {
         let requestModel = UserData(baseUrl: baseUrl, path: "register", user: user)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func changeUserData(user: User, completionHandler: @escaping (AFDataResponse<DefaultResult>) -> Void) {
+    func changeUserData(user: User, completionHandler: @escaping (AFDataResponse<DefaultResponse>) -> Void) {
         let requestModel = UserData(baseUrl: baseUrl, path: "changeUserData", user: user)
         print(requestModel)
         self.request(request: requestModel, completionHandler: completionHandler)

@@ -10,10 +10,10 @@ import Foundation
 
 protocol ReviewsRequestFactory {
     func getReviews(productId: UUID,
-                  completionHandler: @escaping (AFDataResponse<GetReviewsResult>) -> Void)
+                  completionHandler: @escaping (AFDataResponse<GetReviewsResponse>) -> Void)
     
     func addReview(productId: UUID, userId: UUID, text: String, rating: Int,
-                  completionHandler: @escaping (AFDataResponse<DefaultResult>) -> Void)
+                  completionHandler: @escaping (AFDataResponse<DefaultResponse>) -> Void)
     
-    func removeReview(reviewId: UUID, completionHandler: @escaping (AFDataResponse<DefaultResult>) -> Void)
+    func removeReview(reviewId: UUID, completionHandler: @escaping (AFDataResponse<DefaultResponse>) -> Void)
 }

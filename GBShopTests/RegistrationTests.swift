@@ -37,7 +37,7 @@ class RegistrationTests: XCTestCase {
     
     func testRegisterSuccess() {
                 
-        let successValue = DefaultResult(result: 1,
+        let successValue = DefaultResponse(result: 1,
                                         userMessage: "Succesfully register!",
                                         errorMessage: nil)
         
@@ -73,7 +73,7 @@ class RegistrationTests: XCTestCase {
     
     func testRegisterReject() {
                 
-        let successValue = DefaultResult(result: 0,
+        let successValue = DefaultResponse(result: 0,
                                         userMessage: nil,
                                         errorMessage: "Error: username or e-mail already exists")
         
@@ -109,7 +109,7 @@ class RegistrationTests: XCTestCase {
                               token: "9eb3522128ffe2d1d2c46771460ce352",
                               photoUrlString: "")
         
-        let successValue = DefaultResult(result: 1,
+        let successValue = DefaultResponse(result: 1,
                                         userMessage: "Succesfully changed user data!",
                                         errorMessage: nil)
         let expectation = expectation(description: "User changes data")
