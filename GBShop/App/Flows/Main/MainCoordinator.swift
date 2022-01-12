@@ -55,17 +55,14 @@ class MainCoordinator: NSObject, Coordinator, UITabBarControllerDelegate {
 
         switch page {
         case .catalog:
-            // If needed: Each tab bar flow can have it's own Coordinator.
-            let catalogViewController = CartViewController.instantiate()
-            navigationController.pushViewController(catalogViewController, animated: true)
+            let catalogCoordinator = CatalogCoordinator(navigationController: navigationController)
+            catalogCoordinator.start()
         case .cart:
             let cartViewController = CartViewController.instantiate()
             navigationController.pushViewController(cartViewController, animated: true)
         case .user:
             let userCoordinator = UserCoordinator(navigationController: navigationController)
             userCoordinator.start()
-            //let userViewController = AuthViewController.instantiate()
-            //navigationController.pushViewController(userViewController, animated: true)
         }
         
         return navigationController

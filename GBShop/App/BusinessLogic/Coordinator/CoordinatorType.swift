@@ -12,5 +12,6 @@ enum CoordinatorType {
     case userCoordinator
     case userDetailCoordinator
     case cartCoordinator
+    case catalogCoordinator
     case mainCoordinator
 }
