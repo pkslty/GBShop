@@ -18,4 +18,6 @@ protocol ProductsRequestFactory {
     func getCategories(completionHandler: @escaping (AFDataResponse<GetListResponse>) -> Void)
     
     func getBrands(completionHandler: @escaping (AFDataResponse<GetListResponse>) -> Void)
+    
+    func getBrandCategories(brandId: UUID, completionHandler: @escaping (AFDataResponse<GetListResponse>) -> Void)
 }

@@ -37,6 +37,10 @@ extension Products: ProductsRequestFactory {
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
+    func getBrandCategories(brandId: UUID, completionHandler: @escaping (AFDataResponse<GetListResponse>) -> Void) {
+        let requestModel = GetListData(baseUrl: baseUrl, path: "getBrands", brandId: brandId)
+        self.request(request: requestModel, completionHandler: completionHandler)
+    }
     
     func getProductById(id: UUID, completionHandler: @escaping (AFDataResponse<ProductByIdResponse>) -> Void) {
         let requestModel = ProductData(baseUrl: baseUrl, path: "getProductById", id: id)
@@ -69,8 +73,23 @@ extension Products {
         let baseUrl: URL
         let method: HTTPMethod = .get
         var path: String
+        var brandId: UUID?
         
-        var parameters: Parameters? = nil
+        var parameters: Parameters? {
+            if let brandId = brandId {
+                return [
+                    "brandId": brandId
+                ]
+            } else {
+                return nil
+            }
+        }
+        
+        init(baseUrl: URL, path: String, brandId: UUID? = nil) {
+            self.baseUrl = baseUrl
+            self.path = path
+            self.brandId = brandId
+        }
     }
     
     struct GoodsListData: RequestRouter {

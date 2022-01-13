@@ -22,7 +22,7 @@ class CatalogPresenter {
         }
     }
     
-    init(factory: RequestFactory, view: CatalogView) {
+    init(factory: RequestFactory, view: CatalogView, with brand: UUID? = nil) {
         self.factory = factory
         self.view = view
     }
