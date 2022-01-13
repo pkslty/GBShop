@@ -10,9 +10,8 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="CatalogViewController" customModule="GBShop" customModuleProvider="target">
             <connections>
-                <outlet property="listTypeControl" destination="MyQ-4e-vJP" id="CHe-a2-xiV"/>
+                <outlet property="activityIndicator" destination="Eco-SY-H9t" id="Zcr-gz-2l2"/>
                 <outlet property="searchField" destination="rH8-id-gW6" id="0Dc-p0-owJ"/>
-                <outlet property="tableView" destination="t4B-x5-iMA" id="itF-sA-dcD"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -29,37 +28,17 @@
                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                     <textInputTraits key="textInputTraits"/>
                 </textField>
-                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="MyQ-4e-vJP">
-                    <rect key="frame" x="20" y="104" width="374" height="51"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="50" id="eIP-ce-4aO"/>
-                    </constraints>
-                    <segments>
-                        <segment title="Categories"/>
-                        <segment title="Brands"/>
-                    </segments>
-                    <color key="selectedSegmentTintColor" systemColor="systemIndigoColor"/>
-                    <connections>
-                        <action selector="listTypeControlValueChanged:" destination="-1" eventType="valueChanged" id="aey-QR-I4D"/>
-                    </connections>
-                </segmentedControl>
-                <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="t4B-x5-iMA">
-                    <rect key="frame" x="0.0" y="164" width="414" height="698"/>
-                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                </tableView>
+                <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="medium" translatesAutoresizingMaskIntoConstraints="NO" id="Eco-SY-H9t">
+                    <rect key="frame" x="197" y="438" width="20" height="20"/>
+                </activityIndicatorView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="rH8-id-gW6" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="5tl-Yo-oow"/>
-                <constraint firstItem="MyQ-4e-vJP" firstAttribute="top" secondItem="rH8-id-gW6" secondAttribute="bottom" constant="10" id="STy-Bt-8wf"/>
-                <constraint firstItem="t4B-x5-iMA" firstAttribute="top" secondItem="MyQ-4e-vJP" secondAttribute="bottom" constant="10" id="SXS-bp-oa0"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="t4B-x5-iMA" secondAttribute="bottom" id="UmE-0e-DVl"/>
-                <constraint firstItem="t4B-x5-iMA" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="W9c-f4-K0f"/>
+                <constraint firstItem="Eco-SY-H9t" firstAttribute="centerY" secondItem="i5M-Pr-FkT" secondAttribute="centerY" id="X1O-eY-Q2l"/>
                 <constraint firstItem="rH8-id-gW6" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="cpu-xy-co4"/>
-                <constraint firstItem="MyQ-4e-vJP" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="20" id="gt1-K5-ZZb"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="t4B-x5-iMA" secondAttribute="trailing" id="hgj-Jd-os4"/>
-                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="MyQ-4e-vJP" secondAttribute="trailing" constant="20" id="vE3-YD-Yfl"/>
+                <constraint firstItem="Eco-SY-H9t" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="oHH-mu-rfh"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="rH8-id-gW6" secondAttribute="trailing" constant="20" id="yBw-5Q-xaH"/>
             </constraints>
             <point key="canvasLocation" x="139" y="72"/>
@@ -68,9 +47,6 @@
     <resources>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
-        <systemColor name="systemIndigoColor">
-            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

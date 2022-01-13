@@ -8,12 +8,14 @@
 import UIKit
 
 protocol CatalogView {
-    var listType: ListTypes { get }
+    var listType: ListTypes { get set }
     
     func setTitle(title: String)
     func setData(list: [String])
     func setListType(listType: ListTypes)
     func setListTypeTitle(listType: ListTypes, title: String)
+    func setActive()
+    func setWaiting()
 }
 
 enum ListTypes: Int {
@@ -30,9 +32,10 @@ enum ListTypes: Int {
 
 class CatalogViewController: UIViewController {
 
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    var tableView: UITableView
     @IBOutlet weak var searchField: UITextField!
-    @IBOutlet weak var listTypeControl: UISegmentedControl!
+    var listTypeControl: UISegmentedControl?
     var descriptionView: UIView!
    
     var list = [String]() {
@@ -41,22 +44,31 @@ class CatalogViewController: UIViewController {
         }
     }
     var presenter: CatalogPresenter?
+    var listType: ListTypes
     
     @IBAction func listTypeControlValueChanged(_ sender: Any) {
         presenter?.listTypeControlValueChanged()
     }
     
+    init(nibName: String?, bundle: Bundle?, withListControl: Bool) {
+        self.tableView = UITableView()
+        if withListControl {
+            self.listTypeControl = UISegmentedControl()
+        }
+        self.listType = .categories
+        super.init(nibName: nibName, bundle: bundle)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
         tableView.delegate = self
         tableView.dataSource = self
-
-        addFindImage()
-        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
-        
-        let font = UIFont.systemFont(ofSize: 18)
-        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
-        
+ 
         presenter?.load()
     }
 
@@ -67,7 +79,7 @@ class CatalogViewController: UIViewController {
         searchField.leftView = imageView
     }
     
-    @objc private func showDescription() {
+    /*@objc private func showDescription() {
         guard let row = tableView.indexPathForSelectedRow?.row else { return }
         let descriptionViewFrame = CGRect(x: 0, y: 0, width: view.frame.width, height: view.frame.height - 200)
         descriptionView = UIView(frame: descriptionViewFrame)
@@ -81,8 +93,54 @@ class CatalogViewController: UIViewController {
 
         descriptionView.addSubview(descriptionLabel)
         descriptionLabel.text = list[row]
-
+        }*/
+    
+    private func setupView() {
+        setupListTypeControl()
+        setupTableView()
+        addFindImage()
+    }
+    
+    private func setupTableView() {
+        view.addSubview(tableView)
+        
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        if let listTypeControl = listTypeControl {
+            tableView.topAnchor.constraint(equalTo: listTypeControl.bottomAnchor, constant: 10).isActive = true
+        } else {
+            tableView.topAnchor.constraint(equalTo: searchField.bottomAnchor, constant: 10).isActive = true
         }
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+    }
+    
+    private func setupListTypeControl() {
+        guard let listTypeControl = listTypeControl else { return }
+        listTypeControl.insertSegment(withTitle: nil, at: 0, animated: false)
+        listTypeControl.insertSegment(withTitle: nil, at: 1, animated: false)
+        
+        listTypeControl.selectedSegmentTintColor = .systemIndigo
+        
+        let valueChangedAction = UIAction { _ in
+            self.listType = ListTypes(listTypeControl.selectedSegmentIndex)
+            self.presenter?.listTypeControlValueChanged()
+        }
+        listTypeControl.addAction(valueChangedAction, for: .valueChanged)
+        
+        view.addSubview(listTypeControl)
+        listTypeControl.translatesAutoresizingMaskIntoConstraints = false
+        listTypeControl.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10).isActive = true
+        listTypeControl.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10).isActive = true
+        listTypeControl.topAnchor.constraint(equalTo: searchField.bottomAnchor, constant: 10).isActive = true
+        listTypeControl.heightAnchor.constraint(equalToConstant: 50).isActive = true
+        let font = UIFont.systemFont(ofSize: 18)
+        UISegmentedControl.appearance().setTitleTextAttributes([NSAttributedString.Key.font: font], for: .normal)
+    }
+    
 }
 
 extension CatalogViewController: UITableViewDelegate, UITableViewDataSource {
@@ -99,15 +157,12 @@ extension CatalogViewController: UITableViewDelegate, UITableViewDataSource {
         var content = cell.defaultContentConfiguration()
         content.text = list[indexPath.row]
         cell.contentConfiguration = content
-        let gestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(showDescription))
-        cell.addGestureRecognizer(gestureRecognizer)
         return cell
     }
     
 }
 
 extension CatalogViewController: CatalogView {
-    var listType: ListTypes { ListTypes(listTypeControl.selectedSegmentIndex) }
     
     func setTitle(title: String) {
         self.title = title
@@ -118,10 +173,25 @@ extension CatalogViewController: CatalogView {
     }
     
     func setListType(listType: ListTypes) {
-        self.listTypeControl.selectedSegmentIndex = listType.rawValue
+        self.listTypeControl?.selectedSegmentIndex = listType.rawValue
+        self.listType = listType
     }
     
     func setListTypeTitle(listType: ListTypes, title: String) {
-        self.listTypeControl.setTitle(title, forSegmentAt: listType.rawValue)
+        self.listTypeControl?.setTitle(title, forSegmentAt: listType.rawValue)
+    }
+    
+    func setWaiting() {
+        self.listTypeControl?.isEnabled = false
+        self.searchField.isEnabled = false
+        self.activityIndicator.isHidden = false
+        self.activityIndicator.startAnimating()
+    }
+    
+    func setActive() {
+        self.listTypeControl?.isEnabled = true
+        self.searchField.isEnabled = true
+        self.activityIndicator.isHidden = true
+        self.activityIndicator.stopAnimating()
     }
 }

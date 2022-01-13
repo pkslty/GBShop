@@ -29,6 +29,8 @@ class CatalogPresenter {
     
     func load() {
         view.setListType(listType: .categories)
+        view.setListTypeTitle(listType: .categories, title: "Categories")
+        view.setListTypeTitle(listType: .brands, title: "Brands")
         view.setTitle(title: "Catalog")
         getLists()
     }
@@ -38,6 +40,7 @@ class CatalogPresenter {
     }
     
     private func getLists() {
+        view.setWaiting()
         let request = factory.makeProductsRequestFactory()
         request.getCategories { response in
             if let value = response.value {
@@ -46,14 +49,12 @@ class CatalogPresenter {
                     case 1:
                         if let items = value.items {
                             self.categories = items
-                            print(items)
                             
                         }
-                        //self.view.setActive()
+                        self.view.setActive()
                         //self.coordinator?.presenterDidFinish(with: user)
                     default:
-                        //self.view.setActive()
-                        print()
+                        self.view.setActive()
                     }
                 }
             }
@@ -65,13 +66,10 @@ class CatalogPresenter {
                     case 1:
                         if let items = value.items {
                             self.brands = items
-                            print(items)
                         }
-                        //self.view.setActive()
-                        //self.coordinator?.presenterDidFinish(with: user)
+                        self.view.setActive()
                     default:
-                        //self.view.setActive()
-                        print()
+                        self.view.setActive()
                     }
                 }
             }
@@ -81,9 +79,11 @@ class CatalogPresenter {
     private func setData() {
         switch view.listType {
         case .categories:
-            view.setData(list: categories.map { $0.name })
+            view.setData(list: categories.map { $0.name }
+                            .sorted(by: <))
         case .brands:
-            view.setData(list: brands.map { $0.name })
+            view.setData(list: brands.map { $0.name }
+                            .sorted(by: <))
         }
     }
     

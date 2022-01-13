@@ -18,7 +18,7 @@ class CatalogCoordinator: Coordinator {
     }
     
     func start() {
-        let viewController = CatalogViewController(nibName: "CatalogViewController", bundle: nil)
+        let viewController = CatalogViewController(nibName: "CatalogViewController", bundle: nil, withListControl: false)
         let factory = RequestFactory()
         let catalogPresenter = CatalogPresenter(factory: factory, view: viewController)
         catalogPresenter.coordinator = self
