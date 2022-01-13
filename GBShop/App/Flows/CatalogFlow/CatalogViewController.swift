@@ -160,6 +160,9 @@ extension CatalogViewController: UITableViewDelegate, UITableViewDataSource {
         return cell
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        presenter?.viewDidSelectRow(row: indexPath.row)
+    }
 }
 
 extension CatalogViewController: CatalogView {

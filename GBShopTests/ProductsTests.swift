@@ -152,4 +152,25 @@ class ProductsTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 10.0)
     }
+    
+    func testGetBrandById() {
+        
+        let successValue = 1
+        let expectation = expectation(description: "GetBrandById")
+        
+        let request = requestFactory.makeProductsRequestFactory()
+        
+        request.getBrandById(brandId: UUID(uuidString: "ee861fc0-7245-11ec-b7a6-0800200c9a66")!) { response in
+            switch response.result {
+            case .success(let result):
+                XCTAssertEqual(result.result, successValue)
+                XCTAssertNotNil(result.brand)
+                XCTAssertNil(result.errorMessage)
+                expectation.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+        wait(for: [expectation], timeout: 10.0)
+    }
 }

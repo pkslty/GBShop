@@ -58,6 +58,8 @@
 		3693A871275E210B00FA275E /* AuthTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693A870275E210B00FA275E /* AuthTests.swift */; };
 		3693A873275E37BE00FA275E /* ProductsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693A872275E37BE00FA275E /* ProductsTests.swift */; };
 		3693A875275E468F00FA275E /* RegistrationTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693A874275E468F00FA275E /* RegistrationTests.swift */; };
+		36A03B4C279048D200CFE222 /* GetBrandByIdResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A03B4B279048D200CFE222 /* GetBrandByIdResponse.swift */; };
+		36A03B4E2790497C00CFE222 /* Brand.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A03B4D2790497C00CFE222 /* Brand.swift */; };
 		36A7D5FF277372290037E5CB /* Logger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D5FE277372290037E5CB /* Logger.swift */; };
 		36A7D6022773CAAB0037E5CB /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D6012773CAAA0037E5CB /* Coordinator.swift */; };
 		36A7D6042773CBDF0037E5CB /* Storyboarded.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D6032773CBDF0037E5CB /* Storyboarded.swift */; };
@@ -154,6 +156,8 @@
 		3693A870275E210B00FA275E /* AuthTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthTests.swift; sourceTree = "<group>"; };
 		3693A872275E37BE00FA275E /* ProductsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsTests.swift; sourceTree = "<group>"; };
 		3693A874275E468F00FA275E /* RegistrationTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationTests.swift; sourceTree = "<group>"; };
+		36A03B4B279048D200CFE222 /* GetBrandByIdResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetBrandByIdResponse.swift; sourceTree = "<group>"; };
+		36A03B4D2790497C00CFE222 /* Brand.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Brand.swift; sourceTree = "<group>"; };
 		36A7D5FE277372290037E5CB /* Logger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Logger.swift; sourceTree = "<group>"; };
 		36A7D6012773CAAA0037E5CB /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
 		36A7D6032773CBDF0037E5CB /* Storyboarded.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Storyboarded.swift; sourceTree = "<group>"; };
@@ -317,6 +321,7 @@
 				3693A868275E0CD300FA275E /* Product.swift */,
 				3679534E2769EBF0009DE93B /* Review.swift */,
 				36B17A9A278D794C00B30570 /* ListItem.swift */,
+				36A03B4D2790497C00CFE222 /* Brand.swift */,
 			);
 			path = Entity;
 			sourceTree = "<group>";
@@ -505,6 +510,7 @@
 				3679534C2769EB03009DE93B /* GetReviewsResponse.swift */,
 				36B17A9C278D79AF00B30570 /* GetListResponse.swift */,
 				362AF6D6278D8036000FAC48 /* ProductsListResponse.swift */,
+				36A03B4B279048D200CFE222 /* GetBrandByIdResponse.swift */,
 			);
 			path = Responses;
 			sourceTree = "<group>";
@@ -651,6 +657,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				36A7D61C277514870037E5CB /* UserDetailCoordinator.swift in Sources */,
+				36A03B4E2790497C00CFE222 /* Brand.swift in Sources */,
 				36A7D6062773D78F0037E5CB /* MainCoordinator.swift in Sources */,
 				36A7D5FF277372290037E5CB /* Logger.swift in Sources */,
 				36A7D62227752BAF0037E5CB /* UserDetailViewController.swift in Sources */,
@@ -696,6 +703,7 @@
 				362AF6DA278D8F7E000FAC48 /* CatalogViewController.swift in Sources */,
 				3617763C2759454700509772 /* User.swift in Sources */,
 				3679534D2769EB03009DE93B /* GetReviewsResponse.swift in Sources */,
+				36A03B4C279048D200CFE222 /* GetBrandByIdResponse.swift in Sources */,
 				36B17A9D278D79AF00B30570 /* GetListResponse.swift in Sources */,
 				3680358B277C5092007AD6C5 /* ImageLoader.swift in Sources */,
 				36177634275792FE00509772 /* RegistrationRequestFactory.swift in Sources */,

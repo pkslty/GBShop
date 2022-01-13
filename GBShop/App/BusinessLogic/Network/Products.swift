@@ -28,17 +28,22 @@ class Products: AbstractRequestFactory {
 
 extension Products: ProductsRequestFactory {
     func getCategories(completionHandler: @escaping (AFDataResponse<GetListResponse>) -> Void) {
-        let requestModel = GetListData(baseUrl: baseUrl, path: "getCategories")
+        let requestModel = GetListData(baseUrl: baseUrl, method: .get, path: "getCategories")
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
     func getBrands(completionHandler: @escaping (AFDataResponse<GetListResponse>) -> Void) {
-        let requestModel = GetListData(baseUrl: baseUrl, path: "getBrands")
+        let requestModel = GetListData(baseUrl: baseUrl, method: .get, path: "getBrands")
+        self.request(request: requestModel, completionHandler: completionHandler)
+    }
+    
+    func getBrandById(brandId: UUID, completionHandler: @escaping (AFDataResponse<GetBrandByIdResponse>) -> Void) {
+        let requestModel = GetListData(baseUrl: baseUrl, method: .post, path: "getBrandById", brandId: brandId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
     func getBrandCategories(brandId: UUID, completionHandler: @escaping (AFDataResponse<GetListResponse>) -> Void) {
-        let requestModel = GetListData(baseUrl: baseUrl, path: "getBrands", brandId: brandId)
+        let requestModel = GetListData(baseUrl: baseUrl, method: .post, path: "getBrandCategories", brandId: brandId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
@@ -71,22 +76,23 @@ extension Products {
     
     struct GetListData: RequestRouter {
         let baseUrl: URL
-        let method: HTTPMethod = .get
+        let method: HTTPMethod
         var path: String
         var brandId: UUID?
         
         var parameters: Parameters? {
             if let brandId = brandId {
                 return [
-                    "brandId": brandId
+                    "id": brandId
                 ]
             } else {
                 return nil
             }
         }
         
-        init(baseUrl: URL, path: String, brandId: UUID? = nil) {
+        init(baseUrl: URL, method: HTTPMethod, path: String, brandId: UUID? = nil) {
             self.baseUrl = baseUrl
+            self.method = method
             self.path = path
             self.brandId = brandId
         }
