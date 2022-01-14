@@ -60,7 +60,7 @@ extension UserDetailCoordinator: UserDetailEditable {
         navigationController.pushViewController(editInfoViewController, animated: true)
         
     }
-    //MARK - Need to refactor
+
     func didSaveUserInfo(with user: User) {
         self.user = user
         userDetailPresenter?.user = self.user

@@ -20,13 +20,10 @@ class UserDetailViewController: UIViewController {
     @IBOutlet weak var avatar: RoundShadowView!
     @IBOutlet weak var emailField: UITextField!
     @IBOutlet weak var fullNameField: UITextField!
-    
     @IBOutlet weak var UserInfoTextView: UITextView!
     @IBOutlet weak var editInfoButton: UIButton!
     @IBOutlet weak var logoutButton: UIButton!
-    
     @IBOutlet weak var scrollView: UIScrollView!
-    
     @IBOutlet weak var stackView: UIStackView!
     
     
@@ -37,7 +34,7 @@ class UserDetailViewController: UIViewController {
         logoutButton.addTarget(self, action: #selector(logoutButtonPressed), for: .touchDown)
         editInfoButton.addTarget(self, action: #selector(editInfoButtonPressed), for: .touchDown)
         
-        self.avatar.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showAlert)))
+        //self.avatar.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(showAlert)))
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -85,13 +82,10 @@ extension UserDetailViewController: UserDetailView {
     
 }
 
-//MARK:- Image Picker
-extension UserDetailViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+//MARK:- Image Picker works fine here, but need to move to EditInfoViewController
+//AAnd then implement store and uploading images
+/*extension UserDetailViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
-    //This is the tap gesture added on my UIImageView.
-    
-
-    //Show alert to selected the media source type.
     @objc private func showAlert() {
 
         let alert = UIAlertController(title: "Image Selection", message: "From where you want to pick this image?", preferredStyle: .actionSheet)
@@ -105,10 +99,8 @@ extension UserDetailViewController: UIImagePickerControllerDelegate, UINavigatio
         self.present(alert, animated: true, completion: nil)
     }
 
-    //get image from source type
     private func getImage(fromSourceType sourceType: UIImagePickerController.SourceType) {
 
-        //Check is source type available
         if UIImagePickerController.isSourceTypeAvailable(sourceType) {
 
             let imagePickerController = UIImagePickerController()
@@ -118,13 +110,11 @@ extension UserDetailViewController: UIImagePickerControllerDelegate, UINavigatio
         }
     }
 
-    //MARK:- UIImagePickerViewDelegate.
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
 
         self.dismiss(animated: true) { [weak self] in
 
             guard let image = info[UIImagePickerController.InfoKey.originalImage] as? UIImage else { return }
-            //Setting image to your image view
             self?.avatar.image = image
         }
     }
@@ -133,4 +123,4 @@ extension UserDetailViewController: UIImagePickerControllerDelegate, UINavigatio
         picker.dismiss(animated: true, completion: nil)
     }
 
-}
+}*/

@@ -135,7 +135,7 @@ final class ImageLoader: ObservableObject {
     
     static private func loadImage(from urlString: String, completion: @escaping (UIImage?) -> Void) {
         
-        NetworkService().getData(from: urlString) { data in
+        getData(from: urlString) { data in
             guard let image = UIImage(data: data) else { return completion(nil) }
             
             DispatchQueue.main.async {
@@ -143,6 +143,39 @@ final class ImageLoader: ObservableObject {
             }
             self.imageCache.setObject(image, forKey: urlString as NSString)
             saveImageToDisk(urlString: urlString, image: image)
+        }
+    }
+    
+    static private func getData(from url: String, completionBlock: @escaping (Data) -> Void) {
+        guard let url = URL(string: url)
+        else {
+            print("Error: Invalid url")
+            return
+        }
+        
+        var request = URLRequest(url: url,timeoutInterval: 5.0)
+        request.addValue("Mozilla/5.0", forHTTPHeaderField: "User-Agent")
+
+        request.httpMethod = "GET"
+        
+        DispatchQueue.global().async {
+            let session = URLSession.shared
+            let task = session.dataTask(with: request) { data, response, error in
+                guard error == nil else {
+                    print("NetworkService error: \(String(describing: error))")
+                    print("URL: \(url)")
+                    return
+                }
+                guard let data = data
+                else {
+                    print("NetworkService error: No data")
+                    return
+                }
+                DispatchQueue.main.async {
+                    completionBlock(data)
+                }
+            }
+            task.resume()
         }
     }
     

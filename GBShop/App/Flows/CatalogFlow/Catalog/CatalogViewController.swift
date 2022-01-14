@@ -51,16 +51,16 @@ class CatalogViewController: UIViewController {
     }
     
     init(nibName: String?, bundle: Bundle?, withListControl: Bool) {
-        self.tableView = UITableView()
-        if withListControl {
-            self.listTypeControl = UISegmentedControl()
+            self.tableView = UITableView()
+            if withListControl {
+                self.listTypeControl = UISegmentedControl()
+            }
+            self.listType = .categories
+            super.init(nibName: nibName, bundle: bundle)
         }
-        self.listType = .categories
-        super.init(nibName: nibName, bundle: bundle)
-    }
-    
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        
+        required init?(coder: NSCoder) {
+            fatalError("init(coder:) has not been implemented")
     }
     
     override func viewDidLoad() {

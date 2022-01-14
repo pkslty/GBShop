@@ -10,6 +10,7 @@ import Foundation
 struct CatalogFinishData {
     let brandId: UUID?
     let categoryId: UUID?
+    let categoryName: String?
 }
 
 class CatalogPresenter {
@@ -49,15 +50,19 @@ class CatalogPresenter {
     func viewDidSelectRow(row: Int) {
         var categoryId: UUID?
         var brandId: UUID?
+        var categoryName: String?
+        
         if view.listType == .categories {
             categoryId = categories[row].id
+            categoryName = categories[row].name
             brandId = self.brandId
         } else {
             categoryId = nil
             brandId = brands[row].id
         }
         let catalogFinishData = CatalogFinishData(brandId: brandId,
-                                                  categoryId: categoryId)
+                                                  categoryId: categoryId,
+                                                  categoryName: categoryName)
         coordinator?.presenterDidFinish(with: catalogFinishData)
     }
     
@@ -72,10 +77,9 @@ class CatalogPresenter {
                         case 1:
                             if let items = value.items {
                                 self.categories = items
-                                
+                                    .sorted { $0.name < $1.name }
                             }
                             self.view.setActive()
-                            //self.coordinator?.presenterDidFinish(with: user)
                         default:
                             self.view.setActive()
                         }
@@ -91,10 +95,10 @@ class CatalogPresenter {
                         case 1:
                             if let items = value.items {
                                 self.categories = items
+                                    .sorted { $0.name < $1.name }
                                 
                             }
                             self.view.setActive()
-                            //self.coordinator?.presenterDidFinish(with: user)
                         default:
                             self.view.setActive()
                         }
@@ -108,6 +112,7 @@ class CatalogPresenter {
                         case 1:
                             if let items = value.items {
                                 self.brands = items
+                                    .sorted { $0.name < $1.name }
                             }
                             self.view.setActive()
                         default:
@@ -139,11 +144,9 @@ class CatalogPresenter {
     private func setData() {
         switch view.listType {
         case .categories:
-            view.setData(list: categories.map { $0.name }
-                            .sorted(by: <))
+            view.setData(list: categories.map { $0.name })
         case .brands:
-            view.setData(list: brands.map { $0.name }
-                            .sorted(by: <))
+            view.setData(list: brands.map { $0.name })
         }
     }
     

@@ -40,6 +40,13 @@ class CatalogCoordinator: Coordinator {
             catalogPresenter.coordinator = self
             viewController.presenter = catalogPresenter
             navigationController.pushViewController(viewController, animated: true)
+        } else {
+            let viewController = ProductListViewController(nibName: "ProductListViewController", bundle: nil)
+            let factory = RequestFactory()
+            let productListPresenter = ProductListPresenter(factory: factory, view: viewController, categoryId: data.categoryId, categoryName: data.categoryName)
+            productListPresenter.coordinator = self
+            viewController.presenter = productListPresenter
+            navigationController.pushViewController(viewController, animated: true)
         }
     }
     
