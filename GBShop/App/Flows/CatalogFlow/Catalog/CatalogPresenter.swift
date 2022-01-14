@@ -41,6 +41,7 @@ class CatalogPresenter {
         view.setListTypeTitle(listType: .brands, title: "Brands")
         getTitle()
         getLists()
+        view.setActive()
     }
     
     func listTypeControlValueChanged() {

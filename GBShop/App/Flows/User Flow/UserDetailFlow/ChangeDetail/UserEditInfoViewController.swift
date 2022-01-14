@@ -84,7 +84,7 @@ class UserEditInfoViewController: UIViewController {
         navigationController?.navigationBar.isHidden = false
         passwordField.delegate = self
         passwordRepeatField.delegate = self
-        activityIndicator.layer.zPosition = -1
+        activityIndicator.layer.zPosition = 1
         switch role {
         case .register:
             titleLabel.text = "Register New User"

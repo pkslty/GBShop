@@ -99,6 +99,7 @@ class CatalogViewController: UIViewController {
         setupListTypeControl()
         setupTableView()
         addFindImage()
+        activityIndicator.layer.zPosition = 1
     }
     
     private func setupTableView() {
