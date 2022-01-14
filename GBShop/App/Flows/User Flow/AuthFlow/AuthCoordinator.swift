@@ -12,6 +12,7 @@ protocol SignUppable {
 }
 
 class AuthCoordinator: Coordinator {
+    
     var childCoordinators = [Coordinator]()
     var parentCoordinator: Coordinator?
     var navigationController: UINavigationController
@@ -55,10 +56,23 @@ extension AuthCoordinator: SignUppable {
         
         let signUpPresenter = SignUpPresenter(factory: factory, view: signUpViewController)
         signUpViewController.presenter = signUpPresenter
+        signUpPresenter.coordinator = self
         
         navigationController.pushViewController(signUpViewController, animated: true)
         
         
         
     }
+}
+
+extension AuthCoordinator: UserDetailEditable {
+    func editInfo(of user: User?) {
+        
+    }
+    
+    func didSaveUserInfo(with user: User) {
+        
+    }
+    
+    
 }
