@@ -14,12 +14,13 @@ protocol ProductListView {
 
 class ProductListViewController: UIViewController {
     var presenter: ProductListPresenter?
-    var collectionView: UICollectionView!
+    var tableView: UITableView!
     var list = [Product]() {
         didSet {
-            collectionView.reloadData()
+            tableView.reloadData()
         }
     }
+    
     
     override init(nibName: String?, bundle: Bundle?) {
         
@@ -32,17 +33,17 @@ class ProductListViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupCollectionView()
+        setupTableView()
         setupSortMenu()
         presenter?.load()
         
         
     }
     
-    private func setupCollectionView() {
-        let layout = UICollectionViewFlowLayout()
-        self.collectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
-        view.addSubview(collectionView)
+    private func setupTableView() {
+        
+        self.tableView = UITableView(frame: view.frame)
+        view.addSubview(tableView)
         
         /*collectionView.translatesAutoresizingMaskIntoConstraints = false
         
@@ -51,9 +52,9 @@ class ProductListViewController: UIViewController {
         collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
         collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true*/
         
-        collectionView.register(UICollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        collectionView.delegate = self
-        collectionView.dataSource = self
+        tableView.register(UINib(nibName: "ProductListCell", bundle: nil), forCellReuseIdentifier: "ProductListCell")
+        tableView.delegate = self
+        tableView.dataSource = self
     }
     
     private func setupSortMenu() {
@@ -76,16 +77,25 @@ class ProductListViewController: UIViewController {
     }
 }
 
-extension ProductListViewController: UICollectionViewDelegate, UICollectionViewDataSource {
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        list.count
+extension ProductListViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return list.count
     }
     
-    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath)
-        cell.backgroundColor = .systemIndigo
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductListCell") as? ProductListCell else { return UITableViewCell() }
+        
+        let product = list[indexPath.row]
+
+        
+        cell.configure(productName: product.productName,
+                       productImage: product.photoUrlString ?? "http://dnk.net.ru/gb_shop/photos/place_holder.png",
+                       productDescription: product.productDescription,
+                       productPrice: String(product.price))
+        
         return cell
     }
+    
     
     
 }
