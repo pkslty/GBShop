@@ -14,11 +14,12 @@ class ProductListCell: UITableViewCell {
     @IBOutlet weak var productDescription: UILabel!
     @IBOutlet weak var productPrice: UILabel!
     @IBOutlet weak var productQuantity: UITextField!
+    @IBOutlet weak var rating: RatingView!
     
     @IBAction func addToCartButtonPressed(_ sender: Any) {
     }
     
-    func configure(productName: String, productImage: String, productDescription: String, productPrice: String, productQuantity: Int? = nil) {
+    func configure(productName: String, productImage: String, productDescription: String, productPrice: String, productRating: Int, productQuantity: Int? = nil) {
         
         let currencySign = "₽"
         
@@ -26,6 +27,7 @@ class ProductListCell: UITableViewCell {
         self.productDescription.text = productDescription
         self.productPrice.text = "\(productPrice) \(currencySign)"
         self.productQuantity.text = String(productQuantity ?? 1)
+        self.rating.setRating(rating: productRating)
         ImageLoader.getImage(from: productImage) {[weak self] image in
             guard let self = self else { return }
             self.productImage.image = image

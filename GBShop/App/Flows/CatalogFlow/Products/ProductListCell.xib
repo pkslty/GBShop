@@ -4,6 +4,7 @@
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
@@ -22,12 +23,24 @@
                             <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dkl-6E-LP6">
                                 <rect key="frame" x="0.0" y="0.0" width="642" height="120"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qfj-nJ-mbU">
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="jl9-4C-Woh">
                                         <rect key="frame" x="0.0" y="0.0" width="522" height="120"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qfj-nJ-mbU">
+                                                <rect key="frame" x="0.0" y="0.0" width="522" height="80"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="80" id="3OX-KJ-78X"/>
+                                                </constraints>
+                                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zac-Y9-dDF" customClass="RatingView" customModule="GBShop" customModuleProvider="target">
+                                                <rect key="frame" x="0.0" y="80" width="522" height="40"/>
+                                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                            </view>
+                                        </subviews>
+                                    </stackView>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="745-Gu-wIV">
                                         <rect key="frame" x="522" y="0.0" width="120" height="120"/>
                                         <constraints>
@@ -60,7 +73,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="100" id="ZnS-sc-cE8"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <textInputTraits key="textInputTraits"/>
                                     </textField>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TvD-3T-fhQ">
@@ -93,8 +106,14 @@
                 <outlet property="productName" destination="Qfj-nJ-mbU" id="0RM-dK-eQ7"/>
                 <outlet property="productPrice" destination="vNh-rw-vS8" id="cqw-vf-lhq"/>
                 <outlet property="productQuantity" destination="sBL-mS-nbL" id="8u7-xZ-Mg2"/>
+                <outlet property="rating" destination="zac-Y9-dDF" id="q3l-iu-o4G"/>
             </connections>
             <point key="canvasLocation" x="182.60869565217394" y="72.991071428571431"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
 </document>

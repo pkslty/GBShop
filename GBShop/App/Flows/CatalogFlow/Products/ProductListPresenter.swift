@@ -32,6 +32,18 @@ class ProductListPresenter {
         getList()
     }
     
+    func sortByRating() {
+        products = products.sorted { $0.rating > $1.rating }
+    }
+    
+    func sortPriceUp() {
+        products = products.sorted { $0.price < $1.price }
+    }
+    
+    func sortPriceDown() {
+        products = products.sorted { $0.price > $1.price }
+    }
+    
     private func getList() {
         let request = factory.makeProductsRequestFactory()
         request.getProductsList(page: 1, categoryId: categoryId) { response in
