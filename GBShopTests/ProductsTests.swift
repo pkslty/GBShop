@@ -23,7 +23,7 @@ class ProductsTests: XCTestCase {
         
     }
     
-    func testGetGoodById() {
+    func testGetProductById() {
                 
         let successValue = 1
         let expectation = expectation(description: "GetProductById")
@@ -46,7 +46,7 @@ class ProductsTests: XCTestCase {
         wait(for: [expectation], timeout: 10.0)
     }
     
-    func testGetGoodsByIdFail() {
+    func testGetProductByIdFail() {
                 
         let successValue = 0
         let expectation = expectation(description: "GetProductByIdFail")
