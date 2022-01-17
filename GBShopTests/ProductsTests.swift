@@ -173,4 +173,25 @@ class ProductsTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 10.0)
     }
+    
+    func testGetProductPhotos() {
+        
+        let successValue = 1
+        let expectation = expectation(description: "GetProductPhotos")
+        
+        let request = requestFactory.makeProductsRequestFactory()
+        
+        request.getProductPhotos(productId: UUID(uuidString: "0475eb70-725b-11ec-b7a6-0800200c9a66")!) { response in
+            switch response.result {
+            case .success(let result):
+                XCTAssertEqual(result.result, successValue)
+                XCTAssertNotNil(result.photos)
+                XCTAssertNil(result.errorMessage)
+                expectation.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+        wait(for: [expectation], timeout: 10.0)
+    }
 }

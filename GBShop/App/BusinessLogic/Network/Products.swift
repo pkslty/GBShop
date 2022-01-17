@@ -13,8 +13,8 @@ class Products: AbstractRequestFactory {
     var errorParser: AbstractErrorParser
     var sessionManager: Session
     var queue: DispatchQueue
-    let baseUrl = URL(string: "https://vast-hollows-60312.herokuapp.com/")!
-    //let baseUrl = URL(string: "http://127.0.0.1:8080/")!
+    //let baseUrl = URL(string: "https://vast-hollows-60312.herokuapp.com/")!
+    let baseUrl = URL(string: "http://127.0.0.1:8080/")!
     
     init(
         errorParser: AbstractErrorParser,
@@ -57,6 +57,10 @@ extension Products: ProductsRequestFactory {
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
+    func getProductPhotos(productId: UUID, completionHandler: @escaping (AFDataResponse<GetProductPhotosResponse>) -> Void) {
+        let requestModel = GetListData(baseUrl: baseUrl, method: .post, path: "getProductPhotos", productId: productId)
+        self.request(request: requestModel, completionHandler: completionHandler)
+    }
     
 }
 
@@ -79,6 +83,7 @@ extension Products {
         let method: HTTPMethod
         var path: String
         var brandId: UUID?
+        var productId: UUID?
         
         var parameters: Parameters? {
             if let brandId = brandId {
@@ -86,15 +91,22 @@ extension Products {
                     "id": brandId
                 ]
             } else {
-                return nil
+                if let productId = productId {
+                    return [
+                        "id": productId
+                    ]
+                } else {
+                    return nil
+                }
             }
         }
         
-        init(baseUrl: URL, method: HTTPMethod, path: String, brandId: UUID? = nil) {
+        init(baseUrl: URL, method: HTTPMethod, path: String, brandId: UUID? = nil, productId: UUID? = nil) {
             self.baseUrl = baseUrl
             self.method = method
             self.path = path
             self.brandId = brandId
+            self.productId = productId
         }
     }
     
