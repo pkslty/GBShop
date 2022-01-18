@@ -103,7 +103,10 @@ extension ProductListViewController: UITableViewDelegate, UITableViewDataSource 
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let row = indexPath.row
+        presenter?.viewDidSelectRow(row: row)
+    }
     
 }
 

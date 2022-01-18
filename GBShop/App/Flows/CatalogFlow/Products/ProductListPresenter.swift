@@ -7,10 +7,14 @@
 
 import Foundation
 
+protocol ProductSelectable {
+    func productListDidSelectProduct(productId: UUID)
+}
+
 class ProductListPresenter {
     var view: ProductListView
     var factory: RequestFactory
-    var coordinator: Coordinator?
+    var coordinator: (Coordinator&ProductSelectable)?
     var category: String
     var categoryId: UUID
     var products = [Product]() {
@@ -42,6 +46,11 @@ class ProductListPresenter {
     
     func sortPriceDown() {
         products = products.sorted { $0.price > $1.price }
+    }
+    
+    func viewDidSelectRow(row: Int) {
+        let productId = products[row].productId
+        coordinator?.productListDidSelectProduct(productId: productId)
     }
     
     private func getList() {

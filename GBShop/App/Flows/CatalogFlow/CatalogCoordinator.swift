@@ -50,5 +50,15 @@ class CatalogCoordinator: Coordinator {
         }
     }
     
-    
+}
+
+extension CatalogCoordinator: ProductSelectable {
+    func productListDidSelectProduct(productId: UUID) {
+        let viewController = ProductViewController(nibName: "ProductView", bundle: nil)
+        let factory = RequestFactory()
+        let productPresenter = ProductPresenter(factory: factory, view: viewController, productId: productId)
+        productPresenter.coordinator = self
+        viewController.presenter = productPresenter
+        navigationController.pushViewController(viewController, animated: true)
+    }
 }

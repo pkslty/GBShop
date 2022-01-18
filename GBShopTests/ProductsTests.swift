@@ -34,9 +34,7 @@ class ProductsTests: XCTestCase {
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result.result, successValue)
-                XCTAssertNotNil(result.description)
-                XCTAssertNotNil(result.price)
-                XCTAssertNotNil(result.productName)
+                XCTAssertNotNil(result.product)
                 XCTAssertNil(result.errorMessage)
                 expectation.fulfill()
             case .failure(let error):
@@ -58,9 +56,7 @@ class ProductsTests: XCTestCase {
             case .success(let result):
                 XCTAssertEqual(result.result, successValue)
                 XCTAssertNotNil(result.errorMessage)
-                XCTAssertNil(result.description)
-                XCTAssertNil(result.price)
-                XCTAssertNil(result.productName)
+                XCTAssertNil(result.product)
                 expectation.fulfill()
             case .failure(let error):
                 XCTFail(error.localizedDescription)

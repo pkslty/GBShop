@@ -15,13 +15,12 @@ class ProductListCell: UITableViewCell {
     @IBOutlet weak var productPrice: UILabel!
     @IBOutlet weak var productQuantity: UITextField!
     @IBOutlet weak var rating: RatingView!
+    let currencySign = "₽"
     
     @IBAction func addToCartButtonPressed(_ sender: Any) {
     }
     
     func configure(productName: String, productImage: String, productDescription: String, productPrice: String, productRating: Int, productQuantity: Int? = nil) {
-        
-        let currencySign = "₽"
         
         self.productName.text = productName
         self.productDescription.text = productDescription
