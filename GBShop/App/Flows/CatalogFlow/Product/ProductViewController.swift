@@ -13,7 +13,8 @@ protocol ProductView {
     func setPhotos(photos: [UIImage])
     func setDescription(description: String)
     func setPrice(price: String)
-    
+    func setRating(rating: Int)
+    func setReviewsText(text: String)
 }
 
 class ProductViewController: UIViewController {
@@ -27,13 +28,16 @@ class ProductViewController: UIViewController {
     
     @IBOutlet weak var photosView: UIView!
     @IBOutlet weak var photosScrollView: UIScrollView!
-    
+    @IBOutlet weak var productPriceLabel: UILabel!
+    @IBOutlet weak var reviewsView: UIView!
+    @IBOutlet weak var ratingControl: RatingView!
+    @IBOutlet weak var reviewsLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         setupConstraints()
-        //setupPhotosView()
+        setupView()
         
         presenter?.load()
         
@@ -47,8 +51,6 @@ class ProductViewController: UIViewController {
         stackView.topAnchor.constraint(equalTo: scrollView.topAnchor).isActive = true
         stackView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor).isActive = true
         stackView.widthAnchor.constraint(equalTo: view.widthAnchor).isActive = true
-        
-        
     }
 
     private func setupPhotosView(photos: [UIImage]) {
@@ -71,10 +73,17 @@ class ProductViewController: UIViewController {
         photosStackView.topAnchor.constraint(equalTo: photosScrollView.topAnchor).isActive = true
         photosStackView.bottomAnchor.constraint(equalTo: photosScrollView.bottomAnchor).isActive = true
         photosStackView.heightAnchor.constraint(equalTo: photosView.heightAnchor).isActive = true
-        
-        
     }
 
+    private func setupView() {
+        let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapReviewsControl))
+        reviewsView.addGestureRecognizer(tapGestureRecognizer)
+        reviewsView.subviews.forEach { $0.addGestureRecognizer(tapGestureRecognizer) }
+    }
+    
+    @objc private func didTapReviewsControl() {
+        presenter?.showReviews()
+    }
 }
 
 extension ProductViewController: ProductView {
@@ -95,8 +104,14 @@ extension ProductViewController: ProductView {
     }
     
     func setPrice(price: String) {
-        
+        productPriceLabel.text = price
     }
     
+    func setRating(rating: Int) {
+        ratingControl.setRating(rating: rating)
+    }
     
+    func setReviewsText(text: String) {
+        reviewsLabel.text = text
+    }
 }

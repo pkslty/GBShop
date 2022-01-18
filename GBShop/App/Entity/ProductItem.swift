@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ListItem: Codable {
+struct ProductItem: Codable {
     let id: UUID
     let name: String
     let description: String

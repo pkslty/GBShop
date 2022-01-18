@@ -88,7 +88,7 @@
 		36A7D6292777D7DF0037E5CB /* CoordinatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D6282777D7DE0037E5CB /* CoordinatorType.swift */; };
 		36A7D62C27787A020037E5CB /* AuthView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 36A7D62B27787A020037E5CB /* AuthView.xib */; };
 		36A7D62E27789CAE0037E5CB /* AuthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36A7D62D27789CAD0037E5CB /* AuthPresenter.swift */; };
-		36B17A9B278D794D00B30570 /* ListItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B17A9A278D794C00B30570 /* ListItem.swift */; };
+		36B17A9B278D794D00B30570 /* ProductItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B17A9A278D794C00B30570 /* ProductItem.swift */; };
 		36B17A9D278D79AF00B30570 /* GetListResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36B17A9C278D79AF00B30570 /* GetListResponse.swift */; };
 /* End PBXBuildFile section */
 
@@ -195,7 +195,7 @@
 		36A7D6282777D7DE0037E5CB /* CoordinatorType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoordinatorType.swift; sourceTree = "<group>"; };
 		36A7D62B27787A020037E5CB /* AuthView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AuthView.xib; sourceTree = "<group>"; };
 		36A7D62D27789CAD0037E5CB /* AuthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthPresenter.swift; sourceTree = "<group>"; };
-		36B17A9A278D794C00B30570 /* ListItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ListItem.swift; sourceTree = "<group>"; };
+		36B17A9A278D794C00B30570 /* ProductItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductItem.swift; sourceTree = "<group>"; };
 		36B17A9C278D79AF00B30570 /* GetListResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetListResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -338,7 +338,7 @@
 				3617763B2759454700509772 /* User.swift */,
 				3693A868275E0CD300FA275E /* Product.swift */,
 				3679534E2769EBF0009DE93B /* Review.swift */,
-				36B17A9A278D794C00B30570 /* ListItem.swift */,
+				36B17A9A278D794C00B30570 /* ProductItem.swift */,
 				36A03B4D2790497C00CFE222 /* Brand.swift */,
 			);
 			path = Entity;
@@ -754,7 +754,7 @@
 				36803588277B3243007AD6C5 /* SignUpPresenter.swift in Sources */,
 				36A7D61A277502790037E5CB /* TabBarPage.swift in Sources */,
 				361776362757AC7200509772 /* Registration.swift in Sources */,
-				36B17A9B278D794D00B30570 /* ListItem.swift in Sources */,
+				36B17A9B278D794D00B30570 /* ProductItem.swift in Sources */,
 				36A7D6162774B1A50037E5CB /* AuthCoordinator.swift in Sources */,
 				367864422751488F00E0786F /* SceneDelegate.swift in Sources */,
 				36A7D6252775A97F0037E5CB /* RoundShadowView.swift in Sources */,

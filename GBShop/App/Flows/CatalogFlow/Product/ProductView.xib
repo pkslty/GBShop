@@ -14,6 +14,10 @@
                 <outlet property="photosView" destination="UHU-sb-sbk" id="KbQ-xU-dgv"/>
                 <outlet property="productDescriptionLabel" destination="OEi-wQ-M0p" id="BPK-6g-TH7"/>
                 <outlet property="productNameLabel" destination="FIY-WR-O4U" id="o1w-sm-TO0"/>
+                <outlet property="productPriceLabel" destination="weG-o6-qiI" id="Brr-JZ-91p"/>
+                <outlet property="ratingControl" destination="7H1-jQ-nFk" id="25y-a6-DGI"/>
+                <outlet property="reviewsLabel" destination="sHc-rp-BAY" id="Rjb-tj-EO3"/>
+                <outlet property="reviewsView" destination="caA-Ba-OYG" id="aDc-N5-iRf"/>
                 <outlet property="scrollView" destination="OwG-4t-cHd" id="MLG-Eg-MPi"/>
                 <outlet property="stackView" destination="OQQ-mU-9Ui" id="4LA-K6-3Jb"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
@@ -52,10 +56,10 @@
                     <nil key="highlightedColor"/>
                 </label>
                 <view contentMode="scaleToFill" verticalHuggingPriority="25" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="UHU-sb-sbk">
-                    <rect key="frame" x="20" y="137" width="376" height="307"/>
+                    <rect key="frame" x="20" y="137" width="376" height="376"/>
                     <subviews>
                         <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eZV-6O-h8s">
-                            <rect key="frame" x="0.0" y="0.0" width="376" height="307"/>
+                            <rect key="frame" x="0.0" y="0.0" width="376" height="376"/>
                         </scrollView>
                     </subviews>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -67,13 +71,96 @@
                         <constraint firstItem="eZV-6O-h8s" firstAttribute="leading" secondItem="UHU-sb-sbk" secondAttribute="leading" id="zsY-aB-bKD"/>
                     </constraints>
                 </view>
+                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="96q-EL-dPD">
+                    <rect key="frame" x="20" y="523" width="376" height="1"/>
+                    <color key="backgroundColor" systemColor="systemGrayColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="qtM-OX-fUc"/>
+                    </constraints>
+                </view>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Product Description" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="OEi-wQ-M0p">
-                    <rect key="frame" x="20" y="832.5" width="376" height="20.5"/>
+                    <rect key="frame" x="20" y="715" width="376" height="20.5"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <nil key="textColor"/>
                     <nil key="highlightedColor"/>
                 </label>
+                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bhh-xl-dCh">
+                    <rect key="frame" x="20" y="564.5" width="376" height="1"/>
+                    <color key="backgroundColor" systemColor="systemGrayColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="kGD-Sj-BQs"/>
+                    </constraints>
+                </view>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Price" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="weG-o6-qiI">
+                    <rect key="frame" x="20" y="755.5" width="376" height="26.5"/>
+                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                    <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="r8d-pI-WQ7">
+                    <rect key="frame" x="20" y="612" width="376" height="1"/>
+                    <color key="backgroundColor" systemColor="systemGrayColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="xy4-ds-skX"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="caA-Ba-OYG">
+                    <rect key="frame" x="20" y="623" width="376" height="50"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="nGf-mr-6zg">
+                            <rect key="frame" x="0.0" y="0.0" width="376" height="50"/>
+                            <subviews>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="bubble.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="gjY-ew-Myf">
+                                    <rect key="frame" x="0.0" y="0.5" width="22.5" height="49.5"/>
+                                    <color key="tintColor" systemColor="systemIndigoColor"/>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reviews" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHc-rp-BAY">
+                                    <rect key="frame" x="27.5" y="0.0" width="62.5" height="50"/>
+                                    <color key="tintColor" systemColor="systemIndigoColor"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" systemColor="systemIndigoColor"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <view userInteractionEnabled="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7H1-jQ-nFk" customClass="RatingView" customModule="GBShop" customModuleProvider="target">
+                                    <rect key="frame" x="95" y="0.0" width="263.5" height="50"/>
+                                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                </view>
+                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="chevron.right" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="3NR-Io-1OZ">
+                                    <rect key="frame" x="363.5" y="2" width="12.5" height="46.5"/>
+                                    <color key="tintColor" systemColor="systemIndigoColor"/>
+                                </imageView>
+                            </subviews>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="nGf-mr-6zg" secondAttribute="trailing" id="3j6-pA-XN9"/>
+                        <constraint firstAttribute="bottom" secondItem="nGf-mr-6zg" secondAttribute="bottom" id="OMI-NH-K3x"/>
+                        <constraint firstItem="nGf-mr-6zg" firstAttribute="leading" secondItem="caA-Ba-OYG" secondAttribute="leading" id="eor-UP-8UI"/>
+                        <constraint firstAttribute="height" constant="50" id="hdm-dw-x76"/>
+                        <constraint firstItem="nGf-mr-6zg" firstAttribute="top" secondItem="caA-Ba-OYG" secondAttribute="top" id="nbN-Qj-bJm"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nyy-Jy-C5b">
+                    <rect key="frame" x="20" y="683" width="376" height="1"/>
+                    <color key="backgroundColor" systemColor="systemGrayColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="1" id="fXE-qw-RMC"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ccd-B6-05b">
+                    <rect key="frame" x="20" y="694" width="376" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="d9G-lK-sPn"/>
+                    </constraints>
+                    <color key="tintColor" systemColor="systemIndigoColor"/>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="Add to Cart">
+                        <color key="baseBackgroundColor" systemColor="systemIndigoColor"/>
+                    </buttonConfiguration>
+                </button>
             </subviews>
             <viewLayoutGuide key="safeArea" id="ijr-eY-idh"/>
             <edgeInsets key="layoutMargins" top="8" left="20" bottom="8" right="20"/>
@@ -81,8 +168,16 @@
         </stackView>
     </objects>
     <resources>
+        <image name="bubble.right" catalog="system" width="128" height="110"/>
+        <image name="chevron.right" catalog="system" width="96" height="128"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemGrayColor">
+            <color red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

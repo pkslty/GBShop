@@ -87,7 +87,7 @@ class ProductListPresenter {
                                 self.products[counter].photoUrlString = photoUrlString
                             }
                         default:
-                            break
+                            self.products[counter].photoUrlString = "http://dnk.net.ru/gb_shop/photos/place_holder.png"
                         }
                     }
                 }
@@ -97,6 +97,11 @@ class ProductListPresenter {
     }
     
     private func setData() {
-        view.setData(list: products)
+        let viewList = products.map { ViewItem(productName: $0.productName,
+                                               productDescription: $0.productDescription,
+                                               productPrice: String($0.price),
+                                               rating: $0.rating,
+                                               photoUrlString: $0.photoUrlString ?? "http://dnk.net.ru/gb_shop/photos/place_holder.png") }
+        view.setData(list: viewList)
     }
 }

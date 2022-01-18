@@ -9,6 +9,6 @@ import Foundation
 
 struct GetListResponse: Codable {
     let result: Int
-    let items: [ListItem]?
+    let items: [ProductItem]?
     let errorMessage: String?
 }

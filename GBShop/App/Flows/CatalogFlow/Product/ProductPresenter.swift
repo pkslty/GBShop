@@ -32,6 +32,34 @@ class ProductPresenter {
     func load() {
         getProduct()
         getPhotos()
+        getReviews()
+    }
+    
+    func addToCart() {
+        
+    }
+    
+    func showReviews() {
+        
+    }
+    
+    private func getReviews() {
+        let request = factory.makeReviewsRequestFactory()
+        request.getReviews(productId: productId) { response in
+            if let value = response.value {
+                DispatchQueue.main.async {
+                    switch value.result {
+                    case 1:
+                        if let reviews = value.reviews {
+                            let reviewsNumber = reviews.count
+                            let text = reviewsNumber == 1 ? "\(reviewsNumber) Review" : "\(reviewsNumber) Reviews"
+                            self.view.setReviewsText(text: text)
+                        }
+                    default: break
+                    }
+                }
+            }
+        }
     }
     
     private func getPhotos() {
@@ -59,7 +87,18 @@ class ProductPresenter {
                         }
                     }
                 default:
-                    break
+                    group.enter()
+                    DispatchQueue.main.async {
+                        ImageLoader.getImage(from: "http://dnk.net.ru/gb_shop/photos/place_holder.png") {[weak self] image in
+                            guard let self = self else {
+                                group.leave()
+                                return }
+                            if let image = image {
+                                self.photos.append(image)
+                            }
+                            group.leave()
+                        }
+                    }
                 }
                 group.wait()
                 DispatchQueue.main.async {
@@ -78,6 +117,7 @@ class ProductPresenter {
                     case 1:
                         if let product = value.product {
                             self.setData(product: product)
+                            self.view.setRating(rating: product.rating)
                         }
                     default:
                         break
