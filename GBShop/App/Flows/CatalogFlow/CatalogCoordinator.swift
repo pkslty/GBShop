@@ -62,3 +62,16 @@ extension CatalogCoordinator: ProductSelectable {
         navigationController.pushViewController(viewController, animated: true)
     }
 }
+
+extension CatalogCoordinator: ReviewShowable {
+    func showReviews(productId: UUID) {
+        let viewController = ReviewViewController(nibName: "ReviewView", bundle: nil)
+        let factory = RequestFactory()
+        let reviewPresenter = ReviewPresenter(factory: factory, view: viewController, productId: productId)
+        reviewPresenter.coordinator = self
+        viewController.presenter = reviewPresenter
+        navigationController.pushViewController(viewController, animated: true)
+    }
+    
+    
+}

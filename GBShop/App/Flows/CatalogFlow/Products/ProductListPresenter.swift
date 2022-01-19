@@ -97,7 +97,7 @@ class ProductListPresenter {
     }
     
     private func setData() {
-        let viewList = products.map { ViewItem(productName: $0.productName,
+        let viewList = products.map { ProductViewItem(productName: $0.productName,
                                                productDescription: $0.productDescription,
                                                productPrice: String($0.price),
                                                rating: $0.rating,

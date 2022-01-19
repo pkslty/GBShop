@@ -9,10 +9,10 @@ import UIKit
 
 protocol ProductListView {
     func setTitle(title: String)
-    func setData(list: [ViewItem])
+    func setData(list: [ProductViewItem])
 }
 
-struct ViewItem {
+struct ProductViewItem {
     let productName: String
     let productDescription: String
     let productPrice: String
@@ -23,7 +23,7 @@ struct ViewItem {
 class ProductListViewController: UIViewController {
     var presenter: ProductListPresenter?
     var tableView: UITableView!
-    var list = [ViewItem]() {
+    var list = [ProductViewItem]() {
         didSet {
             tableView.reloadData()
         }
@@ -119,7 +119,7 @@ extension ProductListViewController: UITableViewDelegate, UITableViewDataSource 
 }
 
 extension ProductListViewController: ProductListView {
-    func setData(list: [ViewItem]) {
+    func setData(list: [ProductViewItem]) {
         self.list = list
     }
     

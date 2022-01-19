@@ -8,10 +8,14 @@
 import Foundation
 import UIKit
 
+protocol ReviewShowable {
+    func showReviews(productId: UUID)
+}
+
 class ProductPresenter {
     var view: ProductView
     var factory: RequestFactory
-    var coordinator: Coordinator?
+    var coordinator: (Coordinator&ReviewShowable)?
     let productId: UUID
 
     var photos = [UIImage]() {
@@ -40,7 +44,7 @@ class ProductPresenter {
     }
     
     func showReviews() {
-        
+        coordinator?.showReviews(productId: productId)
     }
     
     private func getReviews() {

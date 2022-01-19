@@ -30,7 +30,7 @@ class ReviewsTests: XCTestCase {
         
         let request = requestFactory.makeReviewsRequestFactory()
         
-        request.getReviews(productId: UUID(uuidString: "0475eb70-725b-11ec-b7a6-0800200c9a66")!) { response in
+        request.getReviews(productId: UUID(uuidString: "8e8a3753-0e1c-457f-9852-916bdedfa38e")!) { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result.result, successValue)
