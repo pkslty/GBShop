@@ -23,5 +23,5 @@ protocol ProductsRequestFactory {
     
     func getBrandById(brandId: UUID, completionHandler: @escaping (AFDataResponse<GetBrandByIdResponse>) -> Void)
     
-    func getProductPhotos(productId: UUID, completionHandler: @escaping (AFDataResponse<GetProductPhotosResponse>) -> Void)
+    func getProductPhotos(productId: UUID, completionHandler: @escaping (AFDataResponse<GePhotosResponse>) -> Void)
 }

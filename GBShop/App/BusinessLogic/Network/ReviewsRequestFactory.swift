@@ -16,4 +16,6 @@ protocol ReviewsRequestFactory {
                   completionHandler: @escaping (AFDataResponse<DefaultResponse>) -> Void)
     
     func removeReview(reviewId: UUID, completionHandler: @escaping (AFDataResponse<DefaultResponse>) -> Void)
+    
+    func getReviewPhotos(reviewId: UUID, completionHandler: @escaping (AFDataResponse<GePhotosResponse>) -> Void)
 }

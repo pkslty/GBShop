@@ -13,8 +13,8 @@ class Reviews: AbstractRequestFactory {
     var errorParser: AbstractErrorParser
     var sessionManager: Session
     var queue: DispatchQueue
-    let baseUrl = URL(string: "https://vast-hollows-60312.herokuapp.com/")!
-    //let baseUrl = URL(string: "http://127.0.0.1:8080/")!
+    //let baseUrl = URL(string: "https://vast-hollows-60312.herokuapp.com/")!
+    let baseUrl = URL(string: "http://127.0.0.1:8080/")!
     
     init(
         errorParser: AbstractErrorParser,
@@ -27,9 +27,13 @@ class Reviews: AbstractRequestFactory {
 }
 
 extension Reviews: ReviewsRequestFactory {
+    func getReviewPhotos(reviewId: UUID, completionHandler: @escaping (AFDataResponse<GePhotosResponse>) -> Void) {
+        let requestModel = GetReviewPhotosData(baseUrl: baseUrl, path: "getReviewPhotos", reviewId: reviewId)
+        self.request(request: requestModel, completionHandler: completionHandler)
+    }
+    
     func getReviews(productId: UUID, completionHandler: @escaping (AFDataResponse<GetReviewsResponse>) -> Void) {
         let requestModel = ReviewData(baseUrl: baseUrl, path: "getReviews", productId: productId)
-        print(requestModel)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
@@ -54,6 +58,19 @@ extension Reviews {
         var parameters: Parameters? {
             return [
                 "productId": productId
+            ]
+        }
+    }
+    
+    struct GetReviewPhotosData: RequestRouter {
+        let baseUrl: URL
+        let method: HTTPMethod = .post
+        var path: String
+        
+        let reviewId: UUID
+        var parameters: Parameters? {
+            return [
+                "id": reviewId
             ]
         }
     }

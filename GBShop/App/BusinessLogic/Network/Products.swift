@@ -57,7 +57,7 @@ extension Products: ProductsRequestFactory {
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func getProductPhotos(productId: UUID, completionHandler: @escaping (AFDataResponse<GetProductPhotosResponse>) -> Void) {
+    func getProductPhotos(productId: UUID, completionHandler: @escaping (AFDataResponse<GePhotosResponse>) -> Void) {
         let requestModel = GetListData(baseUrl: baseUrl, method: .post, path: "getProductPhotos", productId: productId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }

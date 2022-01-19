@@ -85,4 +85,47 @@ class ReviewsTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 10.0)
     }
+    
+    func testGetReviewPhotosNoPhotos() {
+        
+        let successValue = 0
+        let expectation = expectation(description: "GetREviewPhotosNoPhotos")
+        
+        let request = requestFactory.makeReviewsRequestFactory()
+        
+        request.getReviewPhotos(reviewId: UUID(uuidString: "9dd9fac1-d124-4308-a477-0c4f3a7d401d")!) { response in
+            switch response.result {
+            case .success(let result):
+                XCTAssertEqual(result.result, successValue)
+                XCTAssertNotNil(result.errorMessage)
+                XCTAssertEqual(result.errorMessage, "No photos")
+                print(result)
+                expectation.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+        wait(for: [expectation], timeout: 10.0)
+    }
+    
+    func testGetReviewPhotosSuccess() {
+        
+        let successValue = 1
+        let expectation = expectation(description: "GetREviewPhotosSuccess")
+        
+        let request = requestFactory.makeReviewsRequestFactory()
+        
+        request.getReviewPhotos(reviewId: UUID(uuidString: "6b856e20-7266-11ec-b7a6-0800200c9a66")!) { response in
+            switch response.result {
+            case .success(let result):
+                XCTAssertEqual(result.result, successValue)
+                XCTAssertNil(result.errorMessage)
+                print(result)
+                expectation.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+        wait(for: [expectation], timeout: 10.0)
+    }
 }

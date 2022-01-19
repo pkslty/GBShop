@@ -1,47 +1,32 @@
 //
-//  ProductPresenter.swift
+//  ReviewPresenter.swift
 //  GBShop
 //
-//  Created by Denis Kuzmin on 18.01.2022.
+//  Created by Denis Kuzmin on 19.01.2022.
 //
 
 import Foundation
 import UIKit
 
-class ProductPresenter {
-    var view: ProductView
+class ReviewPresenter {
+    var view: ReviewView
     var factory: RequestFactory
     var coordinator: Coordinator?
     let productId: UUID
 
-    var photos = [UIImage]() {
-        didSet {
+    var reviews: [Review]?
+    var reviewPhotos: [Int:[UIImage]]?
 
-        }
-    }
-
-    let currencySign = "₽"
-
-    
-    init(factory: RequestFactory, view: ProductView, productId: UUID) {
+    init(factory: RequestFactory, view: ReviewView, productId: UUID) {
         self.factory = factory
         self.view = view
         self.productId = productId
     }
     
     func load() {
-        getProduct()
-        getPhotos()
         getReviews()
     }
     
-    func addToCart() {
-        
-    }
-    
-    func showReviews() {
-        
-    }
     
     private func getReviews() {
         let request = factory.makeReviewsRequestFactory()
@@ -51,9 +36,8 @@ class ProductPresenter {
                     switch value.result {
                     case 1:
                         if let reviews = value.reviews {
-                            let reviewsNumber = reviews.count
-                            let text = reviewsNumber == 1 ? "\(reviewsNumber) Review" : "\(reviewsNumber) Reviews"
-                            self.view.setReviewsText(text: text)
+                            self.reviews = reviews
+                            //self.getReviewsPhotos()
                         }
                     default: break
                     }
@@ -62,7 +46,7 @@ class ProductPresenter {
         }
     }
     
-    private func getPhotos() {
+ /*   private func getReviewsPhotos() {
         let request = factory.makeProductsRequestFactory()
         request.getProductPhotos(productId: productId) { response in
             if let value = response.value {
@@ -106,34 +90,14 @@ class ProductPresenter {
                 }
             }
         }
-    }
+    }*/
     
-    private func getProduct() {
-        let request = factory.makeProductsRequestFactory()
-        request.getProductById(id: productId) { response in
-            if let value = response.value {
-                DispatchQueue.main.async {
-                    switch value.result {
-                    case 1:
-                        if let product = value.product {
-                            self.setData(product: product)
-                            self.view.setRating(rating: product.rating)
-                        }
-                    default:
-                        break
-                    }
-                }
-            }
-        }
-    }
     
     private func setPhotos() {
-        view.setPhotos(photos: photos)
+
     }
     
     private func setData(product: Product) {
-        view.setProductName(name: product.productName)
-        view.setDescription(description: product.productDescription)
-        view.setPrice(price: "\(product.price) \(currencySign)")
+        
     }
 }

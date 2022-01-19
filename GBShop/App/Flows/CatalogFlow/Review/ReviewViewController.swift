@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ReviewView {
+    
+}
+
 class ReviewViewController: UIViewController {
 
     override func viewDidLoad() {
