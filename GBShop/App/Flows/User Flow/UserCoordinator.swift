@@ -33,6 +33,7 @@ class UserCoordinator: Coordinator {
     }
     
     func childDidFinish(_ child: Coordinator, with data: Any?) {
+        parentCoordinator?.childDidFinish(child, with: nil)
         for (index, coordinator) in childCoordinators.enumerated() {
             if coordinator === child {
                 childCoordinators.remove(at: index)

@@ -29,7 +29,14 @@ class MainCoordinator: NSObject, Coordinator, UITabBarControllerDelegate {
     }
     
     func childDidFinish(_ child: Coordinator, with data: Any?) {
-        
+        switch child.type {
+        case .authCoordinator, .userDetailCoordinator:
+            if let cartCoordinator = childCoordinators.filter({$0.type == .cartCoordinator}).first {
+                cartCoordinator.start()
+            }
+        default:
+            break
+        }
     }
     
     func presenterDidFinish(with data: Any?) {
@@ -56,12 +63,18 @@ class MainCoordinator: NSObject, Coordinator, UITabBarControllerDelegate {
         switch page {
         case .catalog:
             let catalogCoordinator = CatalogCoordinator(navigationController: navigationController)
+            childCoordinators.append(catalogCoordinator)
             catalogCoordinator.start()
+            catalogCoordinator.parentCoordinator = self
         case .cart:
             let cartCoordinator = CartCoordinator(navigationController: navigationController)
+            childCoordinators.append(cartCoordinator)
+            cartCoordinator.parentCoordinator = self
             cartCoordinator.start()
         case .user:
             let userCoordinator = UserCoordinator(navigationController: navigationController)
+            childCoordinators.append(userCoordinator)
+            userCoordinator.parentCoordinator = self
             userCoordinator.start()
         }
         

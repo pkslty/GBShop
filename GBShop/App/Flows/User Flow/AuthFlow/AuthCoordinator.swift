@@ -7,12 +7,8 @@
 
 import UIKit
 
-protocol SignUppable {
-    func signUp()
-}
-
 class AuthCoordinator: Coordinator {
-    
+
     var childCoordinators = [Coordinator]()
     var parentCoordinator: Coordinator?
     var navigationController: UINavigationController
@@ -59,9 +55,6 @@ extension AuthCoordinator: SignUppable {
         signUpPresenter.coordinator = self
         
         navigationController.pushViewController(signUpViewController, animated: true)
-        
-        
-        
     }
 }
 
@@ -73,6 +66,4 @@ extension AuthCoordinator: UserDetailEditable {
     func didSaveUserInfo(with user: User) {
         
     }
-    
-    
 }

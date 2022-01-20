@@ -56,11 +56,11 @@ class UserDetailPresenter {
             guard let self = self else { return }
             if let value = response.value {
                 DispatchQueue.main.async {
-                    if value.result == 1 {
+                    //if value.result == 1  {
                         self.token = nil
                         self.userId = nil
                         self.coordinator?.presenterDidFinish(with: nil)
-                    }
+                    //}
                 }
             }
         }
