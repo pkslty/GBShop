@@ -9,11 +9,11 @@ import Alamofire
 import Foundation
 
 protocol ShoppingRequestFactory {
-    func addToCart(productId: Int, userId: Int, quantity: Int,
+    func addToCart(productId: UUID, userId: UUID, quantity: Int,
                   completionHandler: @escaping (AFDataResponse<DefaultResponse>) -> Void)
     
-    func removeFromCart(productId: Int, userId: Int, quantity: Int,
+    func removeFromCart(productId: UUID, userId: UUID, quantity: Int,
                   completionHandler: @escaping (AFDataResponse<DefaultResponse>) -> Void)
     
-    func payCart(userId: Int, completionHandler: @escaping (AFDataResponse<DefaultResponse>) -> Void)
+    func payCart(userId: UUID, completionHandler: @escaping (AFDataResponse<DefaultResponse>) -> Void)
 }

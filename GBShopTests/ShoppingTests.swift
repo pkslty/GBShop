@@ -30,7 +30,7 @@ class ShoppingTests: XCTestCase {
         
         let request = requestFactory.makeShoppingRequestFactory()
         
-        request.addToCart(productId: 1, userId: 1, quantity: 1) { response in
+        request.addToCart(productId: UUID(uuidString: "145ec120-725a-11ec-b7a6-0800200c9a66")!, userId: UUID(uuidString: "14db332d-1052-4579-aed9-b4cb47164a8f")!, quantity: 1) { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result.result, successValue)
@@ -51,7 +51,7 @@ class ShoppingTests: XCTestCase {
         
         let request = requestFactory.makeShoppingRequestFactory()
         
-        request.removeFromCart(productId: 1, userId: 3, quantity: 1) { response in
+        request.removeFromCart(productId: UUID(uuidString: "145ec120-725a-11ec-b7a6-0800200c9a66")!, userId: UUID(uuidString: "0336ccd3-9c1b-456f-a27f-ba711fb70415")!, quantity: 1) { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result.result, successValue)
@@ -72,7 +72,7 @@ class ShoppingTests: XCTestCase {
         
         let request = requestFactory.makeShoppingRequestFactory()
         
-        request.payCart(userId: 1) { response in
+        request.payCart(userId: UUID(uuidString: "14db332d-1052-4579-aed9-b4cb47164a8f")!) { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result.result, successValue)
@@ -93,7 +93,7 @@ class ShoppingTests: XCTestCase {
         
         let request = requestFactory.makeShoppingRequestFactory()
         
-        request.payCart(userId: 3) { response in
+        request.payCart(userId: UUID(uuidString: "1ea24a07-9f12-4efa-8090-1b27c6afadcf")!) { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result.result, successValue)
@@ -115,7 +115,7 @@ class ShoppingTests: XCTestCase {
         
         let request = requestFactory.makeShoppingRequestFactory()
         
-        request.payCart(userId: 10) { response in
+        request.payCart(userId: UUID()) { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result.result, successValue)
