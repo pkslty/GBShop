@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GoodByIdResult: Codable {
+struct ProductByIdResponse: Codable {
     let result: Int
     let productName: String?
     let price: Double?

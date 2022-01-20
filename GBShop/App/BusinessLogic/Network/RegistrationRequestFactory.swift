@@ -10,8 +10,9 @@ import Foundation
 
 protocol RegistrationRequestFactory {
     func register(user: User,
-                  completionHandler: @escaping (AFDataResponse<CommonResult>) -> Void)
+                  completionHandler: @escaping (AFDataResponse<DefaultResponse>) -> Void)
     
     func changeUserData(user: User,
-                  completionHandler: @escaping (AFDataResponse<CommonResult>) -> Void)
+                  completionHandler: @escaping (AFDataResponse<DefaultResponse>) -> Void)
+    func getUserData(token: String, completionHandler: @escaping (AFDataResponse<LoginResponse>) -> Void)
 }

@@ -29,8 +29,9 @@ class AuthTests: XCTestCase {
         let expectation = expectation(description: "User log in")
         
         let request = requestFactory.makeAuthRequestFactory()
-        
-        request.login(userName: "Somebody", password: "mypassword") { response in
+        @UserDefault(key: "authorizationToken", defaultValue: nil) var token: String?
+        print("token is \(token ?? "nil") ")
+        request.login(username: "22DFF4F8-E6C8-4945-A12C-2C225A456CB8", password: "mypassword") { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result.result, 1)
@@ -46,16 +47,21 @@ class AuthTests: XCTestCase {
     
     func testLogoutSuccess() {
         
-        let successValue = CommonResult(result: 1,
+        let successValue = DefaultResponse(result: 1,
                                         userMessage: "Succesfully logged out!",
                                         errorMessage: nil)
         let expectation = expectation(description: "User log out")
         
         let request = requestFactory.makeAuthRequestFactory()
         
-        request.logout(userId: 2) { response in
+        @UserDefault(key: "authorizationToken", defaultValue: nil) var token: String?
+        print("token is \(token ?? "nil")")
+        
+        request.logout(token: "eed87e91fbdd0784f63fe201de58ae5d") { response in
             switch response.result {
             case .success(let result):
+                token = nil
+                print("token is \(token ?? "nil")")
                 XCTAssertEqual(result, successValue)
                 expectation.fulfill()
             case .failure(let error):
@@ -67,35 +73,14 @@ class AuthTests: XCTestCase {
     
     func testLogoutNoSuchUser() {
         
-        let successValue = CommonResult(result: 0,
+        let successValue = DefaultResponse(result: 0,
                                         userMessage: nil,
                                         errorMessage: "No such user")
         let expectation = expectation(description: "User log out")
         
         let request = requestFactory.makeAuthRequestFactory()
         
-        request.logout(userId: -1) { response in
-            switch response.result {
-            case .success(let result):
-                XCTAssertEqual(result, successValue)
-                expectation.fulfill()
-            case .failure(let error):
-                XCTFail(error.localizedDescription)
-            }
-        }
-        wait(for: [expectation], timeout: 10.0)
-    }
-    
-    func testLogoutUserWasNotLoggedIn() {
-        
-        let successValue = CommonResult(result: 0,
-                                        userMessage: nil,
-                                        errorMessage: "User was not logged in")
-        let expectation = expectation(description: "User was not logged in")
-        
-        let request = requestFactory.makeAuthRequestFactory()
-        
-        request.logout(userId: 1) { response in
+        request.logout(token: "token") { response in
             switch response.result {
             case .success(let result):
                 XCTAssertEqual(result, successValue)

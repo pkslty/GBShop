@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct GetReviewsResult: Codable {
+struct GetReviewsResponse: Codable {
     let result: Int
     let reviews: [Review]?
     let errorMessage: String?

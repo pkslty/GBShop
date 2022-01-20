@@ -9,11 +9,11 @@ import Alamofire
 import Foundation
 
 protocol ReviewsRequestFactory {
-    func getReviews(productId: Int,
-                  completionHandler: @escaping (AFDataResponse<GetReviewsResult>) -> Void)
+    func getReviews(productId: UUID,
+                  completionHandler: @escaping (AFDataResponse<GetReviewsResponse>) -> Void)
     
-    func addReview(productId: Int, userId: Int, text: String, rating: Int,
-                  completionHandler: @escaping (AFDataResponse<CommonResult>) -> Void)
+    func addReview(productId: UUID, userId: UUID, text: String, rating: Int,
+                  completionHandler: @escaping (AFDataResponse<DefaultResponse>) -> Void)
     
-    func removeReview(reviewId: Int, completionHandler: @escaping (AFDataResponse<CommonResult>) -> Void)
+    func removeReview(reviewId: UUID, completionHandler: @escaping (AFDataResponse<DefaultResponse>) -> Void)
 }
