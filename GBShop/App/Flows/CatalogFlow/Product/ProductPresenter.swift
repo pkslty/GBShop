@@ -17,6 +17,7 @@ class ProductPresenter {
     var factory: RequestFactory
     var coordinator: (Coordinator&ReviewShowable)?
     let productId: UUID
+    @UserDefault(key: "authorizationToken", defaultValue: nil) var token: String?
 
     var photos = [UIImage]() {
         didSet {

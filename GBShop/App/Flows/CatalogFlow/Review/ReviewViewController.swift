@@ -12,6 +12,7 @@ protocol ReviewView {
     func setProductName(name: String)
     func setaddReviewButtonTitle(title: String)
     func setData(reviews: [ReviewViewItem])
+    func showAlert(_ title: String?,_ message: String?,_ completion: ((UIAlertAction) -> Void)?)
 }
 
 struct ReviewViewItem {
@@ -45,8 +46,12 @@ class ReviewViewController: UIViewController {
         tableView.register(UINib(nibName: "ReviewListCell", bundle: nil), forCellReuseIdentifier: "ReviewListCell")
         tableView.delegate = self
         tableView.dataSource = self
+        addReviewButton.addTarget(self, action: #selector(addReviewButtonPressed), for: .touchDown)
     }
     
+    @objc private func addReviewButtonPressed() {
+        presenter?.addReviewButtonPressed()
+    }
 }
 
 extension ReviewViewController: UITableViewDelegate, UITableViewDataSource {
@@ -87,5 +92,11 @@ extension ReviewViewController: ReviewView {
         self.reviews = reviews
     }
     
-    
+    func showAlert(_ title: String?,_ message: String?,_ completion: ((UIAlertAction) -> Void)?) {
+        let alert = UIAlertController(title: title,
+                                     message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: completion))
+        present(alert, animated: true, completion: nil)
+    }
 }

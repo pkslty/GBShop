@@ -12,7 +12,7 @@ protocol AuthView {
     func getPassword() -> String
     func setWaiting()
     func setActive()
-    func showAlert(_ title: String?,_ message: String?,_ completion: (() -> Void)?)
+    func showAlert(_ title: String?,_ message: String?,_ completion: ((UIAlertAction) -> Void)?)
 }
 
 class AuthViewController: UIViewController {
@@ -150,11 +150,11 @@ extension AuthViewController: AuthView {
         signUpButton.isEnabled = true
     }
     
-    func showAlert(_ title: String?,_ message: String?,_ completion: (() -> Void)?) {
+    func showAlert(_ title: String?,_ message: String?,_ completion: ((UIAlertAction) -> Void)?) {
         let alert = UIAlertController(title: title,
                                      message: message,
-                                      preferredStyle: .actionSheet)
-        alert.addAction(UIAlertAction(title: "Ok", style: .default))
-        present(alert, animated: true, completion: completion)
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: completion))
+        present(alert, animated: true, completion: nil)
     }
 }

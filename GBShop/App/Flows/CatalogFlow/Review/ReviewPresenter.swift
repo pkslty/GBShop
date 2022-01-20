@@ -8,15 +8,20 @@
 import Foundation
 import UIKit
 
+protocol ReviewAddable {
+    func addReview(productId: UUID)
+}
+
 class ReviewPresenter {
     var view: ReviewView
     var factory: RequestFactory
-    var coordinator: Coordinator?
+    var coordinator: (Coordinator&ReviewAddable)?
     let productId: UUID
 
     var reviews: [Review]?
     var authors: [String]?
     var reviewPhotos = [Int:[UIImage]]()
+    @UserDefault(key: "authorizationToken", defaultValue: nil) var token: String?
 
     init(factory: RequestFactory, view: ReviewView, productId: UUID) {
         self.factory = factory
@@ -33,6 +38,13 @@ class ReviewPresenter {
         }
     }
     
+    func addReviewButtonPressed() {
+        if token != nil {
+            coordinator?.addReview(productId: productId)
+        } else {
+            view.showAlert("Warning", "You have to Sign in first", nil)
+        }
+    }
     
     private func getReviews(completion: @escaping () -> Void) {
         let request = factory.makeReviewsRequestFactory()

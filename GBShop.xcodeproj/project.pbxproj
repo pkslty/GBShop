@@ -51,6 +51,9 @@
 		36803588277B3243007AD6C5 /* SignUpPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36803587277B3242007AD6C5 /* SignUpPresenter.swift */; };
 		3680358B277C5092007AD6C5 /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3680358A277C5092007AD6C5 /* ImageLoader.swift */; };
 		3682708D2798106000F9C1BC /* ReviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3682708C2798106000F9C1BC /* ReviewPresenter.swift */; };
+		368270912798B84F00F9C1BC /* AddReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3682708F2798B84F00F9C1BC /* AddReviewViewController.swift */; };
+		368270922798B84F00F9C1BC /* AddReviewView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 368270902798B84F00F9C1BC /* AddReviewView.xib */; };
+		368270942798BCC600F9C1BC /* AddReviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 368270932798BCC600F9C1BC /* AddReviewPresenter.swift */; };
 		3693A869275E0CD300FA275E /* Product.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693A868275E0CD300FA275E /* Product.swift */; };
 		3693A86B275E0DEB00FA275E /* ProductByIdResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693A86A275E0DEB00FA275E /* ProductByIdResponse.swift */; };
 		3693A86D275E0EED00FA275E /* ProductsRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3693A86C275E0EED00FA275E /* ProductsRequestFactory.swift */; };
@@ -163,6 +166,9 @@
 		36803587277B3242007AD6C5 /* SignUpPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpPresenter.swift; sourceTree = "<group>"; };
 		3680358A277C5092007AD6C5 /* ImageLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		3682708C2798106000F9C1BC /* ReviewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewPresenter.swift; sourceTree = "<group>"; };
+		3682708F2798B84F00F9C1BC /* AddReviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewViewController.swift; sourceTree = "<group>"; };
+		368270902798B84F00F9C1BC /* AddReviewView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AddReviewView.xib; sourceTree = "<group>"; };
+		368270932798BCC600F9C1BC /* AddReviewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddReviewPresenter.swift; sourceTree = "<group>"; };
 		3693A868275E0CD300FA275E /* Product.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Product.swift; sourceTree = "<group>"; };
 		3693A86A275E0DEB00FA275E /* ProductByIdResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductByIdResponse.swift; sourceTree = "<group>"; };
 		3693A86C275E0EED00FA275E /* ProductsRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductsRequestFactory.swift; sourceTree = "<group>"; };
@@ -448,6 +454,16 @@
 			path = Services;
 			sourceTree = "<group>";
 		};
+		3682708E2798B81A00F9C1BC /* AddReview */ = {
+			isa = PBXGroup;
+			children = (
+				3682708F2798B84F00F9C1BC /* AddReviewViewController.swift */,
+				368270902798B84F00F9C1BC /* AddReviewView.xib */,
+				368270932798BCC600F9C1BC /* AddReviewPresenter.swift */,
+			);
+			path = AddReview;
+			sourceTree = "<group>";
+		};
 		36A03B4F2790637800CFE222 /* Catalog */ = {
 			isa = PBXGroup;
 			children = (
@@ -483,6 +499,7 @@
 		36A03B66279771F000CFE222 /* Review */ = {
 			isa = PBXGroup;
 			children = (
+				3682708E2798B81A00F9C1BC /* AddReview */,
 				36A03B672797723E00CFE222 /* ReviewViewController.swift */,
 				36A03B682797723E00CFE222 /* ReviewView.xib */,
 				36A03B6B2797753800CFE222 /* ReviewListCell.swift */,
@@ -699,6 +716,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				368270922798B84F00F9C1BC /* AddReviewView.xib in Resources */,
 				36A7D61F27751DCF0037E5CB /* UserDetailView.xib in Resources */,
 				36A03B5C27958B4300CFE222 /* ProductListCell.xib in Resources */,
 				3678644C2751489600E0786F /* LaunchScreen.storyboard in Resources */,
@@ -753,6 +771,7 @@
 				3617762E27577A9200509772 /* RequestFactory.swift in Sources */,
 				36A7D6022773CAAB0037E5CB /* Coordinator.swift in Sources */,
 				362AF6DF278DEDB2000FAC48 /* CatalogPresenter.swift in Sources */,
+				368270942798BCC600F9C1BC /* AddReviewPresenter.swift in Sources */,
 				36A03B562790640300CFE222 /* ProductListPresenter.swift in Sources */,
 				363CFB41276BA1BC00B9CBC8 /* ShoppingRequestFactory.swift in Sources */,
 				3617761D275777C000509772 /* ErrorParser.swift in Sources */,
@@ -773,6 +792,7 @@
 				36A03B53279063E400CFE222 /* ProductListViewController.swift in Sources */,
 				3693A86B275E0DEB00FA275E /* ProductByIdResponse.swift in Sources */,
 				36A7D62E27789CAE0037E5CB /* AuthPresenter.swift in Sources */,
+				368270912798B84F00F9C1BC /* AddReviewViewController.swift in Sources */,
 				367953492769E796009DE93B /* ReviewsRequestFactory.swift in Sources */,
 				36A7D6292777D7DF0037E5CB /* CoordinatorType.swift in Sources */,
 				3693A869275E0CD300FA275E /* Product.swift in Sources */,

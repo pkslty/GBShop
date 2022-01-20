@@ -15,6 +15,7 @@ protocol ProductView {
     func setPrice(price: String)
     func setRating(rating: Int)
     func setReviewsText(text: String)
+    func showAlert(_ title: String?,_ message: String?,_ completion: (() -> Void)?)
 }
 
 class ProductViewController: UIViewController {
@@ -113,5 +114,13 @@ extension ProductViewController: ProductView {
     
     func setReviewsText(text: String) {
         reviewsLabel.text = text
+    }
+    
+    func showAlert(_ title: String?,_ message: String?,_ completion: (() -> Void)?) {
+        let alert = UIAlertController(title: title,
+                                     message: message,
+                                      preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        present(alert, animated: true, completion: completion)
     }
 }

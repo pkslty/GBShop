@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddReviewViewController" customModule="GBShop" customModuleProvider="target">
+            <connections>
+                <outlet property="addReviewButton" destination="Vrb-6t-mwI" id="7ew-07-FW7"/>
+                <outlet property="productNameLabel" destination="RkL-ND-pYo" id="FOs-3a-EQX"/>
+                <outlet property="ratingControl" destination="xNo-7i-lIy" id="WDb-H9-kUU"/>
+                <outlet property="reviewField" destination="XJP-Fq-Zk3" id="yRA-xw-Nfa"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Product Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RkL-ND-pYo">
+                    <rect key="frame" x="8" y="64" width="398" height="75"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="75" id="7le-Dq-Zsp"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                    <nil key="textColor"/>
+                    <nil key="highlightedColor"/>
+                </label>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xNo-7i-lIy" customClass="RatingView" customModule="GBShop" customModuleProvider="target">
+                    <rect key="frame" x="8" y="129" width="398" height="50"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="hEs-Nt-uug"/>
+                    </constraints>
+                </view>
+                <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" borderStyle="roundedRect" placeholder="Add your review here" textAlignment="natural" minimumFontSize="20" translatesAutoresizingMaskIntoConstraints="NO" id="XJP-Fq-Zk3">
+                    <rect key="frame" x="8" y="189" width="414" height="400"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="400" id="kVJ-hP-NOw"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                    <textInputTraits key="textInputTraits"/>
+                </textField>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vrb-6t-mwI">
+                    <rect key="frame" x="8" y="599" width="398" height="50"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="YeV-p6-zRK"/>
+                    </constraints>
+                    <state key="normal" title="Button"/>
+                    <buttonConfiguration key="configuration" style="filled" title="Add Review">
+                        <color key="baseBackgroundColor" systemColor="systemIndigoColor"/>
+                    </buttonConfiguration>
+                </button>
+            </subviews>
+            <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
+            <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+            <constraints>
+                <constraint firstItem="xNo-7i-lIy" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="0R7-fi-E0e"/>
+                <constraint firstItem="Vrb-6t-mwI" firstAttribute="top" secondItem="XJP-Fq-Zk3" secondAttribute="bottom" constant="10" id="5wE-Ob-FhK"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="xNo-7i-lIy" secondAttribute="trailing" constant="8" id="8qL-eh-fGb"/>
+                <constraint firstItem="XJP-Fq-Zk3" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="CFo-Wt-Ptx"/>
+                <constraint firstItem="RkL-ND-pYo" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="Cuy-UX-8J3"/>
+                <constraint firstItem="Vrb-6t-mwI" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" constant="-8" id="Xhu-ub-T8d"/>
+                <constraint firstItem="RkL-ND-pYo" firstAttribute="bottom" secondItem="xNo-7i-lIy" secondAttribute="top" constant="10" id="arp-Sr-KUh"/>
+                <constraint firstItem="Vrb-6t-mwI" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" constant="8" id="bKD-he-1oo"/>
+                <constraint firstItem="RkL-ND-pYo" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" constant="20" id="fue-xI-tyY"/>
+                <constraint firstItem="XJP-Fq-Zk3" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" constant="8" id="ofl-zo-UUF"/>
+                <constraint firstAttribute="trailing" secondItem="RkL-ND-pYo" secondAttribute="trailing" constant="8" id="rUY-wv-J7q"/>
+                <constraint firstItem="XJP-Fq-Zk3" firstAttribute="top" secondItem="xNo-7i-lIy" secondAttribute="bottom" constant="10" id="z3r-jQ-Khv"/>
+            </constraints>
+            <point key="canvasLocation" x="139" y="83"/>
+        </view>
+    </objects>
+    <resources>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+        <systemColor name="systemIndigoColor">
+            <color red="0.34509803921568627" green="0.33725490196078434" blue="0.83921568627450982" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </systemColor>
+    </resources>
+</document>
