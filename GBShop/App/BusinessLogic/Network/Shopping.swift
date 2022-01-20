@@ -41,6 +41,11 @@ extension Shopping: ShoppingRequestFactory {
         let requestModel = payCartData(baseUrl: baseUrl, path: "payCart", userId: userId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
+    
+    func getCart(userId: UUID, completionHandler: @escaping (AFDataResponse<GetCartResponse>) -> Void) {
+        let requestModel = payCartData(baseUrl: baseUrl, path: "getCart", userId: userId)
+        self.request(request: requestModel, completionHandler: completionHandler)
+    }
 }
 
 extension Shopping {

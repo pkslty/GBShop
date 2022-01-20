@@ -2,28 +2,38 @@
 //  CartViewController.swift
 //  GBShop
 //
-//  Created by Denis Kuzmin on 23.12.2021.
+//  Created by Denis Kuzmin on 20.01.2022.
 //
 
 import UIKit
 
+protocol CartView {
+    
+}
+
 class CartViewController: UIViewController {
 
+    var presenter: CartPresenter?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        // Do any additional setup after loading the view.
+    }
+
+}
+
+extension CartViewController: UITableViewDelegate, UITableViewDataSource {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        return UITableViewCell()
     }
-    */
+    
+    
+}
 
+extension CartViewController: CartView {
+    
 }

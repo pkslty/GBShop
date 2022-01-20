@@ -58,8 +58,8 @@ class MainCoordinator: NSObject, Coordinator, UITabBarControllerDelegate {
             let catalogCoordinator = CatalogCoordinator(navigationController: navigationController)
             catalogCoordinator.start()
         case .cart:
-            let cartViewController = CartViewController.instantiate()
-            navigationController.pushViewController(cartViewController, animated: true)
+            let cartCoordinator = CartCoordinator(navigationController: navigationController)
+            cartCoordinator.start()
         case .user:
             let userCoordinator = UserCoordinator(navigationController: navigationController)
             userCoordinator.start()

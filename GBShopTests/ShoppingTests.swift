@@ -129,4 +129,25 @@ class ShoppingTests: XCTestCase {
         }
         wait(for: [expectation], timeout: 10.0)
     }
+    
+    func testGetCartSuccess() {
+        
+        let successValue = 1
+        let expectation = expectation(description: "getCartSuccess")
+        
+        let request = requestFactory.makeShoppingRequestFactory()
+        
+        request.getCart(userId: UUID(uuidString: "0336ccd3-9c1b-456f-a27f-ba711fb70415")!) { response in
+            switch response.result {
+            case .success(let result):
+                XCTAssertEqual(result.result, successValue)
+                XCTAssertNotNil(result.items)
+                XCTAssertNil(result.errorMessage)
+                expectation.fulfill()
+            case .failure(let error):
+                XCTFail(error.localizedDescription)
+            }
+        }
+        wait(for: [expectation], timeout: 10.0)
+    }
 }

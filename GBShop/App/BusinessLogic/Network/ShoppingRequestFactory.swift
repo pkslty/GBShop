@@ -16,4 +16,6 @@ protocol ShoppingRequestFactory {
                   completionHandler: @escaping (AFDataResponse<DefaultResponse>) -> Void)
     
     func payCart(userId: UUID, completionHandler: @escaping (AFDataResponse<DefaultResponse>) -> Void)
+    
+    func getCart(userId: UUID, completionHandler: @escaping (AFDataResponse<GetCartResponse>) -> Void)
 }

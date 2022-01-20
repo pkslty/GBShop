@@ -19,9 +19,7 @@ class CartCoordinator: Coordinator {
     }
     
     func start() {
-        let cartViewController = CartViewController.instantiate()
-        cartViewController.tabBarItem = UITabBarItem(tabBarSystemItem: .contacts, tag: 1)
-        navigationController.pushViewController(cartViewController, animated: false)
+        
     }
     
     func childDidFinish(_ child: Coordinator, with data: Any?) {
