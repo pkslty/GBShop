@@ -18,12 +18,12 @@ class CatalogPresenter {
     var factory: RequestFactory
     var coordinator: Coordinator?
     var brandId: UUID?
-    var categories = [ListItem]() {
+    var categories = [ProductItem]() {
         didSet {
             setData()
         }
     }
-    var brands = [ListItem]() {
+    var brands = [ProductItem]() {
         didSet {
             setData()
         }

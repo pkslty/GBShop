@@ -7,10 +7,14 @@
 
 import Foundation
 
+protocol ProductSelectable {
+    func productListDidSelectProduct(productId: UUID)
+}
+
 class ProductListPresenter {
     var view: ProductListView
     var factory: RequestFactory
-    var coordinator: Coordinator?
+    var coordinator: (Coordinator&ProductSelectable)?
     var category: String
     var categoryId: UUID
     var products = [Product]() {
@@ -42,6 +46,11 @@ class ProductListPresenter {
     
     func sortPriceDown() {
         products = products.sorted { $0.price > $1.price }
+    }
+    
+    func viewDidSelectRow(row: Int) {
+        let productId = products[row].productId
+        coordinator?.productListDidSelectProduct(productId: productId)
     }
     
     private func getList() {
@@ -78,7 +87,7 @@ class ProductListPresenter {
                                 self.products[counter].photoUrlString = photoUrlString
                             }
                         default:
-                            break
+                            self.products[counter].photoUrlString = "http://dnk.net.ru/gb_shop/photos/place_holder.png"
                         }
                     }
                 }
@@ -88,6 +97,11 @@ class ProductListPresenter {
     }
     
     private func setData() {
-        view.setData(list: products)
+        let viewList = products.map { ProductViewItem(productName: $0.productName,
+                                               productDescription: $0.productDescription,
+                                               productPrice: String($0.price),
+                                               rating: $0.rating,
+                                               photoUrlString: $0.photoUrlString ?? "http://dnk.net.ru/gb_shop/photos/place_holder.png") }
+        view.setData(list: viewList)
     }
 }

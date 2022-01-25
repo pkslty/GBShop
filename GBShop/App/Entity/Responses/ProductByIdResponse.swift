@@ -9,8 +9,6 @@ import Foundation
 
 struct ProductByIdResponse: Codable {
     let result: Int
-    let productName: String?
-    let price: Double?
-    let description: String?
+    let product: Product?
     let errorMessage: String?
 }

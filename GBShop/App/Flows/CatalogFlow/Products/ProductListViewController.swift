@@ -9,13 +9,21 @@ import UIKit
 
 protocol ProductListView {
     func setTitle(title: String)
-    func setData(list: [Product])
+    func setData(list: [ProductViewItem])
+}
+
+struct ProductViewItem {
+    let productName: String
+    let productDescription: String
+    let productPrice: String
+    let rating: Int
+    let photoUrlString: String
 }
 
 class ProductListViewController: UIViewController {
     var presenter: ProductListPresenter?
     var tableView: UITableView!
-    var list = [Product]() {
+    var list = [ProductViewItem]() {
         didSet {
             tableView.reloadData()
         }
@@ -96,19 +104,22 @@ extension ProductListViewController: UITableViewDelegate, UITableViewDataSource 
 
         
         cell.configure(productName: product.productName,
-                       productImage: product.photoUrlString ?? "http://dnk.net.ru/gb_shop/photos/place_holder.png",
+                       productImage: product.photoUrlString,
                        productDescription: product.productDescription,
-                       productPrice: String(product.price), productRating: product.rating)
+                       productPrice: product.productPrice, productRating: product.rating)
         
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let row = indexPath.row
+        presenter?.viewDidSelectRow(row: row)
+    }
     
 }
 
 extension ProductListViewController: ProductListView {
-    func setData(list: [Product]) {
+    func setData(list: [ProductViewItem]) {
         self.list = list
     }
     

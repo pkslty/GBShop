@@ -14,4 +14,6 @@ struct Review: Codable {
     let text: String
     let rating: Int
     let likes: Int
+    let screenName: String?
+    let avatarUrlString: String?
 }

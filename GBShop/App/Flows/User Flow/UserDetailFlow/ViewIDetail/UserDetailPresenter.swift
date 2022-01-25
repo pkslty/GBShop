@@ -12,6 +12,7 @@ class UserDetailPresenter {
     var factory: RequestFactory
     var coordinator: (Coordinator & UserDetailEditable)?
     @UserDefault(key: "authorizationToken", defaultValue: nil) var token: String?
+    @UserDefault(key: "userId", defaultValue: nil) var userId: UUID?
     var user: User?
     
     init(factory: RequestFactory, view: UserDetailView, with user: User? = nil) {
@@ -57,6 +58,7 @@ class UserDetailPresenter {
                 DispatchQueue.main.async {
                     if value.result == 1 {
                         self.token = nil
+                        self.userId = nil
                         self.coordinator?.presenterDidFinish(with: nil)
                     }
                 }

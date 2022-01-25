@@ -7,12 +7,12 @@
 
 import Foundation
 
-struct GetProductPhotosResponse: Codable {
+struct GePhotosResponse: Codable {
     let result: Int
-    let photos: [ProductPhoto]?
+    let photos: [PhotoPath]?
     let errorMessage: String?
 }
 
-struct ProductPhoto: Codable {
+struct PhotoPath: Codable {
     let urlString: String
 }

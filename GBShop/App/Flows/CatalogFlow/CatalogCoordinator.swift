@@ -50,5 +50,37 @@ class CatalogCoordinator: Coordinator {
         }
     }
     
+}
+
+extension CatalogCoordinator: ProductSelectable {
+    func productListDidSelectProduct(productId: UUID) {
+        let viewController = ProductViewController(nibName: "ProductView", bundle: nil)
+        let factory = RequestFactory()
+        let productPresenter = ProductPresenter(factory: factory, view: viewController, productId: productId)
+        productPresenter.coordinator = self
+        viewController.presenter = productPresenter
+        navigationController.pushViewController(viewController, animated: true)
+    }
+}
+
+extension CatalogCoordinator: ReviewShowable {
+    func showReviews(productId: UUID) {
+        let viewController = ReviewViewController(nibName: "ReviewView", bundle: nil)
+        let factory = RequestFactory()
+        let reviewPresenter = ReviewPresenter(factory: factory, view: viewController, productId: productId)
+        reviewPresenter.coordinator = self
+        viewController.presenter = reviewPresenter
+        navigationController.pushViewController(viewController, animated: true)
+    }
+}
     
+extension CatalogCoordinator: ReviewAddable {
+        func addReview(productId: UUID) {
+            let viewController = AddReviewViewController(nibName: "AddReviewView", bundle: nil)
+            let factory = RequestFactory()
+            let addReviewPresenter = AddReviewPresenter(factory: factory, view: viewController, productId: productId)
+            addReviewPresenter.coordinator = self
+            viewController.presenter = addReviewPresenter
+            navigationController.present(viewController, animated: true, completion: nil)
+        }
 }

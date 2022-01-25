@@ -47,13 +47,13 @@ class SignUpPresenter: UserEditInfoPresentable {
                 DispatchQueue.main.async {
                     switch value.result {
                     case 1:
-                        self.view.showAlert("Congratulations!", "New user succesfully registered") {[weak self] in
+                        self.view.showAlert("Congratulations!", "New user succesfully registered") {[weak self] _ in
                             guard let self = self else { return }
                             self.view.setActive()
                             self.login()
                         }
                     default:
-                        self.view.showAlert("Server error", value.errorMessage ?? "Something goes wrong, try again later.") {[weak self] in
+                        self.view.showAlert("Server error", value.errorMessage ?? "Something goes wrong, try again later.") {[weak self] _ in
                             guard let self = self else { return }
                             self.view.setActive()
                         }
@@ -61,7 +61,7 @@ class SignUpPresenter: UserEditInfoPresentable {
                 }
             } else {
                 DispatchQueue.main.async {
-                    self.view.showAlert("Server error", "Something goes wrong, try again later") {[weak self] in
+                    self.view.showAlert("Server error", "Something goes wrong, try again later") {[weak self] _ in
                         guard let self = self else { return }
                         self.view.setActive()
                     }
@@ -91,7 +91,7 @@ class SignUpPresenter: UserEditInfoPresentable {
                         self.view.setActive()
                         self.coordinator?.presenterDidFinish(with: user)
                     default:
-                        self.view.showAlert("Error", "Wrong username or password") {[weak self] in
+                        self.view.showAlert("Error", "Wrong username or password") {[weak self] _ in
                             guard let self = self else { return }
                             self.view.setActive()
                         }
@@ -99,7 +99,7 @@ class SignUpPresenter: UserEditInfoPresentable {
                 }
             } else {
                 DispatchQueue.main.async {
-                    self.view.showAlert("Server error", "Something goes wrong, try again later") {[weak self] in
+                    self.view.showAlert("Server error", "Something goes wrong, try again later") {[weak self] _ in
                         guard let self = self else { return }
                         self.view.setActive()
                     }

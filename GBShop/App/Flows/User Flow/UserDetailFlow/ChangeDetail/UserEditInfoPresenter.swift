@@ -77,7 +77,8 @@ class UserEditInfoPresenter: UserEditInfoPresentable {
                         //Temporary
                         self.coordinator?.didSaveUserInfo(with: changedUser)
                     } else {
-                        self.view.showAlert("Error", "Error saving user info") {
+                        self.view.showAlert("Error", "Error saving user info") {[weak self] _ in
+                            guard let self = self else { return }
                             self.view.setActive()
                         }
                     }

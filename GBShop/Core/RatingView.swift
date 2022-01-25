@@ -9,20 +9,9 @@ import UIKit
 
 class RatingView: UIControl {
 
+    var rating: Int = 0
+    
     @IBInspectable var buttonsNumber: Int = 5
-
-    
-    var symbolHeight: CGFloat = 30.0 //Высота символа категории
-    
-    // MARK: - Properties
-    
-    var categories = [String]() {
-        didSet {
-            setNeedsLayout()
-        }
-    }
-    var pickedCategory: Int = 0
-    
     private var buttons = [UIButton]()
     private var stackView: UIStackView?
     
@@ -39,8 +28,7 @@ class RatingView: UIControl {
         super.init(coder: coder)
         setUpView()
     }
-    
-    // MARK: - Overrided methods
+
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -48,6 +36,7 @@ class RatingView: UIControl {
     }
     
     func setRating(rating: Int) {
+        self.rating = rating
         guard rating > 0 && rating <= buttonsNumber else { return }
         for count in 0 ... rating - 1 {
             buttons[count].setImage(UIImage(systemName: "star.fill"), for: .normal)
@@ -58,10 +47,8 @@ class RatingView: UIControl {
         }
     }
     
-    // MARK: - Private methods
-    
     @objc private func buttonTouchUp(_ sender: UIButton) {
-        let rating = sender.tag + 1
+        rating = sender.tag + 1
         setRating(rating: rating)
         sendActions(for: .valueChanged)
     }
