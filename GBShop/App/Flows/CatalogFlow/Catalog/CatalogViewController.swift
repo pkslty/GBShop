@@ -98,7 +98,7 @@ class CatalogViewController: UIViewController {
     private func setupView() {
         setupListTypeControl()
         setupTableView()
-        addFindImage()
+        //addFindImage()
         activityIndicator.layer.zPosition = 1
     }
     

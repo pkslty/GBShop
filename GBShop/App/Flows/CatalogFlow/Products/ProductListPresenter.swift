@@ -18,6 +18,7 @@ class ProductListPresenter {
             setData()
         }
     }
+
     
     init(factory: RequestFactory, view: ProductListView, categoryId: UUID?, categoryName: String?) {
         self.factory = factory
@@ -31,6 +32,18 @@ class ProductListPresenter {
         getList()
     }
     
+    func sortByRating() {
+        products = products.sorted { $0.rating > $1.rating }
+    }
+    
+    func sortPriceUp() {
+        products = products.sorted { $0.price < $1.price }
+    }
+    
+    func sortPriceDown() {
+        products = products.sorted { $0.price > $1.price }
+    }
+    
     private func getList() {
         let request = factory.makeProductsRequestFactory()
         request.getProductsList(page: 1, categoryId: categoryId) { response in
@@ -40,6 +53,7 @@ class ProductListPresenter {
                     case 1:
                         if let products = value.products {
                             self.products = products
+                            self.getPhotos()
                         }
                         //self.view.setActive()
                     default:
@@ -49,6 +63,28 @@ class ProductListPresenter {
                 }
             }
         }
+    }
+    
+    private func getPhotos() {
+        let request = factory.makeProductsRequestFactory()
+        guard products.count > 0 else { return }
+        for counter in 0 ... products.count - 1 {
+            request.getProductPhotos(productId: products[counter].productId) { response in
+                if let value = response.value {
+                    DispatchQueue.main.async {
+                        switch value.result {
+                        case 1:
+                            if let photoUrlString = value.photos?.first?.urlString {
+                                self.products[counter].photoUrlString = photoUrlString
+                            }
+                        default:
+                            break
+                        }
+                    }
+                }
+            }
+        }
+        
     }
     
     private func setData() {

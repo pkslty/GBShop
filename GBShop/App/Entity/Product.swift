@@ -17,4 +17,5 @@ struct Product: Codable {
     let quantity: Int
     let rating: Int
     let price: Double
+    var photoUrlString: String?
 }

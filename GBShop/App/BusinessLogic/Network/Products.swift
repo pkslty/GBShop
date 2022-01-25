@@ -57,6 +57,10 @@ extension Products: ProductsRequestFactory {
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
+    func getProductPhotos(productId: UUID, completionHandler: @escaping (AFDataResponse<GetProductPhotosResponse>) -> Void) {
+        let requestModel = GetListData(baseUrl: baseUrl, method: .post, path: "getProductPhotos", productId: productId)
+        self.request(request: requestModel, completionHandler: completionHandler)
+    }
     
 }
 
@@ -69,7 +73,7 @@ extension Products {
         let id: UUID
         var parameters: Parameters? {
             return [
-                "productId": id
+                "id": id
             ]
         }
     }
@@ -79,6 +83,7 @@ extension Products {
         let method: HTTPMethod
         var path: String
         var brandId: UUID?
+        var productId: UUID?
         
         var parameters: Parameters? {
             if let brandId = brandId {
@@ -86,15 +91,22 @@ extension Products {
                     "id": brandId
                 ]
             } else {
-                return nil
+                if let productId = productId {
+                    return [
+                        "id": productId
+                    ]
+                } else {
+                    return nil
+                }
             }
         }
         
-        init(baseUrl: URL, method: HTTPMethod, path: String, brandId: UUID? = nil) {
+        init(baseUrl: URL, method: HTTPMethod, path: String, brandId: UUID? = nil, productId: UUID? = nil) {
             self.baseUrl = baseUrl
             self.method = method
             self.path = path
             self.brandId = brandId
+            self.productId = productId
         }
     }
     
