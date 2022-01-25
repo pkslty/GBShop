@@ -26,9 +26,21 @@ class CartCoordinator: Coordinator {
         navigationController.pushViewController(cartViewController, animated: true)
     }
     
-    func start() {
-       
-        cartPresenter.getCart()
+    func start(with data: Any? = nil) {
+        if let cartAction = data as? CartAction {
+            let productId = cartAction.productId
+            let quantity = cartAction.quantity
+            let completion = cartAction.completion
+            let onError = cartAction.onError
+            switch cartAction.action {
+            case .addToCart:
+                cartPresenter.addToLocalCart(productId: productId, quantity: quantity, completion: completion, onError: onError)
+            case .removeFromCart:
+                cartPresenter.removeFromLocalCart(productId: productId, quantity: quantity, completion: completion, onError: onError)
+            }
+        } else {
+            cartPresenter.getCart(completion: nil)
+        }
     }
     
     func childDidFinish(_ child: Coordinator, with data: Any?) {

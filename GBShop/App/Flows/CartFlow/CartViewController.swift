@@ -9,11 +9,12 @@ import UIKit
 
 protocol CartView {
     func setData(list: [CartListItem])
+    func showAlert(_ title: String?,_ message: String?,_ completion: ((UIAlertAction) -> Void)?)
 }
 
 struct CartListItem {
     let productName: String
-    let quantity: Int
+    let quantity: String
     let price: String
     let cost: String
     let photo: String
@@ -24,12 +25,12 @@ class CartViewController: UIViewController {
     var presenter: CartPresenter?
     var list = [CartListItem]() {
         didSet {
-            tableView.reloadData()
+            tableView?.reloadData()
         }
     }
     
     @IBOutlet weak var cartLabel: UILabel!
-    @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var tableView: UITableView?
     @IBOutlet weak var emptyCartButton: UIButton!
     @IBOutlet weak var payCartButtoon: UIButton!
     @IBOutlet weak var totalLabel: UILabel!
@@ -44,9 +45,19 @@ class CartViewController: UIViewController {
     }
 
     private func setupView() {
-        tableView.delegate = self
-        tableView.dataSource = self
-        tableView.register(UINib(nibName: "CartItemCell", bundle: nil), forCellReuseIdentifier: "CartItemCell")
+        tableView?.delegate = self
+        tableView?.dataSource = self
+        tableView?.register(UINib(nibName: "CartItemCell", bundle: nil), forCellReuseIdentifier: "CartItemCell")
+        emptyCartButton.addTarget(self, action: #selector(emptyCartButtonPressed), for: .touchDown)
+        payCartButtoon.addTarget(self, action: #selector(payCartButtonPressed), for: .touchDown)
+    }
+    
+    @objc private func emptyCartButtonPressed() {
+        presenter?.emptyCart(completion: nil)
+    }
+    
+    @objc private func payCartButtonPressed() {
+        presenter?.payCart()
     }
 }
 
@@ -60,15 +71,20 @@ extension CartViewController: UITableViewDelegate, UITableViewDataSource {
         
         let row = indexPath.row
         let productName = list[row].productName
+        let quantity = list[row].quantity
         let price = list[row].price
         let cost = list[row].cost
         let photo = list[row].photo
-        cell.configure(productName: productName, price: price, cost: cost, photo: photo
+        cell.configure(productName: productName, quantity: quantity, price: price, cost: cost, photo: photo
         )
         return cell
     }
     
-    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            presenter?.viewWillRemoveFromCart(at: indexPath.row)
+        }
+    }
 }
 
 extension CartViewController: CartView {
@@ -76,5 +92,11 @@ extension CartViewController: CartView {
         self.list = list
     }
     
-    
+    func showAlert(_ title: String?,_ message: String?,_ completion: ((UIAlertAction) -> Void)?) {
+        let alert = UIAlertController(title: title,
+                                     message: message,
+                                      preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: completion))
+        present(alert, animated: true, completion: nil)
+    }
 }

@@ -10,6 +10,7 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ProductViewController" customModule="GBShop" customModuleProvider="target">
             <connections>
+                <outlet property="addToCartButton" destination="Ccd-B6-05b" id="HVD-lI-r7k"/>
                 <outlet property="photosScrollView" destination="eZV-6O-h8s" id="Ndg-dR-HJJ"/>
                 <outlet property="photosView" destination="UHU-sb-sbk" id="KbQ-xU-dgv"/>
                 <outlet property="productDescriptionLabel" destination="OEi-wQ-M0p" id="BPK-6g-TH7"/>

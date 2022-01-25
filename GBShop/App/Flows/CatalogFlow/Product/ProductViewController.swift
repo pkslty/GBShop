@@ -33,6 +33,7 @@ class ProductViewController: UIViewController {
     @IBOutlet weak var reviewsView: UIView!
     @IBOutlet weak var ratingControl: RatingView!
     @IBOutlet weak var reviewsLabel: UILabel!
+    @IBOutlet weak var addToCartButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -80,10 +81,15 @@ class ProductViewController: UIViewController {
         let tapGestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapReviewsControl))
         reviewsView.addGestureRecognizer(tapGestureRecognizer)
         reviewsView.subviews.forEach { $0.addGestureRecognizer(tapGestureRecognizer) }
+        addToCartButton.addTarget(self, action: #selector(addToCartButtonPressed), for: .touchDown)
     }
     
     @objc private func didTapReviewsControl() {
         presenter?.showReviews()
+    }
+    
+    @objc private func addToCartButtonPressed() {
+        presenter?.addToCart()
     }
 }
 

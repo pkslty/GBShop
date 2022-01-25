@@ -19,7 +19,7 @@ class MainCoordinator: NSObject, Coordinator, UITabBarControllerDelegate {
         self.tabBarController = UITabBarController()
     }
     
-    func start() {
+    func start(with data: Any? = nil) {
         let pages: [TabBarPage] = [.catalog, .cart, .user]
             .sorted(by: { $0.pageOrderNumber() < $1.pageOrderNumber() })
         
@@ -32,7 +32,11 @@ class MainCoordinator: NSObject, Coordinator, UITabBarControllerDelegate {
         switch child.type {
         case .authCoordinator, .userDetailCoordinator:
             if let cartCoordinator = childCoordinators.filter({$0.type == .cartCoordinator}).first {
-                cartCoordinator.start()
+                cartCoordinator.start(with: nil)
+            }
+        case .catalogCoordinator:
+            if let cartCoordinator = childCoordinators.filter({$0.type == .cartCoordinator}).first {
+                cartCoordinator.start(with: data)
             }
         default:
             break
@@ -93,4 +97,3 @@ class MainCoordinator: NSObject, Coordinator, UITabBarControllerDelegate {
         tabBarController.selectedIndex = page.pageOrderNumber()
     }
 }
-

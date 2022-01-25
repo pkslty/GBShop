@@ -101,6 +101,7 @@
             </tableViewCellContentView>
             <viewLayoutGuide key="safeArea" id="njF-e1-oar"/>
             <connections>
+                <outlet property="addToCartButton" destination="TvD-3T-fhQ" id="9bQ-Ay-sSg"/>
                 <outlet property="productDescription" destination="QIw-eh-QJk" id="393-C2-gL3"/>
                 <outlet property="productImage" destination="745-Gu-wIV" id="hQL-8X-lLD"/>
                 <outlet property="productName" destination="Qfj-nJ-mbU" id="0RM-dK-eQ7"/>

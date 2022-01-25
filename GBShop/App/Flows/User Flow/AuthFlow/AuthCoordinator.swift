@@ -22,7 +22,7 @@ class AuthCoordinator: Coordinator {
         self.factory = RequestFactory()
     }
     
-    func start() {
+    func start(with data: Any? = nil) {
         navigationController.children.forEach {
             if $0 is AuthViewController {
                 $0.removeFromParent()

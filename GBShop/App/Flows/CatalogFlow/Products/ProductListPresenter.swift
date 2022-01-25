@@ -14,7 +14,7 @@ protocol ProductSelectable {
 class ProductListPresenter {
     var view: ProductListView
     var factory: RequestFactory
-    var coordinator: (Coordinator&ProductSelectable)?
+    var coordinator: (Coordinator & ProductSelectable & CartAddable)?
     var category: String
     var categoryId: UUID
     var products = [Product]() {
@@ -51,6 +51,25 @@ class ProductListPresenter {
     func viewDidSelectRow(row: Int) {
         let productId = products[row].productId
         coordinator?.productListDidSelectProduct(productId: productId)
+    }
+    
+    func addToCart(row: Int, quantity: Int) {
+        guard row >= 0 && row < products.count else { return }
+        let completion = { [weak self] in
+            guard let self = self else { return }
+            self.view.showAlert("Success!", "Product succesfully added to Cart", nil)
+        }
+        let onError: (String?) -> Void = {[weak self] errorMessage in
+            guard let self = self else { return }
+            self.view.showAlert("Error!", errorMessage , nil)
+        }
+        let productId = products[row].productId
+        let cartAction = CartAction(action: .addToCart,
+                                    productId: productId,
+                                    quantity: quantity,
+                                    completion: completion,
+                                    onError: onError)
+        coordinator?.addToCart(action: cartAction)
     }
     
     private func getList() {
