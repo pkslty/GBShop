@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Firebase
 
 protocol SignUppable {
     func signUp()
@@ -43,6 +43,12 @@ class AuthPresenter {
                         self.userId = value.user?.id.uuidString ?? ""
                         let user = value.user
                         self.view.setActive()
+                        
+                        Analytics.logEvent("Login", parameters: [
+                            "userId": user?.id.uuidString ?? "",
+                            "token": self.token ?? "",
+                        ])
+                        
                         self.coordinator?.presenterDidFinish(with: user)
                     default:
                         self.view.showAlert("Error", "Wrong username or password") {[weak self] _ in
