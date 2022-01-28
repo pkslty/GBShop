@@ -29,6 +29,7 @@
 		36330DB527A331F7006E09F1 /* FirebaseAnalyticsWithoutAdIdSupport in Frameworks */ = {isa = PBXBuildFile; productRef = 36330DB427A331F7006E09F1 /* FirebaseAnalyticsWithoutAdIdSupport */; };
 		36330DB727A331F7006E09F1 /* FirebaseCrashlytics in Frameworks */ = {isa = PBXBuildFile; productRef = 36330DB627A331F7006E09F1 /* FirebaseCrashlytics */; };
 		36330DBA27A3343C006E09F1 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 36330DB927A3343B006E09F1 /* GoogleService-Info.plist */; };
+		36330DBC27A33EA7006E09F1 /* AnalyticService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36330DBB27A33EA6006E09F1 /* AnalyticService.swift */; };
 		363CFB41276BA1BC00B9CBC8 /* ShoppingRequestFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363CFB40276BA1BC00B9CBC8 /* ShoppingRequestFactory.swift */; };
 		363CFB43276BA40700B9CBC8 /* ShoppingTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363CFB42276BA40700B9CBC8 /* ShoppingTests.swift */; };
 		363CFB45276BA4AA00B9CBC8 /* Shopping.swift in Sources */ = {isa = PBXBuildFile; fileRef = 363CFB44276BA4AA00B9CBC8 /* Shopping.swift */; };
@@ -147,6 +148,7 @@
 		362AF6DC278D9970000FAC48 /* CatalogCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogCoordinator.swift; sourceTree = "<group>"; };
 		362AF6DE278DEDB2000FAC48 /* CatalogPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CatalogPresenter.swift; sourceTree = "<group>"; };
 		36330DB927A3343B006E09F1 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		36330DBB27A33EA6006E09F1 /* AnalyticService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticService.swift; sourceTree = "<group>"; };
 		363CFB40276BA1BC00B9CBC8 /* ShoppingRequestFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingRequestFactory.swift; sourceTree = "<group>"; };
 		363CFB42276BA40700B9CBC8 /* ShoppingTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShoppingTests.swift; sourceTree = "<group>"; };
 		363CFB44276BA4AA00B9CBC8 /* Shopping.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Shopping.swift; sourceTree = "<group>"; };
@@ -470,6 +472,7 @@
 			isa = PBXGroup;
 			children = (
 				3680358A277C5092007AD6C5 /* ImageLoader.swift */,
+				36330DBB27A33EA6006E09F1 /* AnalyticService.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -857,6 +860,7 @@
 				36803588277B3243007AD6C5 /* SignUpPresenter.swift in Sources */,
 				36A7D61A277502790037E5CB /* TabBarPage.swift in Sources */,
 				361776362757AC7200509772 /* Registration.swift in Sources */,
+				36330DBC27A33EA7006E09F1 /* AnalyticService.swift in Sources */,
 				36B17A9B278D794D00B30570 /* ProductListItem.swift in Sources */,
 				36A7D6162774B1A50037E5CB /* AuthCoordinator.swift in Sources */,
 				367864422751488F00E0786F /* SceneDelegate.swift in Sources */,
