@@ -11,6 +11,7 @@ class GBShopUITests: XCTestCase {
     let app = XCUIApplication()
     
     override func setUpWithError() throws {
+        setupSnapshot(app)
         app.launch()
         continueAfterFailure = false
     }
@@ -44,7 +45,7 @@ class GBShopUITests: XCTestCase {
     
     }
     
-    func testLoginFail () throws {
+    func testLoginFail() throws {
         app.tabBars["Tab Bar"].buttons["User"].tap()
         let elementsQuery = app.scrollViews.otherElements
         let userNameField = elementsQuery.textFields["Username"]
@@ -59,6 +60,35 @@ class GBShopUITests: XCTestCase {
         alert.scrollViews.otherElements.buttons["Ok"].tap()
                 
         
+    }
+    
+    func testGetSnapshots() throws {
+        app.tabBars["Tab Bar"].buttons["User"].tap()
+        snapshot("LoginScreen")
+        let elementsQuery = app.scrollViews.otherElements
+        let userNameField = elementsQuery.textFields["Username"]
+        userNameField.tap()
+        userNameField.typeText("12345678")
+        let passwordField = elementsQuery.secureTextFields["Password"]
+        passwordField.tap()
+        passwordField.typeText("12345")
+        elementsQuery.buttons["Sign In"].tap()
+        
+        app.tabBars["Tab Bar"].buttons["Catalog"].tap()
+        app.tables.cells.containing(.staticText, identifier:"Периферия").element.tap()
+        //app.navigationBars["Периферия"].buttons["filter"].tap()
+        snapshot("CatalogScreen")
+        //app.navigationBars["Периферия"].buttons["filter"].tap()
+        let tabBar = XCUIApplication().tabBars["Tab Bar"]
+        tabBar.buttons["Cart"].tap()
+        tabBar.buttons["User"].tap()
+        snapshot("UserInfoScreen")
+        XCUIApplication().scrollViews.otherElements/*@START_MENU_TOKEN@*/.staticTexts["Log Out"]/*[[".buttons[\"Log Out\"].staticTexts[\"Log Out\"]",".staticTexts[\"Log Out\"]"],[[[-1,1],[-1,0]]],[0]]@END_MENU_TOKEN@*/.tap()
+        
+        
+        
+        
+                                        
     }
     
     func testLaunchPerformance() throws {

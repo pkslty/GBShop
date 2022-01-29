@@ -20,5 +20,14 @@ platform :ios do
   lane :custom_lane do
     # add actions here: https://docs.fastlane.tools/actions
     ensure_git_status_clean
+    clear_derived_data
+
+    xcclean(
+    	scheme: "GBShop")
+
+    run_tests
+
+    capture_ios_screenshots
+
   end
 end
