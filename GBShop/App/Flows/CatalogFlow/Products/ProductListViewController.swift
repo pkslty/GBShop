@@ -10,6 +10,7 @@ import UIKit
 protocol ProductListView {
     func setTitle(title: String)
     func setData(list: [ProductViewItem])
+    func showAlert(_ title: String?,_ message: String?,_ completion: (() -> Void)?)
 }
 
 struct ProductViewItem {
@@ -101,12 +102,14 @@ extension ProductListViewController: UITableViewDelegate, UITableViewDataSource 
         guard let cell = tableView.dequeueReusableCell(withIdentifier: "ProductListCell") as? ProductListCell else { return UITableViewCell() }
         
         let product = list[indexPath.row]
-
         
+        cell.delegate = self
         cell.configure(productName: product.productName,
                        productImage: product.photoUrlString,
                        productDescription: product.productDescription,
-                       productPrice: product.productPrice, productRating: product.rating)
+                       productPrice: product.productPrice,
+                       productRating: product.rating,
+                       tag: indexPath.row)
         
         return cell
     }
@@ -127,5 +130,17 @@ extension ProductListViewController: ProductListView {
         self.title = title
     }
     
-    
+    func showAlert(_ title: String?,_ message: String?,_ completion: (() -> Void)?) {
+        let alert = UIAlertController(title: title,
+                                     message: message,
+                                      preferredStyle: .actionSheet)
+        alert.addAction(UIAlertAction(title: "Ok", style: .default))
+        present(alert, animated: true, completion: completion)
+    }
+}
+
+extension ProductListViewController: ProductListCellDelegate {
+    func addToCart(tag: Int, quantity: Int) {
+        presenter?.addToCart(row: tag, quantity: quantity)
+    }
 }

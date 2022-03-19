@@ -19,7 +19,7 @@ class UserCoordinator: Coordinator {
         self.navigationController = navigationController
     }
     
-    func start() {
+    func start(with data: Any? = nil) {
         
         var childCoordinator: Coordinator
         if token != nil {
@@ -29,10 +29,11 @@ class UserCoordinator: Coordinator {
         }
         childCoordinators.append(childCoordinator)
         childCoordinator.parentCoordinator = self
-        childCoordinator.start()
+        childCoordinator.start(with: nil)
     }
     
     func childDidFinish(_ child: Coordinator, with data: Any?) {
+        parentCoordinator?.childDidFinish(child, with: nil)
         for (index, coordinator) in childCoordinators.enumerated() {
             if coordinator === child {
                 childCoordinators.remove(at: index)
@@ -44,13 +45,13 @@ class UserCoordinator: Coordinator {
             newChild = AuthCoordinator(navigationController: navigationController)
             childCoordinators.append(newChild)
             newChild.parentCoordinator = self
-            newChild.start()
+            newChild.start(with: nil)
         case .authCoordinator:
             if token != nil {
                 newChild = UserDetailCoordinator(navigationController: navigationController, with: data as? User)
                 childCoordinators.append(newChild)
                 newChild.parentCoordinator = self
-                newChild.start()
+                newChild.start(with: nil)
             }
         default:
             return

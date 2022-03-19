@@ -7,6 +7,10 @@
 
 import UIKit
 
+protocol ProductListCellDelegate {
+    func addToCart(tag: Int, quantity: Int)
+}
+
 class ProductListCell: UITableViewCell {
 
     @IBOutlet weak var productName: UILabel!
@@ -15,12 +19,14 @@ class ProductListCell: UITableViewCell {
     @IBOutlet weak var productPrice: UILabel!
     @IBOutlet weak var productQuantity: UITextField!
     @IBOutlet weak var rating: RatingView!
+    @IBOutlet weak var addToCartButton: UIButton!
+    var delegate: ProductListCellDelegate?
     let currencySign = "₽"
     
     @IBAction func addToCartButtonPressed(_ sender: Any) {
     }
     
-    func configure(productName: String, productImage: String, productDescription: String, productPrice: String, productRating: Int, productQuantity: Int? = nil) {
+    func configure(productName: String, productImage: String, productDescription: String, productPrice: String, productRating: Int, productQuantity: Int? = nil, tag: Int) {
         
         self.productName.text = productName
         self.productDescription.text = productDescription
@@ -31,12 +37,18 @@ class ProductListCell: UITableViewCell {
             guard let self = self else { return }
             self.productImage.image = image
         }
+        addToCartButton.tag = tag
+        addToCartButton.addTarget(self, action: #selector(addToCartAction), for: .touchUpInside)
     }
     
     override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+        super.setSelected(false, animated: animated)
     }
     
+    @objc private func addToCartAction() {
+        print("Button pressed tag = \(addToCartButton.tag)")
+        guard let quantity = Int(productQuantity.text ?? "0"),
+        quantity > 0 else { return }
+        delegate?.addToCart(tag: addToCartButton.tag, quantity: quantity)
+    }
 }

@@ -12,20 +12,20 @@ protocol ReviewShowable {
     func showReviews(productId: UUID)
 }
 
+protocol CartAddable {
+    func addToCart(action: CartAction)
+}
+
 class ProductPresenter {
     var view: ProductView
     var factory: RequestFactory
-    var coordinator: (Coordinator&ReviewShowable)?
+    var coordinator: (Coordinator & ReviewShowable & CartAddable)?
     let productId: UUID
     @UserDefault(key: "authorizationToken", defaultValue: nil) var token: String?
 
-    var photos = [UIImage]() {
-        didSet {
+    private var photos = [UIImage]()
 
-        }
-    }
-
-    let currencySign = "₽"
+    private let currencySign = "₽"
 
     
     init(factory: RequestFactory, view: ProductView, productId: UUID) {
@@ -41,7 +41,20 @@ class ProductPresenter {
     }
     
     func addToCart() {
-        
+        let completion = { [weak self] in
+            guard let self = self else { return }
+            self.view.showAlert("Success!", "Product succesfully added to Cart", nil)
+        }
+        let onError: (String?) -> Void = {[weak self] errorMessage in
+            guard let self = self else { return }
+            self.view.showAlert("Error!", errorMessage , nil)
+        }
+        let cartAction = CartAction(action: .addToCart,
+                                    productId: productId,
+                                    quantity: 1,
+                                    completion: completion,
+                                    onError: onError)
+        coordinator?.addToCart(action: cartAction)
     }
     
     func showReviews() {

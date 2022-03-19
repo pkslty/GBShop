@@ -7,6 +7,12 @@
 
 import UIKit
 
+
+protocol SignUppable {
+    func signUp()
+}
+
+
 class AuthPresenter {
     var view: AuthView
     var factory: RequestFactory

@@ -18,7 +18,7 @@ class CatalogCoordinator: Coordinator {
         self.navigationController = navigationController
     }
     
-    func start() {
+    func start(with data: Any? = nil) {
         let viewController = CatalogViewController(nibName: "CatalogViewController", bundle: nil, withListControl: true)
         let factory = RequestFactory()
         let catalogPresenter = CatalogPresenter(factory: factory, view: viewController)
@@ -83,4 +83,10 @@ extension CatalogCoordinator: ReviewAddable {
             viewController.presenter = addReviewPresenter
             navigationController.present(viewController, animated: true, completion: nil)
         }
+}
+
+extension CatalogCoordinator: CartAddable {
+    func addToCart(action: CartAction) {
+        parentCoordinator?.childDidFinish(self, with: action)
+    }
 }

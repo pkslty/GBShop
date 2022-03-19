@@ -21,7 +21,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let navigationController = UINavigationController()
             navigationController.navigationBar.isHidden = true
             mainCoordinator = MainCoordinator(navigationController: navigationController)
-            mainCoordinator?.start()
+            mainCoordinator?.start(with: nil)
             let window = UIWindow(windowScene: windowScene)
             window.rootViewController = navigationController
             window.backgroundColor = .systemBackground

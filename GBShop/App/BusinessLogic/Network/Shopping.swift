@@ -27,53 +27,56 @@ class Shopping: AbstractRequestFactory {
 }
 
 extension Shopping: ShoppingRequestFactory {
-    func addToCart(productId: Int, userId: Int, quantity: Int, completionHandler: @escaping (AFDataResponse<DefaultResponse>) -> Void) {
-        let requestModel = ShoppingData(baseUrl: baseUrl, path: "addToCart", productId: productId, userId: userId, quantity: quantity)
+    func addToCart(productId: UUID, userId: UUID, quantity: Int, completionHandler: @escaping (AFDataResponse<DefaultResponse>) -> Void) {
+        let requestModel = AddRemoveData(baseUrl: baseUrl, path: "addToCart", productId: productId, userId: userId, quantity: quantity)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func removeFromCart(productId: Int, userId: Int, quantity: Int, completionHandler: @escaping (AFDataResponse<DefaultResponse>) -> Void) {
-        let requestModel = ShoppingData(baseUrl: baseUrl, path: "removeFromCart", productId: productId, userId: userId, quantity: quantity)
+    func removeFromCart(productId: UUID, userId: UUID, quantity: Int, completionHandler: @escaping (AFDataResponse<DefaultResponse>) -> Void) {
+        let requestModel = AddRemoveData(baseUrl: baseUrl, path: "removeFromCart", productId: productId, userId: userId, quantity: quantity)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
     
-    func payCart(userId: Int, completionHandler: @escaping (AFDataResponse<DefaultResponse>) -> Void) {
-        let requestModel = ShoppingData(baseUrl: baseUrl, path: "payCart", userId: userId)
+    func payCart(userId: UUID, completionHandler: @escaping (AFDataResponse<DefaultResponse>) -> Void) {
+        let requestModel = payCartData(baseUrl: baseUrl, path: "payCart", userId: userId)
+        self.request(request: requestModel, completionHandler: completionHandler)
+    }
+    
+    func getCart(userId: UUID, completionHandler: @escaping (AFDataResponse<GetCartResponse>) -> Void) {
+        let requestModel = payCartData(baseUrl: baseUrl, path: "getCart", userId: userId)
         self.request(request: requestModel, completionHandler: completionHandler)
     }
 }
 
 extension Shopping {
     
-    struct ShoppingData: RequestRouter {
+    struct AddRemoveData: RequestRouter {
         let baseUrl: URL
         let method: HTTPMethod = .post
         var path: String
         
-        var productId: Int? = nil
-        var userId: Int? = nil
-        var quantity: Int? = nil
+        var productId: UUID
+        var userId: UUID
+        var quantity: Int
         var parameters: Parameters? {
             return [
-                "productId": productId as Any,
-                "userId": userId as Any,
-                "quantity": quantity as Any
+                "productId": productId,
+                "userId": userId,
+                "quantity": quantity
             ]
         }
+    }
+    
+    struct payCartData: RequestRouter {
+        let baseUrl: URL
+        let method: HTTPMethod = .post
+        var path: String
         
-        init(baseUrl: URL, path: String, productId: Int, userId: Int, quantity: Int) {
-            self.baseUrl = baseUrl
-            self.path = path
-            self.productId = productId
-            self.userId = userId
-            self.quantity = quantity
+        var userId: UUID
+        var parameters: Parameters? {
+            return [
+                "userId": userId,
+            ]
         }
-        
-        init(baseUrl: URL, path: String, userId: Int) {
-            self.baseUrl = baseUrl
-            self.path = path
-            self.userId = userId
-        }
-        
     }
 }
