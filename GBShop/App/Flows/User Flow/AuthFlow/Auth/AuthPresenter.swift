@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+import Firebase
 
 protocol SignUppable {
     func signUp()
@@ -43,8 +43,19 @@ class AuthPresenter {
                         self.userId = value.user?.id.uuidString ?? ""
                         let user = value.user
                         self.view.setActive()
+                        AnalyticService.login(userId: self.userId ?? "", token: self.token ?? "", eMail: user?.email ?? "")
                         self.coordinator?.presenterDidFinish(with: user)
                     default:
+                        let userInfo = [
+                          NSLocalizedDescriptionKey: NSLocalizedString("Login failed", comment: ""),
+                          NSLocalizedFailureReasonErrorKey: NSLocalizedString("Wrong username or password", comment: ""),
+                          "login": login,
+                          "password": password
+                        ]
+                        let error = NSError.init(domain: NSCocoaErrorDomain,
+                                                 code: -1001,
+                                                 userInfo: userInfo)
+                        Crashlytics.crashlytics().record(error: error)
                         self.view.showAlert("Error", "Wrong username or password") {[weak self] _ in
                             guard let self = self else { return }
                             self.view.setActive()

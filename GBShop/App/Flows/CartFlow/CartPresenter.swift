@@ -114,7 +114,17 @@ class CartPresenter {
                 DispatchQueue.main.async {
                     switch value.result {
                     case 1:
-                        self.getCart(completion: completion, withPhotos: withPhotos)
+                        let completionWithAnalitics: (() -> Void) = {
+                            if let item = self.cart.filter({ $0.product.productId == productId }).first {
+                                let userId = self.userIdString ?? ""
+                                let productId = item.product.productId.uuidString
+                                let quantity = String(item.quantity)
+                                let cost = String(item.product.price * Double(item.quantity))
+                                AnalyticService.addToCart(userId: userId, productId: productId, quantity: quantity, cost: cost)
+                                completion?()
+                            }
+                        }
+                        self.getCart(completion: completionWithAnalitics, withPhotos: withPhotos)
                     default:
                         onError?(value.errorMessage)
                     }
@@ -135,6 +145,13 @@ class CartPresenter {
                 DispatchQueue.main.async {
                     switch value.result {
                     case 1:
+                        if let item = self.cart.filter({ $0.product.productId == productId }).first {
+                            let userId = self.userIdString ?? ""
+                            let productId = item.product.productId.uuidString
+                            let quantity = String(item.quantity)
+                            let cost = String(item.product.price * Double(item.quantity))
+                            AnalyticService.removeFromCart(userId: userId, productId: productId, quantity: quantity, cost: cost)
+                        }
                         self.getCart(completion: completion, withPhotos: withPhotos)
                     default:
                         onError?(value.errorMessage)

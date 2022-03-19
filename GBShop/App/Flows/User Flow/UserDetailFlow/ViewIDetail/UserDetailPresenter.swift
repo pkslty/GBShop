@@ -55,6 +55,7 @@ class UserDetailPresenter {
         request.logout(token: token) { [weak self] response in
             guard let self = self else { return }
             DispatchQueue.main.async {
+                AnalyticService.logout(token: self.token ?? "")
                 self.token = nil
                 self.userId = nil
                 self.coordinator?.presenterDidFinish(with: nil)

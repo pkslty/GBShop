@@ -48,8 +48,12 @@ class SignUpPresenter: UserEditInfoPresentable {
                     switch value.result {
                     case 1:
                         self.view.showAlert("Congratulations!", "New user succesfully registered") {[weak self] _ in
-                            guard let self = self else { return }
+                            guard let self = self, let user = self.user else { return }
                             self.view.setActive()
+                            AnalyticService.signUp(userName: user.username,
+                                                   name: user.name ?? "",
+                                                   lastName: user.lastName ?? "",
+                                                   eMail: user.email)
                             self.login()
                         }
                     default:
@@ -89,6 +93,9 @@ class SignUpPresenter: UserEditInfoPresentable {
                         self.token = value.user?.token ?? ""
                         let user = value.user
                         self.view.setActive()
+                        AnalyticService.login(userId: user?.id.uuidString ?? "",
+                                              token: self.token ?? "",
+                                              eMail: user?.email ?? "")
                         self.coordinator?.presenterDidFinish(with: user)
                     default:
                         self.view.showAlert("Error", "Wrong username or password") {[weak self] _ in
